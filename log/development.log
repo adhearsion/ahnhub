@@ -1,0 +1,31 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-14 11:40:51) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-14 11:41:09) [GET]
+Rendering pages/index
+Completed in 58ms (View: 57, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-14 11:43:46) [GET]
+Rendering pages/index
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-14 11:44:24) [GET]
+Rendering pages/index
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/]
