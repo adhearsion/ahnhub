@@ -265,3 +265,104 @@ Processing RepositoriesController#index to xml (for 127.0.0.1 at 2010-08-15 10:2
   [4;35;1mRepository Load (0.4ms)[0m   [0mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
   [4;36;1mRepository Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
 Completed in 12ms (View: 4, DB: 2) | 200 OK [http://localhost/repositories.xml]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#create (for 127.0.0.1 at 2010-08-15 10:57:12) [POST]
+  Parameters: {"payload"=>"{\"pusher\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"after\":\"560afdb596eca411f1a2ff34bfbcd4ec5ce80cbc\",\"commits\":[{\"message\":\"added json\",\"url\":\"http://github.com/chrismatthieu/ahnhub/commit/c2f26d0b74f98217586871cbae3658baeb57e8fa\",\"removed\":[],\"modified\":[\"log/development.log\"],\"timestamp\":\"2010-08-15T10:35:53-07:00\",\"added\":[\".gems\"],\"id\":\"c2f26d0b74f98217586871cbae3658baeb57e8fa\",\"author\":{\"email\":\"topher@topher.local\",\"name\":\"Topher\"}},{\"message\":\"added restclient\",\"url\":\"http://github.com/chrismatthieu/ahnhub/commit/560afdb596eca411f1a2ff34bfbcd4ec5ce80cbc\",\"removed\":[],\"modified\":[\".gems\"],\"timestamp\":\"2010-08-15T10:55:37-07:00\",\"added\":[],\"id\":\"560afdb596eca411f1a2ff34bfbcd4ec5ce80cbc\",\"author\":{\"email\":\"topher@topher.local\",\"name\":\"Topher\"}}],\"repository\":{\"has_downloads\":true,\"description\":\"Adhearsion component library\",\"pushed_at\":\"2010/08/15 10:57:10 -0700\",\"url\":\"http://github.com/chrismatthieu/ahnhub\",\"has_wiki\":true,\"fork\":false,\"forks\":0,\"open_issues\":0,\"private\":false,\"watchers\":3,\"has_issues\":true,\"owner\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"name\":\"ahnhub\",\"created_at\":\"2010/08/14 11:54:20 -0700\",\"homepage\":\"http://ahnhub.com\"},\"forced\":false,\"ref\":\"refs/heads/master\",\"compare\":\"http://github.com/chrismatthieu/ahnhub/compare/d404527...560afdb\",\"before\":\"d404527210134166d270323bdbad16e50c759686\"}"}
+  [4;35;1mRepository Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `repositories`[0m
+  [4;36;1mRepository Load (1.1ms)[0m   [0;1mSELECT * FROM `repositories` WHERE (`repositories`.`url` = 'http://github.com/chrismatthieu/ahnhub') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mRepository Update (0.2ms)[0m   [0;1mUPDATE `repositories` SET `updated_at` = '2010-08-15 17:57:12', `watchers` = 3 WHERE `id` = 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+Redirected to http://web1.tunnlr.com:11053/repositories/1
+Completed in 12ms (DB: 3) | 302 Found [http://web1.tunnlr.com/repositories]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 10:58:51) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:00:22) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:00:34) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:00:55) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:01:00) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:01:29) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:01:36) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 6ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:02:38) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:04:42) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 68ms (View: 5, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 11:04:49) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#about (for 127.0.0.1 at 2010-08-15 11:04:50) [GET]
+Rendering template within layouts/application
+Rendering pages/about
+Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/about]
