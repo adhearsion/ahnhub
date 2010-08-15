@@ -366,3 +366,15 @@ Processing PagesController#about (for 127.0.0.1 at 2010-08-15 11:04:50) [GET]
 Rendering template within layouts/application
 Rendering pages/about
 Completed in 7ms (View: 5, DB: 0) | 200 OK [http://localhost/about]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#create (for 127.0.0.1 at 2010-08-15 11:05:30) [POST]
+  Parameters: {"payload"=>"{\"pusher\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"after\":\"930023679788bc4a06a0340575c58930af90e3e3\",\"repository\":{\"has_downloads\":true,\"description\":\"Adhearsion component library\",\"pushed_at\":\"2010/08/15 11:05:28 -0700\",\"has_wiki\":true,\"fork\":false,\"forks\":0,\"open_issues\":0,\"private\":false,\"watchers\":3,\"has_issues\":true,\"owner\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"url\":\"http://github.com/chrismatthieu/ahnhub\",\"name\":\"ahnhub\",\"created_at\":\"2010/08/14 11:54:20 -0700\",\"homepage\":\"http://ahnhub.com\"},\"forced\":false,\"ref\":\"refs/heads/master\",\"commits\":[{\"message\":\"added pages\",\"removed\":[],\"modified\":[\"app/views/layouts/application.html.erb\",\"app/views/pages/how.html.erb\",\"config/routes.rb\",\"log/development.log\"],\"url\":\"http://github.com/chrismatthieu/ahnhub/commit/930023679788bc4a06a0340575c58930af90e3e3\",\"timestamp\":\"2010-08-15T11:05:18-07:00\",\"added\":[\"app/views/pages/about.html.erb\"],\"id\":\"930023679788bc4a06a0340575c58930af90e3e3\",\"author\":{\"email\":\"topher@topher.local\",\"name\":\"Topher\"}}],\"compare\":\"http://github.com/chrismatthieu/ahnhub/compare/560afdb...9300236\",\"before\":\"560afdb596eca411f1a2ff34bfbcd4ec5ce80cbc\"}"}
+  [4;36;1mRepository Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+  [4;35;1mRepository Load (1.0ms)[0m   [0mSELECT * FROM `repositories` WHERE (`repositories`.`url` = 'http://github.com/chrismatthieu/ahnhub') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+Redirected to http://web1.tunnlr.com:11053/repositories/1
+Completed in 10ms (DB: 3) | 302 Found [http://web1.tunnlr.com/repositories]
