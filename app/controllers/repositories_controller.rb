@@ -52,9 +52,9 @@ class RepositoriesController < ApplicationController
     @repository = Repository.find_by_url(push['repository']['url'])
 
 
-    if @repository.nil? or @repository.length < 1
+    # if @repository.nil? or @repository.length < 1
       @repository = Repository.new
-    end
+    # end
     
     @repository.name = push['repository']['name']
     @repository.description = push['repository']['description']
