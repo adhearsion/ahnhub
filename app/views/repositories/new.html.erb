@@ -1,0 +1,47 @@
+<h1>New repository</h1>
+
+<% form_for(@repository) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :homepage %><br />
+    <%= f.text_field :homepage %>
+  </p>
+  <p>
+    <%= f.label :watchers %><br />
+    <%= f.text_field :watchers %>
+  </p>
+  <p>
+    <%= f.label :forks %><br />
+    <%= f.text_field :forks %>
+  </p>
+  <p>
+    <%= f.label :privateflag %><br />
+    <%= f.check_box :privateflag %>
+  </p>
+  <p>
+    <%= f.label :ownername %><br />
+    <%= f.text_field :ownername %>
+  </p>
+  <p>
+    <%= f.label :owneremail %><br />
+    <%= f.text_field :owneremail %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', repositories_path %>

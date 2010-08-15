@@ -1,0 +1,38 @@
+<h1>Listing commits</h1>
+
+<table>
+  <tr>
+    <th>Repository</th>
+    <th>Shaid</th>
+    <th>Url</th>
+    <th>Authorname</th>
+    <th>Authoremail</th>
+    <th>Message</th>
+    <th>Added</th>
+    <th>Removed</th>
+    <th>Modified</th>
+    <th>Committime</th>
+  </tr>
+
+<% @commits.each do |commit| %>
+  <tr>
+    <td><%=h commit.repository_id %></td>
+    <td><%=h commit.shaid %></td>
+    <td><%=h commit.url %></td>
+    <td><%=h commit.authorname %></td>
+    <td><%=h commit.authoremail %></td>
+    <td><%=h commit.message %></td>
+    <td><%=h commit.added %></td>
+    <td><%=h commit.removed %></td>
+    <td><%=h commit.modified %></td>
+    <td><%=h commit.committime %></td>
+    <td><%= link_to 'Show', commit %></td>
+    <td><%= link_to 'Edit', edit_commit_path(commit) %></td>
+    <td><%= link_to 'Destroy', commit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New commit', new_commit_path %>

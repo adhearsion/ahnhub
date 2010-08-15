@@ -1,0 +1,53 @@
+<p>
+  <b>Repository:</b>
+  <%=h @commit.repository_id %>
+</p>
+
+<p>
+  <b>Shaid:</b>
+  <%=h @commit.shaid %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @commit.url %>
+</p>
+
+<p>
+  <b>Authorname:</b>
+  <%=h @commit.authorname %>
+</p>
+
+<p>
+  <b>Authoremail:</b>
+  <%=h @commit.authoremail %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @commit.message %>
+</p>
+
+<p>
+  <b>Added:</b>
+  <%=h @commit.added %>
+</p>
+
+<p>
+  <b>Removed:</b>
+  <%=h @commit.removed %>
+</p>
+
+<p>
+  <b>Modified:</b>
+  <%=h @commit.modified %>
+</p>
+
+<p>
+  <b>Committime:</b>
+  <%=h @commit.committime %>
+</p>
+
+
+<%= link_to 'Edit', edit_commit_path(@commit) %> |
+<%= link_to 'Back', commits_path %>

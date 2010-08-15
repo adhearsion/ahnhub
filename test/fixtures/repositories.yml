@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  url: MyString
+  description: MyText
+  homepage: MyString
+  watchers: 1
+  forks: 1
+  privateflag: false
+  ownername: MyString
+  owneremail: MyString
+
+two:
+  name: MyString
+  url: MyString
+  description: MyText
+  homepage: MyString
+  watchers: 1
+  forks: 1
+  privateflag: false
+  ownername: MyString
+  owneremail: MyString
