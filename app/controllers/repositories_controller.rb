@@ -50,7 +50,6 @@ class RepositoriesController < ApplicationController
     @repository = Repository.find_by_url(push["pusher"]['repository']['url'])
 
     if @repository
-    
     else
       @repository.new
     end
