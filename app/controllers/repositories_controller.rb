@@ -53,7 +53,7 @@ class RepositoriesController < ApplicationController
     if @repository
 
     else
-      @repository.new
+      @repository = Repository.new
     end
     
     @repository.name = push['repository']['name']
