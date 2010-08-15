@@ -47,7 +47,7 @@ class RepositoriesController < ApplicationController
     # @repository = Repository.new(params[:repository])
     push = JSON.parse(params[:payload])
     
-    @repository = Repository.find_by_url(push['repository']['url'])
+    @repository = Repository.find_by_url(push["pusher"]['repository']['url'])
 
     if @repository
     
@@ -55,15 +55,15 @@ class RepositoriesController < ApplicationController
       @repository.new
     end
     
-    @repository.name = push['repository']['name']
-    @repository.description = push['repository']['description']
-    @repository.url = push['repository']['url']
-    @repository.watchers = push['repository']['watchers']
-    @repository.forks = push['repository']['forks']
-    @repository.privateflag = push['repository']['private']
-    @repository.homepage = push['repository']['homepage']
-    @repository.ownername = push['repository']['owner']['name']
-    @repository.owneremail = push['repository']['owner']['email']
+    @repository.name = push["pusher"]['repository']['name']
+    @repository.description = push["pusher"]['repository']['description']
+    @repository.url = push["pusher"]['repository']['url']
+    @repository.watchers = push["pusher"]['repository']['watchers']
+    @repository.forks = push["pusher"]['repository']['forks']
+    @repository.privateflag = push["pusher"]['repository']['private']
+    @repository.homepage = push["pusher"]['repository']['homepage']
+    @repository.ownername = push["pusher"]['repository']['owner']['name']
+    @repository.owneremail = push["pusher"]['repository']['owner']['email']
     
     respond_to do |format|
       if @repository.save
