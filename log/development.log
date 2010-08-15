@@ -162,3 +162,14 @@ Processing RepositoriesController#index (for 127.0.0.1 at 2010-08-15 08:56:09) [
 Rendering template within layouts/application
 Rendering repositories/index
 Completed in 11ms (View: 6, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-15 09:31:10) [POST]
+  Parameters: {"payload"=>"{\"pusher\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"after\":\"470953a52f032df605602aa3f452fbce90b184f5\",\"repository\":{\"has_downloads\":true,\"description\":\"Adhearsion component library\",\"pushed_at\":\"2010/08/15 09:31:09 -0700\",\"has_wiki\":true,\"fork\":false,\"forks\":0,\"open_issues\":0,\"private\":false,\"watchers\":1,\"has_issues\":true,\"owner\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"url\":\"http://github.com/chrismatthieu/ahnhub\",\"name\":\"ahnhub\",\"created_at\":\"2010/08/14 11:54:20 -0700\",\"homepage\":\"http://ahnhub.com\"},\"forced\":false,\"ref\":\"refs/heads/master\",\"commits\":[{\"message\":\"added repos and commits4\",\"removed\":[],\"modified\":[\"app/controllers/repositories_controller.rb\"],\"url\":\"http://github.com/chrismatthieu/ahnhub/commit/470953a52f032df605602aa3f452fbce90b184f5\",\"timestamp\":\"2010-08-15T09:31:03-07:00\",\"added\":[],\"id\":\"470953a52f032df605602aa3f452fbce90b184f5\",\"author\":{\"email\":\"topher@topher.local\",\"name\":\"Topher\"}}],\"compare\":\"http://github.com/chrismatthieu/ahnhub/compare/8a54af1...470953a\",\"before\":\"8a54af1819c983e7d498b8f927d31b5615ff5d50\"}"}
+
+ActionController::RoutingError (No route matches "/repository" with {:method=>:post}):
+  
+
+Rendering rescues/layout (not_found)
