@@ -1,32 +1,26 @@
-<h1>Listing repositories</h1>
+<h1>Adhearsion Component Repositories on GitHub</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Url</th>
-    <th>Description</th>
-    <th>Homepage</th>
-    <th>Watchers</th>
-    <th>Forks</th>
-    <th>Privateflag</th>
-    <th>Ownername</th>
-    <th>Owneremail</th>
-  </tr>
 
 <% @repositories.each do |repository| %>
   <tr>
-    <td><%=h repository.name %></td>
-    <td><%=h repository.url %></td>
-    <td><%=h repository.description %></td>
-    <td><%=h repository.homepage %></td>
-    <td><%=h repository.watchers %></td>
-    <td><%=h repository.forks %></td>
-    <td><%=h repository.privateflag %></td>
-    <td><%=h repository.ownername %></td>
-    <td><%=h repository.owneremail %></td>
-    <td><%= link_to 'Show', repository %></td>
+	<td>
+		<p><%=link_to image_tag('web-icon-small.png', :border =>"0"), repository.homepage %> <%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
+
+	<p>
+	<% if repository.privateflag == true %>
+		<%= image_tag('encrypted.png', :border =>"0", :width => "20") %>
+	<% else %>
+		<%= image_tag('decrypted.png', :border =>"0", :width => "20") %>
+	<% end %>
+	<%= image_tag('watchers.png', :border =>"0", :width => "20") %> <%=h repository.watchers %>
+	<%= image_tag('forks.jpg', :border =>"0", :height => "20") %> <%=h repository.forks %></p>
+	
+	<p><%=h repository.description %></p>
+	</td>
+    <!-- <td><%= link_to 'Show', repository %></td>
     <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
-    <td><%= link_to 'Destroy', repository, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', repository, :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>
@@ -34,4 +28,4 @@
 <br />
 <%= will_paginate @repositories %>
 
-<%= link_to 'New repository', new_repository_path %>
+<%# link_to 'New repository', new_repository_path %>
