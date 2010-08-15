@@ -1538,3 +1538,59 @@ Rendering template within layouts/application
 Rendering repositories/index
   [4;35;1mRepository Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `repositories`[0m
 Completed in 15ms (View: 8, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 14:09:52) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 14:09:56) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-15 14:09:59) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 9ms (View: 6, DB: 0) | 200 OK [http://localhost/how]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index (for 127.0.0.1 at 2010-08-15 14:10:18) [GET]
+  [4;36;1mRepository Load (0.4ms)[0m   [0;1mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
+Rendering template within layouts/application
+Rendering repositories/index
+  [4;35;1mRepository Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `repositories`[0m
+Completed in 14ms (View: 8, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-15 15:14:24) [GET]
+
+MissingSourceFile (no such file to load -- oauth2):
+  app/controllers/repositories_controller.rb:3
+
+Rendered rescues/_trace (36.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-15 15:28:33) [GET]
+
+ActionController::RoutingError (No route matches "/go" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)

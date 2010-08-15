@@ -1,4 +1,6 @@
 class RepositoriesController < ApplicationController
+  require 'rubygems'
+  require 'oauth2'
   require 'json'
 
   # GET /repositories
@@ -50,9 +52,7 @@ class RepositoriesController < ApplicationController
     @repository = Repository.find_by_url(push['repository']['url'])
 
 
-    if @repository
-
-    else
+    if @repository.nil? or @repository.length < 1
       @repository = Repository.new
     end
     
