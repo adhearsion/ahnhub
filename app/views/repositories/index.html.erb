@@ -1,22 +1,23 @@
 <h1>Adhearsion Component Repositories on GitHub</h1>
 
-<table>
+<table class="highlightable" border="0" width="100%" cellspacing="0" cellpadding="0">
 
 <% @repositories.each do |repository| %>
   <tr>
 	<td>
-		<p><%=link_to image_tag('web-icon-small.png', :border =>"0"), repository.homepage %> <%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
+		<p><%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
 
-	<p>
-	<% if repository.privateflag == true %>
-		<%= image_tag('encrypted.png', :border =>"0", :width => "20") %>
-	<% else %>
-		<%= image_tag('decrypted.png', :border =>"0", :width => "20") %>
-	<% end %>
-	<%= image_tag('watchers.png', :border =>"0", :width => "20") %> <%=h repository.watchers %>
-	<%= image_tag('forks.jpg', :border =>"0", :height => "20") %> <%=h repository.forks %></p>
+		<p><%=h repository.description %></p>
+		<p>
+		<%=link_to image_tag('web-icon-small.png', :border =>"0"), repository.homepage %>
+		<% if repository.privateflag == true %>
+			<%= image_tag('encrypted.png', :border =>"0", :width => "20") %>
+		<% else %>
+			<%= image_tag('decrypted.png', :border =>"0", :width => "20") %>
+		<% end %>
+		<%= image_tag('watchers.png', :border =>"0", :width => "20") %> <%=h repository.watchers %>
+		<%= image_tag('forks.jpg', :border =>"0", :height => "20") %> <%=h repository.forks %></p>
 	
-	<p><%=h repository.description %></p>
 	</td>
     <!-- <td><%= link_to 'Show', repository %></td>
     <td><%= link_to 'Edit', edit_repository_path(repository) %></td>

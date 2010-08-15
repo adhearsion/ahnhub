@@ -7,12 +7,15 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
-<center><h1>AhnHub</h1></center>
-<p align="right"><%=link_to 'Home', "/"%> | <%=link_to 'How does it work?', "/how"%> | <%=link_to 'About', "/about"%></p>
+<center><h1><%=image_tag('adhear.jpg', :border =>"0")%><span style="font-size:60px;">hnHub</span></h1></center>
 <br/>
+<div id="container">
+	<p align="right"><%=link_to 'Home', "/"%> | <%=link_to 'How does it work?', "/how"%> | <%=link_to 'About', "/about"%></p>
+	<br/>
 <p style="color: green"><%= notice %></p>
 
 <%= yield %>
 
+</div>
 </body>
 </html>
