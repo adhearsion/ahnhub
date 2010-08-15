@@ -216,3 +216,52 @@ NoMethodError (undefined method `new' for nil:NilClass):
 Rendered rescues/_trace (110.5ms)
 Rendered rescues/_request_and_response (0.5ms)
 Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#create (for 127.0.0.1 at 2010-08-15 10:01:07) [POST]
+  Parameters: {"payload"=>"{\"pusher\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"after\":\"d404527210134166d270323bdbad16e50c759686\",\"repository\":{\"has_downloads\":true,\"description\":\"Adhearsion component library\",\"pushed_at\":\"2010/08/15 10:01:04 -0700\",\"has_wiki\":true,\"fork\":false,\"forks\":0,\"open_issues\":0,\"private\":false,\"watchers\":1,\"has_issues\":true,\"owner\":{\"email\":\"chris@matthieu.us\",\"name\":\"chrismatthieu\"},\"url\":\"http://github.com/chrismatthieu/ahnhub\",\"name\":\"ahnhub\",\"created_at\":\"2010/08/14 11:54:20 -0700\",\"homepage\":\"http://ahnhub.com\"},\"forced\":false,\"ref\":\"refs/heads/master\",\"commits\":[{\"message\":\"fixed new\",\"removed\":[],\"modified\":[\"app/controllers/repositories_controller.rb\",\"log/development.log\"],\"url\":\"http://github.com/chrismatthieu/ahnhub/commit/d404527210134166d270323bdbad16e50c759686\",\"timestamp\":\"2010-08-15T10:00:57-07:00\",\"added\":[],\"id\":\"d404527210134166d270323bdbad16e50c759686\",\"author\":{\"email\":\"topher@topher.local\",\"name\":\"Topher\"}}],\"compare\":\"http://github.com/chrismatthieu/ahnhub/compare/4f4f3f2...d404527\",\"before\":\"4f4f3f2bb81d007e4fe93478e62177c6045091a4\"}"}
+  [4;36;1mRepository Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+  [4;35;1mRepository Load (1.3ms)[0m   [0mSELECT * FROM `repositories` WHERE (`repositories`.`url` = 'http://github.com/chrismatthieu/ahnhub') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRepository Create (0.2ms)[0m   [0mINSERT INTO `repositories` (`name`, `owneremail`, `created_at`, `watchers`, `updated_at`, `url`, `privateflag`, `homepage`, `description`, `forks`, `ownername`) VALUES('ahnhub', 'chris@matthieu.us', '2010-08-15 17:01:07', 1, '2010-08-15 17:01:07', 'http://github.com/chrismatthieu/ahnhub', 0, 'http://ahnhub.com', 'Adhearsion component library', 0, 'chrismatthieu')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://web1.tunnlr.com:11053/repositories/1
+Completed in 12ms (DB: 4) | 302 Found [http://web1.tunnlr.com/repositories]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index (for 127.0.0.1 at 2010-08-15 10:01:22) [GET]
+  [4;35;1mRepository Load (0.5ms)[0m   [0mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
+Rendering template within layouts/application
+Rendering repositories/index
+  [4;36;1mRepository Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+Completed in 22ms (View: 15, DB: 2) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index to xml (for 127.0.0.1 at 2010-08-15 10:19:50) [GET]
+  [4;35;1mRepository Load (0.7ms)[0m   [0mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
+  [4;36;1mRepository Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+Completed in 13ms (View: 6, DB: 2) | 200 OK [http://localhost/repositories.xml]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index (for 127.0.0.1 at 2010-08-15 10:20:34) [GET]
+  [4;35;1mRepository Load (0.4ms)[0m   [0mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
+Rendering template within layouts/application
+Rendering repositories/index
+  [4;36;1mRepository Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+Completed in 86ms (View: 6, DB: 2) | 200 OK [http://localhost/repositories]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index to xml (for 127.0.0.1 at 2010-08-15 10:20:51) [GET]
+  [4;35;1mRepository Load (0.4ms)[0m   [0mSELECT * FROM `repositories` ORDER BY created_at DESC LIMIT 0, 30[0m
+  [4;36;1mRepository Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+Completed in 12ms (View: 4, DB: 2) | 200 OK [http://localhost/repositories.xml]
