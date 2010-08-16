@@ -1,14 +1,16 @@
 class RepositoriesController < ApplicationController
   require 'rubygems'
-  require 'oauth2'
+  # require 'oauth2'
   require 'json'
+  
+  # before
 
   # GET /repositories
   # GET /repositories.xml
   def index
-    # @repositories = Repository.all
-    @repositories = Repository.paginate :page => params[:page], :order => 'created_at DESC'
-    
+          
+    # TODO - sort by either newest repo or most downloaded or most watched
+    @repositories = Repository.paginate :page => params[:page], :order => 'watchers DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,7 +53,7 @@ class RepositoriesController < ApplicationController
     
     @repository = Repository.find_by_url(push['repository']['url'])
 
-
+    # If Repo exists do not create another one but go ahead and update the data
     if @repository.nil? or @repository.length < 1
       @repository = Repository.new
     end
@@ -66,8 +68,26 @@ class RepositoriesController < ApplicationController
     @repository.ownername = push['repository']['owner']['name']
     @repository.owneremail = push['repository']['owner']['email']
     
+    
     respond_to do |format|
       if @repository.save
+
+        # Add commit record
+        @commit = Commit.new
+
+        @commit.repository_id = @repository.id  
+        @commit.shaid = push['commits']['id']
+        @commit.url = push['commits']['url']
+        @commit.authorname = push['commits']['author']['name']
+        @commit.authoremail = push['commits']['author']['email']
+        @commit.message = push['commits']['message']
+        @commit.committime = push['commits']['timestamp']
+        @commit.added = push['commits']['added']
+        @commit.removed = push['commits']['removed']
+        @commit.modified = push['commits']['modified']
+
+        @commit.save
+
         format.html { redirect_to(@repository, :notice => 'Repository was successfully created.') }
         format.xml  { render :xml => @repository, :status => :created, :location => @repository }
       else

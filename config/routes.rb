@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :commits
 
+  map.resources :commits
   map.resources :repositories
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -37,9 +37,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'how', :controller => 'pages', :action => 'how'
   map.connect 'about', :controller => 'pages', :action => 'about'
   
+  #TODO - This hack was added to prevent POST to http://ahnhub.com from going to index
+  map.connect '/', :controller => 'repositories', :action => 'create', :conditions => { :method => :post}
+  
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "repositories"
+
 
   # See how all your routes lay out with "rake routes"
 

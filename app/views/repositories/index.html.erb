@@ -1,27 +1,27 @@
-<h1>Adhearsion Component Repositories on GitHub</h1>
+<h2>Adhearsion Component Repositories on GitHub</h2>
 
 <table class="highlightable" border="0" width="100%" cellspacing="0" cellpadding="0">
 
 <% @repositories.each do |repository| %>
   <tr>
 	<td>
-		<p><%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
-
+	<ul><li>
+		<p> <%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
+		<!-- Add download button with tracker -->
 		<p><%=h repository.description %></p>
 		<p>
-		<%=link_to image_tag('web-icon-small.png', :border =>"0"), repository.homepage %>
+		<%=link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), repository.homepage %>
 		<% if repository.privateflag == true %>
-			<%= image_tag('encrypted.png', :border =>"0", :width => "20") %>
+			<%= image_tag('encrypted.png', :border =>"0", :width => "18", :title => "Repository is private") %>
 		<% else %>
-			<%= image_tag('decrypted.png', :border =>"0", :width => "20") %>
+			<%= image_tag('decrypted.png', :border =>"0", :width => "18", :title => "Repository is public") %>
 		<% end %>
-		<%= image_tag('watchers.png', :border =>"0", :width => "20") %> <%=h repository.watchers %>
-		<%= image_tag('forks.jpg', :border =>"0", :height => "20") %> <%=h repository.forks %></p>
-	
+		<%= image_tag('watchers.png', :border =>"0", :width => "20", :title => "Watchers") %> <%=h repository.watchers %>
+		<%= image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks") %> <%=h repository.forks %>
+		<%= '- updated at ' + link_to(repository.commits.last.committime.to_s, repository.commits.last.url) + ' by ' + link_to(repository.commits.last.authorname, 'http://github.com/' + h(repository.commits.last.authorname)) + ' - "' + repository.commits.last.message + '"' rescue "" %>
+		</p>
+	</li></ul>
 	</td>
-    <!-- <td><%= link_to 'Show', repository %></td>
-    <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
-    <td><%= link_to 'Destroy', repository, :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>
