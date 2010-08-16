@@ -81,7 +81,7 @@ class RepositoriesController < ApplicationController
         @commit.authorname = push['commits']['author']['name'] rescue ""
         @commit.authoremail = push['commits']['author']['email'] rescue ""
         @commit.message = push['commits']['message'] rescue ""
-        @commit.committime = push['commits']['timestamp']
+        # @commit.committime = push['commits']['timestamp']
         @commit.added = push['commits']['added'] rescue ""
         @commit.removed = push['commits']['removed'] rescue ""
         @commit.modified = push['commits']['modified']  rescue ""
