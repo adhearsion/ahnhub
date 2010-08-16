@@ -54,7 +54,7 @@ class RepositoriesController < ApplicationController
     @repository = Repository.find_by_url(push['repository']['url'])
 
     # If Repo exists do not create another one but go ahead and update the data
-    if @repository.nil? or @repository.length < 1
+    if @repository.nil? 
       @repository = Repository.new
     end
     
