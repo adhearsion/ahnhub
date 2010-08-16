@@ -58,15 +58,15 @@ class RepositoriesController < ApplicationController
       @repository = Repository.new
     end
     
-    @repository.name = push['repository']['name']
-    @repository.description = push['repository']['description']
-    @repository.url = push['repository']['url']
-    @repository.watchers = push['repository']['watchers']
-    @repository.forks = push['repository']['forks']
-    @repository.privateflag = push['repository']['private']
-    @repository.homepage = push['repository']['homepage']
-    @repository.ownername = push['repository']['owner']['name']
-    @repository.owneremail = push['repository']['owner']['email']
+    @repository.name = push['repository']['name'] rescue ""
+    @repository.description = push['repository']['description'] rescue ""
+    @repository.url = push['repository']['url'] rescue ""
+    @repository.watchers = push['repository']['watchers'] rescue 0
+    @repository.forks = push['repository']['forks'] rescue 0
+    @repository.privateflag = push['repository']['private'] rescue false
+    @repository.homepage = push['repository']['homepage'] rescue ""
+    @repository.ownername = push['repository']['owner']['name'] rescue ""
+    @repository.owneremail = push['repository']['owner']['email'] rescue ""
     
     
     respond_to do |format|
@@ -76,15 +76,15 @@ class RepositoriesController < ApplicationController
         @commit = Commit.new
 
         @commit.repository_id = @repository.id  
-        @commit.shaid = push['commits']['id']
-        @commit.url = push['commits']['url']
-        @commit.authorname = push['commits']['author']['name']
-        @commit.authoremail = push['commits']['author']['email']
-        @commit.message = push['commits']['message']
+        @commit.shaid = push['commits']['id'] rescue ""
+        @commit.url = push['commits']['url'] rescue ""
+        @commit.authorname = push['commits']['author']['name'] rescue ""
+        @commit.authoremail = push['commits']['author']['email'] rescue ""
+        @commit.message = push['commits']['message'] rescue ""
         @commit.committime = push['commits']['timestamp']
-        @commit.added = push['commits']['added']
-        @commit.removed = push['commits']['removed']
-        @commit.modified = push['commits']['modified']
+        @commit.added = push['commits']['added'] rescue ""
+        @commit.removed = push['commits']['removed'] rescue ""
+        @commit.modified = push['commits']['modified']  rescue ""
 
         @commit.save
 
