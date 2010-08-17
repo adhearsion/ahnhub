@@ -76,15 +76,15 @@ class RepositoriesController < ApplicationController
         @commit = Commit.new
 
         @commit.repository_id = @repository.id  
-        @commit.shaid = push['commits']['id'] rescue ""
-        @commit.url = push['commits']['url'] rescue ""
-        @commit.authorname = push['commits']['author']['name'] rescue ""
-        @commit.authoremail = push['commits']['author']['email'] rescue ""
-        @commit.message = push['commits']['message'] rescue ""
+        @commit.shaid = push['commits'][0]['id'] rescue ""
+        @commit.url = push['commits'][0]['url'] rescue ""
+        @commit.authorname = push['commits'][0]['author']['name'] rescue ""
+        @commit.authoremail = push['commits'][0]['author']['email'] rescue ""
+        @commit.message = push['commits'][0]['message'] rescue ""
         # @commit.committime = push['commits']['timestamp']
-        @commit.added = push['commits']['added'] rescue ""
-        @commit.removed = push['commits']['removed'] rescue ""
-        @commit.modified = push['commits']['modified']  rescue ""
+        @commit.added = push['commits'][0]['added'] rescue ""
+        @commit.removed = push['commits'][0]['removed'] rescue ""
+        @commit.modified = push['commits'][0]['modified']  rescue ""
 
         @commit.save
 
