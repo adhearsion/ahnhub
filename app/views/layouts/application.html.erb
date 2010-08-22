@@ -3,16 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>AhnHub: <%= controller.action_name %></title>
-  	<%= stylesheet_link_tag 'scaffold' %>
-	<%= javascript_include_tag :defaults %>
+  <title>AhnHub: Community-Driven Adhearsion Component Directory</title>
+
+  <%= stylesheet_link_tag 'scaffold', 'style' %>
+  <%= javascript_include_tag :defaults %>
 
 </head>
 <body>
 <div id="container">
-	<center><h1><%=image_tag('adhear.jpg', :border =>"0")%><span style="font-size:60px;">hnHub</span></h1></center>
-	<p align="right"><%=link_to 'Home', "/"%> | <%=link_to 'How does it work?', "/how"%> | <%=link_to 'About', "/about"%></p>
-	<br/>
+
+  <h1 id="main-header"><span>AhnHub</span></h1>
+
+  <p align="right"><%=link_to 'Home', "/"%> | <%=link_to 'How does it work?', "/how"%> | <%=link_to 'About', "/about"%></p>
+  <br/>
 <p style="color: green"><%= notice %></p>
 
 <%= yield %>

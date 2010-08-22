@@ -1,0 +1,8 @@
+h1#main-header {
+    width: 740px;
+    height: 174px;
+    background: url(/images/ahnhub.png) top center no-repeat;
+}
+h1#main-header span {
+    display: none;
+}
