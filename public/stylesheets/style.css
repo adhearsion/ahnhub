@@ -3,6 +3,65 @@ h1#main-header {
     height: 174px;
     background: url(/images/ahnhub.png) top center no-repeat;
 }
+
 h1#main-header span {
     display: none;
+}
+
+.repository {
+    color: white;
+    background-color: #64c2ea;
+    overflow: hidden;
+    margin: 5px 0;
+    position: relative;
+}
+
+.repository.even {
+    background-color: #64c2ea;
+}
+
+.repository.odd {
+    background-color: yellow;
+    color: black;
+}
+
+.repository span.owner {
+    visibility: hidden;
+}
+.repository:hover span.owner {
+    visibility: visible;
+}
+
+.repository .description {
+    background-color: white;
+    color: black;
+    width: 350px;
+    float: left;
+    margin: 0 30px 30px;
+    padding: 30px;
+}
+
+.repository .name {
+    float: right;
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 50px;
+    opacity: 0.5;
+    position: relative;
+    right: 5px;
+    width: 727px;
+    z-index: 5;
+    text-align: right;
+}
+.repository .name a {
+    text-decoration: none;
+}
+
+.repository .commit.overview {
+    display: none;
+}
+.repository .details {
+    width: 200px;
+    float: right;
+    clear: right;
 }

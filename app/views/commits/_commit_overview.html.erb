@@ -1,0 +1,6 @@
+<% commit = commit_overview %>
+<div class="commit overview">
+  <p><%= link_to_github_user commit.authorname %></p>
+  <p class="commit-message"><%= h commit.message %></p>
+  <p><%= link_to(time_ago_in_words(commit.created_at), commit.url) %> ago</p>
+</div>

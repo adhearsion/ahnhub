@@ -56,10 +56,8 @@ class FakeRepository
 
   def owner_metadata
     @owner_metadata ||= {
-            "owner" => {
-                    "email"  => owner_email,
-                    "name" => owner_name
-            }
+            "email"  => owner_email,
+            "name" => owner_username
     }
   end
 

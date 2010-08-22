@@ -1,0 +1,22 @@
+<div class="repository overview <%= cycle('even', 'odd') %>">
+  <h3 class="name"><%= link_to_repository_with_owner(repository) %></h3>
+
+  <p class="description"><%= h repository.description %></p>
+
+  <div class="details">
+    <ul>
+      <li><%= image_tag('icons/watchers.png', :border =>"0", :width => "16", :title => "Watchers") %> <%= h repository.watchers %></li>
+      <li><%= image_tag('icons/forks.png', :border =>"0", :height => "16", :title => "Forks") %> <%= h repository.forks %></li>
+      <% if repository.private? %>
+          <li>
+            <%= image_tag('icons/private.png') %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="commits">
+    <%= render :partial => "commits/commit_overview", :collection => repository.commits %>
+  </div>
+
+</div>

@@ -13,6 +13,10 @@ class Repository < ActiveRecord::Base
     repository.update_from_github_push payload
   end
 
+  def github_name
+    "#{ownername}/#{name}"
+  end
+
   def update_from_github_push(payload)
     repository_data = payload["repository"]
 

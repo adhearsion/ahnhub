@@ -1,54 +1,5 @@
 <h2>Adhearsion Component Repositories on GitHub</h2>
 
-<table class="highlightable" border="0" width="100%" cellspacing="0" cellpadding="0">
+<%= render :partial => "repository", :collection => @repositories %>
 
-<% @repositories.each do |repository| %>
-  <tr>
-	<td>
-	<ul><li>
-		<p> <%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
-		<!-- Add download button with tracker -->
-		<p><%=h repository.description %></p>
-		<p>
-		<%=link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), repository.homepage %>
-		<% if repository.privateflag == true %>
-			<%= image_tag('encrypted.png', :border =>"0", :width => "18", :title => "Repository is private") %>
-		<% else %>
-			<%= image_tag('decrypted.png', :border =>"0", :width => "18", :title => "Repository is public") %>
-		<% end %>
-		<%= image_tag('watchers.png', :border =>"0", :width => "20", :title => "Watchers") %> <%=h repository.watchers %>
-		<%= image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks") %> <%=h repository.forks %>
-		<%= '- updated at ' + link_to(repository.commits.last.created_at.to_s, repository.commits.last.url) + ' by ' + link_to(repository.commits.last.authorname, 'http://github.com/' + h(repository.commits.last.authorname)) + ' - "' + repository.commits.last.message + '"' rescue "" %> 
-		<%= link_to_function(' more...') do |page|
-				# page['commits_' + repository.id.to_s].toggle :slide
-				page.visual_effect :toggle_blind, 'commits_' + repository.id.to_s
-		end %>
-		
-		</p>
-
-		<div id="commits_<%=repository.id.to_s%>" style="display:none;">
-
-			<table class="highlightable" border="0" width="100%" cellspacing="0" cellpadding="0">
-
-				<% repository.commits.each do |commit| %>
-				<tr>
-					<td>
-						<%= '> Updated at ' + link_to(commit.created_at.to_s, commit.url) + ' by ' + link_to(commit.authorname, 'http://github.com/' + h(commit.authorname)) + ' - "' + commit.message + '"' rescue "" %>
-					</td>
-				</tr>
-				<% end %>
-			</table>
-
-		</div>
-		
-		
-	</li></ul>
-	</td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 <%= will_paginate @repositories %>
-
-<%# link_to 'New repository', new_repository_path %>
