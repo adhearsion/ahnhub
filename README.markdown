@@ -1,14 +1,24 @@
 AhnHub.com
--------------
+==========
+
+AhnHub is a Github-based site for sharing Adhearsion components with the greater Adhearsion community.
+
+When you create a new Adhearsion component and upload it to Github, notifying AhnHub of your component is as simple as making `http://ahnhub.com` a post-receive hook for the repository. When you commit to the project, Github will POST information about your repository to AhnHub. Thanks to Github, Ahnhub will always be up to date.
+
+Generating fake development data
+----------
 
 To generate fake data for development purposes, run...
 
-  rake db:seed
+    rake db:seed
 
+This will create a bunch of sample components (with silly, randomly-generated descriptions).
+
+-------
 
 LICENSE
 -------
-Copyright (c) 2010 Chris Matthieu, Jay Phillips
+Copyright (c) 2010 Chris Matthieu, Ben Klang, Jay Phillips
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
