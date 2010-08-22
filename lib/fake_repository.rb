@@ -7,10 +7,10 @@ require 'faker'
 #
 # If you want to create a Repository model from this class, simply do...
 #
-#   fake_push = FakePush.new
+#   fake_push = FakeRepository.new
 #   Repository.update_or_create_from_github_push fake_push.repository_metadata
 #
-class FakePush
+class FakeRepository
 
   GITHUB_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S-08:00"
 
@@ -96,7 +96,7 @@ class FakePush
   end
 
   def commits
-    @commits ||= Array.new(rand(10)) do |index|
+    @commits ||= Array.new(rand(10)+1) do |index|
       sha = random_sha
       time_offset = rand 50
       {

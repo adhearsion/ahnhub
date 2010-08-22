@@ -5,7 +5,7 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 
-require RAILS_ROOT + "/lib/fake_github_repository_generator.rb"
+require RAILS_ROOT + "/lib/fake_repository.rb"
 
 # Uncomment the next line to use webrat's matchers
 #require 'webrat/integrations/rspec-rails'

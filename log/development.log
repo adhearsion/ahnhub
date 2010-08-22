@@ -5195,3 +5195,187 @@ Completed in 260ms (View: 230, DB: 25) | 200 OK [http://localhost/]
   [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM `schema_migrations`[0m
   [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20100815143939')[0m
   [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20100815143605')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#how (for 127.0.0.1 at 2010-08-21 17:37:32) [GET]
+Rendering template within layouts/application
+Rendering pages/how
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/how]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing RepositoriesController#index (for 127.0.0.1 at 2010-08-21 17:37:36) [GET]
+  [4;35;1mRepository Load (0.6ms)[0m   [0mSELECT * FROM `repositories` ORDER BY watchers DESC LIMIT 0, 30[0m
+  [4;36;1mRepository Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `repositories`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM `repositories` [0m
+Rendering template within layouts/application
+Rendering repositories/index
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCommit Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `commits`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 17) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 19) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 32) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 40) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 20) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 23) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 8) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 15) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 18) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 5) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 5) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 22) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 22) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 6) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 39) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 27) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 41) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 28) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 33) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 24) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 7) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 13) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 2) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 47) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 47) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 3) [0m
+  [4;35;1mCommit Load (0.5ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 36) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 36) [0m
+  [4;35;1mCommit Load (0.4ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 11) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.4ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 31) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 46) [0m
+  [4;35;1mCommit Load (0.1ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 50) [0m
+  [4;35;1mCommit Load (0.2ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 37) [0m
+  [4;35;1mCommit Load (0.3ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) ORDER BY commits.id DESC LIMIT 1[0m
+  [4;36;1mCommit Load (0.5ms)[0m   [0;1mSELECT * FROM `commits` WHERE (`commits`.repository_id = 29) [0m
+Completed in 321ms (View: 288, DB: 27) | 200 OK [http://localhost/]

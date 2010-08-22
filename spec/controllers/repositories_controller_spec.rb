@@ -5,7 +5,7 @@ describe RepositoriesController do
   describe "#github_post_receive_hook" do
 
     before do
-      @fake_push = FakePush.new
+      @fake_push = FakeRepository.new
     end
 
     it "should be installed on the root path on POSTs" do
