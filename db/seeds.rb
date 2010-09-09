@@ -1,7 +1,7 @@
-require 'digest/sha1'
-
-50.times do
-  fake_push = FakeRepository.new
-  puts "Creating #{fake_push.qualified_github_name}: #{fake_push.description.inspect} with #{fake_push.commits.size} commits"
-  Repository.update_or_create_from_github_push(fake_push.repository_metadata)
-end
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#   Mayor.create(:name => 'Daley', :city => cities.first)
