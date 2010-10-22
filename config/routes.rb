@@ -4,7 +4,7 @@ Ahnhub::Application.routes.draw do
   #                                   :action => 'github_post_receive_hook',
   #                                   :conditions => {:method => :post}
 
-  match "/" => "repositories#github_post_receive_hook", :via => :post, :as => "github_post_receive_hook"
+  match "/" => "repositories#do_post_hook", :via => :post, :as => "do_post_hook"
 
   resources :repositories, :only => [:index, :show] do 
     resources :commits, :only => [:index, :show]

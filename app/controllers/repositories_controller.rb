@@ -22,11 +22,17 @@ class RepositoriesController < ApplicationController
   end
 
   # Used only by github
-  def github_post_receive_hook
-    payload = JSON.parse(params[:payload])
+  def do_post_hook
+    if params.has_key?(:payload)
+      # Assume this is a Github post-receive hook
+      payload = JSON.parse(params[:payload])
+      @repository = Repository.update_or_create_from_github_push(payload)
+    elsif params.has_key?('gem_uri')
+      # Assume this is a RubyGems.org webhook
+      @repository = Repository.update_or_create_from_rubygems_webhook(params)
+    end
 
     # If Repo exists do not create another one but go ahead and update the data
-    @repository = Repository.update_or_create_from_github_push(payload)
 
     if @repository
       head :ok
