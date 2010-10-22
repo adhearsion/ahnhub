@@ -14,7 +14,7 @@ class FakeRepository
 
   GITHUB_DATE_FORMAT = "%Y-%m-%dT%H:%M:%S-08:00"
 
-  ROOT_PATH = File.expand_path(RAILS_ROOT)
+  ROOT_PATH = File.expand_path(::Rails.root.to_s)
 
   SAMPLE_FILES = Dir["#{ROOT_PATH}/**/*"].map do |filename|
     File.expand_path(filename).sub(ROOT_PATH, "")[1..-1]

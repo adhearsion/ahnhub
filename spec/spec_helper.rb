@@ -5,7 +5,7 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 
-require RAILS_ROOT + "/lib/fake_repository.rb"
+require ::Rails.root.to_s + "/lib/fake_repository.rb"
 
 # Uncomment the next line to use webrat's matchers
 #require 'webrat/integrations/rspec-rails'
@@ -21,7 +21,7 @@ Spec::Runner.configure do |config|
   # in your config/boot.rb
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
-  config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+  config.fixture_path = ::Rails.root.to_s + '/spec/fixtures/'
 
   # == Fixtures
   #
@@ -40,7 +40,7 @@ Spec::Runner.configure do |config|
   #
   # You can also declare which fixtures to use (for example fixtures for test/fixtures):
   #
-  # config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+  # config.fixture_path = ::Rails.root.to_s + '/spec/fixtures/'
   #
   # == Mock Framework
   #
