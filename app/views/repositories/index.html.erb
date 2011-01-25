@@ -20,7 +20,7 @@
 		<%= image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks") %> <%=h repository.forks rescue "" %>
 		- updated at <a href="<%=repository.commits.last.url  rescue ""%>"><%=repository.commits.last.created_at.to_s rescue ""%></a> 
 		by <a href="<%='http://github.com/' + repository.commits.last.authorname rescue ""%>"><%=repository.commits.last.authorname  rescue ""%></a>
-		- <%= repository.commits.last.message %>
+		- <%= repository.commits.last.message rescue "" %>
 		<%# '- updated at ' + link_to(repository.commits.last.created_at.to_s, repository.commits.last.url) + ' by ' + link_to(repository.commits.last.authorname, 'http://github.com/' + h(repository.commits.last.authorname)) + ' - "' + repository.commits.last.message + '"' rescue "" %> 
 		<%= link_to_function(' more...') do |page|
 				# page['commits_' + repository.id.to_s].toggle :slide
