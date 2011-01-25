@@ -6,7 +6,7 @@
   <tr>
 	<td>
 	<ul><li>
-		<p> <%=link_to repository.name, h(repository.url)%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
+		<p> <%=link_to repository.name, h(repository.url rescue "")%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
 		<!-- Add download button with tracker -->
 		<p><%=h repository.description %></p>
 		<p>
@@ -18,7 +18,7 @@
 		<% end %>
 		<%= image_tag('watchers.png', :border =>"0", :width => "20", :title => "Watchers") %> <%=h repository.watchers %>
 		<%= image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks") %> <%=h repository.forks %>
-		- updated at <a href="<%=repository.commits.last.url%>"><%=repository.commits.last.created_at.to_s%></a> 
+		- updated at <a href="<%=repository.commits.last.url  rescue ""%>"><%=repository.commits.last.created_at.to_s%></a> 
 		by <a href="<%='http://github.com/' + repository.commits.last.authorname%>"><%=repository.commits.last.authorname%></a>
 		- <%= repository.commits.last.message %>
 		<%# '- updated at ' + link_to(repository.commits.last.created_at.to_s, repository.commits.last.url) + ' by ' + link_to(repository.commits.last.authorname, 'http://github.com/' + h(repository.commits.last.authorname)) + ' - "' + repository.commits.last.message + '"' rescue "" %> 
@@ -36,7 +36,7 @@
 				<% repository.commits.each do |commit| %>
 				<tr>
 					<td>
-						Updated at <a href="<%=commit.url%>"><%=commit.created_at.to_s%></a> 
+						Updated at <a href="<%=commit.url  rescue ""%>"><%=commit.created_at.to_s%></a> 
 						by <a href="http://github.com/<%=commit.authorname%>"><%=commit.authorname%></a>
 						- <%=commit.message%>
 						<%# '> Updated at ' + link_to(commit.created_at.to_s, commit.url) + ' by ' + link_to(commit.authorname, 'http://github.com/' + h(commit.authorname)) + ' - "' + commit.message + '"' rescue "" %>
