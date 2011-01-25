@@ -6,7 +6,7 @@
   <tr>
 	<td>
 	<ul><li>
-		<p> <%=link_to repository.name, h(repository.url rescue "")%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
+		<p> <%=link_to repository.name, h(repository.url)  rescue ""%> from <%=link_to repository.ownername, 'http://github.com/' + h(repository.ownername)%></p>
 		<!-- Add download button with tracker -->
 		<p><%=h repository.description %></p>
 		<p>
