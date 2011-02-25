@@ -10,6 +10,7 @@ gem 'will_paginate', '~> 3.0.pre2'
 
 gem 'haml'
 gem 'haml-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'faker'
