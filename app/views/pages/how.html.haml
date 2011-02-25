@@ -1,0 +1,15 @@
+%center
+  %h2
+    Add
+    %i http://ahnhub.com
+    %object#clippy.clippy{:classid => "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000", :height => "14", :width => "110"}
+      %param{:name => "movie", :value => "/clippy.swf"}/
+      %param{:name => "allowScriptAccess", :value => "always"}/
+      %param{:name => "quality", :value => "high"}/
+      %param{:name => "scale", :value => "noscale"}/
+      %param{:NAME => "FlashVars", :value => "text=http://ahnhub.com"}
+        %param{:name => "bgcolor", :value => "#ffffff"}
+          %param{:name => "wmode", :value => "opaque"}
+            %embed{:FlashVars => "text=http://ahnhub.com", :allowScriptAccess => "always", :bgcolor => "#ffffff", :height => "14", :name => "clippy", :pluginspage => "http://www.macromedia.com/go/getflashplayer", :quality => "high", :src => "/clippy.swf", :type => "application/x-shockwave-flash", :width => "110", :wmode => "opaque"}/
+  %h2 to your GitHub Post-Receive Hooks URL
+  = image_tag 'githubscreenshot.png'

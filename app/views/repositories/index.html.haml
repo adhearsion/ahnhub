@@ -1,0 +1,43 @@
+%h2 Adhearsion Component Repositories on GitHub
+%table.highlightable{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+  - @repositories.each do |repository|
+    %tr
+      %td
+        %ul
+          %li
+            %p
+              = link_to repository.name, h(repository.url)  rescue ""
+              from #{link_to repository.ownername, 'http://github.com/' + h(repository.ownername) rescue ""}
+            / Add download button with tracker
+            %p= h repository.description
+            %p
+              = link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), repository.homepage  rescue ""
+              - if repository.privateflag == true
+                = image_tag('encrypted.png', :border =>"0", :width => "18", :title => "Repository is private")
+              - else
+                = image_tag('decrypted.png', :border =>"0", :width => "18", :title => "Repository is public")
+              = image_tag('watchers.png', :border =>"0", :width => "20", :title => "Watchers")
+              = h repository.watchers  rescue ""
+              = image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks")
+              = h repository.forks rescue ""
+              \- updated at
+              %a{:href => repository.commits.last.url  rescue ""}= repository.commits.last.created_at.to_s rescue ""
+              by
+              %a{:href => 'http://github.com/' + repository.commits.last.authorname rescue ""}= repository.commits.last.authorname  rescue ""
+              \- #{repository.commits.last.message rescue ""}
+    = link_to_function(' more...') do |page|                            |
+      # page['commits_' + repository.id.to_s].toggle :slide             |
+      page.visual_effect :toggle_blind, 'commits_' + repository.id.to_s |
+      end                                                               |
+    %div{:id => "commits_#{repository.id.to_s rescue ""}", :style => "display:none;"}
+      %table.highlightable{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        - repository.commits.each do |commit|
+          %tr
+            %td
+              Updated at
+              %a{:href => commit.url  rescue ""}= commit.created_at.to_s rescue ""
+              by
+              %a{:href => "http://github.com/#{commit.authorname rescue ""}"}= commit.authorname rescue ""
+              \- #{commit.message rescue ""}
+%br/
+= will_paginate @repositories

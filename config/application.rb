@@ -41,6 +41,7 @@ module Ahnhub
     config.filter_parameters += [:password]
 
     config.generators do |generator|
+      generator.template_engine :haml
       generator.fixture_replacement :factory_girl, :dir => 'spec/factories'
       generator.test_framework :rspec, :views => false
       generator.orm :active_record

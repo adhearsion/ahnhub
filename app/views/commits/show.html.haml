@@ -1,0 +1,33 @@
+%p
+  %b Repository:
+  = h @commit.repository_id
+%p
+  %b Shaid:
+  = h @commit.shaid
+%p
+  %b Url:
+  = h @commit.url
+%p
+  %b Authorname:
+  = h @commit.authorname
+%p
+  %b Authoremail:
+  = h @commit.authoremail
+%p
+  %b Message:
+  = h @commit.message
+%p
+  %b Added:
+  = h @commit.added
+%p
+  %b Removed:
+  = h @commit.removed
+%p
+  %b Modified:
+  = h @commit.modified
+%p
+  %b Committime:
+  = h @commit.committime
+= link_to 'Edit', edit_commit_path(@commit)
+|
+\#{link_to 'Back', commits_path}

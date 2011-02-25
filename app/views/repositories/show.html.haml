@@ -1,0 +1,30 @@
+%p
+  %b Name:
+  = h @repository.name
+%p
+  %b Url:
+  = h @repository.url
+%p
+  %b Description:
+  = h @repository.description
+%p
+  %b Homepage:
+  = h @repository.homepage
+%p
+  %b Watchers:
+  = h @repository.watchers
+%p
+  %b Forks:
+  = h @repository.forks
+%p
+  %b Privateflag:
+  = h @repository.privateflag
+%p
+  %b Ownername:
+  = h @repository.ownername
+%p
+  %b Owneremail:
+  = h @repository.owneremail
+= link_to 'Edit', edit_repository_path(@repository)
+|
+\#{link_to 'Back', repositories_path}
