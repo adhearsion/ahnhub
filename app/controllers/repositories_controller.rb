@@ -1,22 +1,16 @@
 class RepositoriesController < ApplicationController
 
+  respond_to :html, :xml
+
   def index
     # TODO - sort by either newest repo or most downloaded or most watched
     @repositories = Repository.paginate :page => params[:page], :order => 'watchers DESC'
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @repositories }
-    end
+    respond_with @repositories
   end
 
   def show
     @repository = Repository.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @repository }
-    end
+    respond_with @repository
   end
 
   def do_post_hook
