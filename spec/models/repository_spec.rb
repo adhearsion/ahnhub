@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Repository do
 
-  before do
-    @example_github_push = <<-JSON
+  let(:example_github_push) do
+    <<-JSON
       {
         "before": "5aef35982fb2d34e9d9d4502f6ede1072793222d",
         "after": "de8251ff97ee194a289832576287d6f8ad74e3d0",
@@ -45,46 +45,41 @@ describe Repository do
         "ref": "refs/heads/master"
       }
     JSON
-    @parsed_github_push = JSON.parse @example_github_push
   end
+
+  let(:parsed_github_push) { JSON.parse example_github_push }
 
   describe ".from_github_push" do
 
-    before do
-      @repository = Repository.update_or_create_from_github_push @parsed_github_push
-    end
-    
+    subject { Repository.update_or_create_from_github_push parsed_github_push }
+
+    its(:watchers) { should == 5 }
+    its(:forks) { should == 2 }
+    it { should be_private }
+    it { should have(2).commits }
+
     it "should update the Repository with the embedded metadata" do
+      parsed_github_push["repository"].merge! "forks" => 100, "watchers" => 200
 
-      @repository.watchers.should == 5
-      @repository.forks.should == 2
+      repository_after = Repository.update_or_create_from_github_push parsed_github_push
 
-      new_payload = @parsed_github_push.clone
-      new_payload["repository"].merge! "forks" => 100, "watchers" => 200
+      subject.reload.should == repository_after
 
-      repository_after = Repository.update_or_create_from_github_push new_payload
-
-      @repository.reload.should == repository_after
-      
       repository_after.forks.should == 100
       repository_after.watchers.should == 200
     end
 
     it "should convert 'private' to a boolean" do
-      @repository.should be_private
-      
-      payload_with_private_repo = @parsed_github_push.clone
+      payload_with_private_repo = parsed_github_push.clone
       payload_with_private_repo["repository"].merge! "private" => 0
-      
-      @repository.update_from_github_push payload_with_private_repo
-      @repository.should_not be_private
+
+      subject.update_from_github_push payload_with_private_repo
+      should_not be_private
     end
 
-    describe "creation of commits" do
-      it "should not create a commit if a commit already exists with the same id" do
-        @repository.should have(2).commits
-        
-        @parsed_github_push["commits"] << {
+    describe "adding new commits" do
+      before do
+        parsed_github_push["commits"] << {
             "id" => "8663acfeb4e22942ceb272f8f732dc2eecaf5a57",
             "url" => "http://github.com/defunkt/github/commit/8663acfeb4e22942ceb272f8f732dc2eecaf5a57",
             "author" => {
@@ -95,10 +90,11 @@ describe Repository do
             "timestamp" => "2009-02-15T14:57:17-08:00",
             "added" => ["Rakefile"]
         }
-        
-        @repository.update_from_github_push @parsed_github_push
-        @repository.should have(3).commits
+
+        subject.update_from_github_push parsed_github_push
       end
+
+      it { should have(3).commits }
     end
 
   end

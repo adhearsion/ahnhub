@@ -1,5 +1,3 @@
-require 'faker'
-
 ##
 # This is a class that generates fake repositories in the format we expect from
 # Github. It's used by the db/seeds.rb file and the specs for this app. If you

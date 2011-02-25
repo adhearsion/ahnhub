@@ -1,9 +1,7 @@
 class RepositoriesController < ApplicationController
 
   def index
-
     # TODO - sort by either newest repo or most downloaded or most watched
-
     @repositories = Repository.paginate :page => params[:page], :order => 'watchers DESC'
 
     respond_to do |format|
@@ -21,7 +19,6 @@ class RepositoriesController < ApplicationController
     end
   end
 
-  # Used only by github
   def do_post_hook
     if params.has_key?(:payload)
       # Assume this is a Github post-receive hook
