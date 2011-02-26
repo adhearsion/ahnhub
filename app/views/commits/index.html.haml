@@ -13,18 +13,14 @@
     %th Committime
   - @commits.each do |commit|
     %tr
-      %td= h commit.repository_id
-      %td= h commit.shaid
-      %td= h commit.url
-      %td= h commit.authorname
-      %td= h commit.authoremail
-      %td= h commit.message
-      %td= h commit.added
-      %td= h commit.removed
-      %td= h commit.modified
-      %td= h commit.committime
+      %td= commit.repository_id
+      %td= commit.shaid
+      %td= commit.url
+      %td= commit.authorname
+      %td= commit.authoremail
+      %td= commit.message
+      %td= commit.added
+      %td= commit.removed
+      %td= commit.modified
+      %td= commit.committime
       %td= link_to 'Show', commit
-      %td= link_to 'Edit', edit_commit_path(commit)
-      %td= link_to 'Destroy', commit, :confirm => 'Are you sure?', :method => :delete
-%br/
-= link_to 'New commit', new_commit_path

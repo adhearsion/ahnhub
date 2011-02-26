@@ -1,5 +1,5 @@
 !!!
-%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+%html
   %head
     %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
     %title AhnHub: Community-Driven Adhearsion Component Directory
@@ -12,9 +12,13 @@
         %span AhnHub
       %p{:align => "right"}
         = link_to 'Home', "/"
-        | #{link_to 'How does it work?', "/how"} | #{link_to 'About', "/about"}
+        |
+        = link_to 'How does it work?', "/how"
+        |
+        = link_to 'About', "/about"
       %br/
-      %p{:style => "color: green"}= notice
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
       = yield
     %br/
     / twitter follow badge by go2web20
