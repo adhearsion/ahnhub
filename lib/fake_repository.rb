@@ -6,7 +6,7 @@
 # If you want to create a Repository model from this class, simply do...
 #
 #   fake_push = FakeRepository.new
-#   Repository.update_or_create_from_github_push fake_push.repository_metadata
+#   Repository.do_post_hook fake_push.repository_metadata
 #
 class FakeRepository
 
@@ -109,9 +109,8 @@ class FakeRepository
 
   private
 
-
-  def random_sha
-    Digest::SHA1.hexdigest(rand.to_s)
-  end
+    def random_sha
+      Digest::SHA1.hexdigest(rand.to_s)
+    end
 
 end
