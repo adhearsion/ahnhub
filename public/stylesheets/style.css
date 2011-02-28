@@ -21,3 +21,7 @@ h1#main-header span {
   background-color: #FCC;
   border: solid 1px #C66;
 }
+
+#search-form {
+   margin-left: 30px;
+}

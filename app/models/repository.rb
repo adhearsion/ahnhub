@@ -4,6 +4,14 @@ class Repository < ActiveRecord::Base
 
   alias_attribute :private, :privateflag
 
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"]).all
+    else
+      all
+    end
+  end
+
   # Github support
   def self.update_or_create_from_github_push(payload)
     repository_data = payload["repository"]
