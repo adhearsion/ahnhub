@@ -115,4 +115,14 @@ describe Repository do
 
   end
 
+  describe "on creation" do
+    it "should deliver the admin notification email" do
+      repository = Repository.new
+      mail = mock('new_repository_mail')
+      mail.should_receive(:deliver)
+      NotificationMailer.should_receive(:new_repository).with(repository).and_return(mail)
+      repository.save
+    end
+  end
+
 end

@@ -16,6 +16,7 @@ gem 'will_paginate', '~> 3.0.pre2'
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '>= 2.0.0'
+  gem 'email_spec'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'ZenTest'

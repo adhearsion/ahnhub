@@ -4,6 +4,12 @@ class Repository < ActiveRecord::Base
 
   alias_attribute :private, :privateflag
 
+  after_create :send_admin_creation_notification
+
+  def send_admin_creation_notification
+    NotificationMailer.new_repository(self).deliver
+  end
+
   # Github support
   def self.update_or_create_from_github_push(payload)
     repository_data = payload["repository"]
