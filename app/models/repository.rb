@@ -60,4 +60,24 @@ class Repository < ActiveRecord::Base
     self
   end
 
+  def rubygem?
+    !!rubygem
+  end
+
+  def rubygem
+    @rubygem ||= Rubygem.where(:source_code_uri => self.url).first
+  end
+
+  def rubygem_url
+    rubygem.andand.project_uri
+  end
+
+  def homepage_url
+    rubygem.andand.homepage_uri
+  end
+
+  def rubygem_version
+    rubygem.andand.version
+  end
+
 end

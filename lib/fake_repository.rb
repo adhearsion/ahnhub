@@ -22,7 +22,7 @@ class FakeRepository < FakePush
       "after" => repository_commit_after,
       "ref" => "refs/heads/master",
       "repository" => {
-        "url" => "http://github.com/#{owner_username}/#{name}",
+        "url" => url,
         "name" => name,
         "description" => description,
         "watchers" => watchers,
@@ -67,8 +67,8 @@ class FakeRepository < FakePush
     @forks ||= rand(20)
   end
 
-  def qualified_github_name
-    "#{owner_username}/#{name}"
+  def url
+    "http://github.com/#{owner_username}/#{name}"
   end
 
   def commits

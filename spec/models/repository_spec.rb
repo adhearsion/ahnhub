@@ -99,4 +99,20 @@ describe Repository do
 
   end
 
+  describe "should know its associated gem" do
+
+    let(:url) { FakeRepository.new.url }
+
+    subject { Factory.create :repository, :url => url }
+
+    before(:all) { @rubygem = Factory.create :rubygem, :source_code_uri => url }
+
+    its(:rubygem) { should == @rubygem }
+    its(:rubygem?) { should be_true }
+    its(:rubygem_url) { should == @rubygem.project_uri }
+    its(:rubygem_version) { should == @rubygem.version }
+    its(:homepage_url) { should == @rubygem.homepage_uri }
+
+  end
+
 end

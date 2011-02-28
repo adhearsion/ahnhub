@@ -6,11 +6,12 @@ gem 'mysql2'
 
 gem 'rest-client', '>= 1.6.0'
 gem 'json', '~>1.4.6'
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'andand'
 
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.0.pre2'
 
 group :development, :test do
   gem 'faker'
