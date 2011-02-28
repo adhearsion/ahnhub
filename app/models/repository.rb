@@ -60,35 +60,4 @@ class Repository < ActiveRecord::Base
     self
   end
 
-  # RubyGems support
-  def self.update_or_create_from_rubygems_webhook(payload)
-    payload_url = payload["homepage_uri"]
-    repository_data = payload["source_code_uri"] || payload_url
-    raise StandardError "Must provide a source URL or homepage URL" if repository_data.nil?
-
-    repository = find_by_url(payload_url) || Repository.new
-
-    repository.update_from_rubygems_webhook payload
-  end
-
-  def update_from_rubygems_webhook(payload)
-    self.name = payload['name']
-    self.description = payload['info']
-    self.url = payload['gem_uri']
-    self.homepage = payload['homepage_uri']
-
-    # Watchers/Forks/Private not provided by this hook
-    self.watchers = 0
-    self.forks = 0
-    self.privateflag = false
-
-    self.ownername = payload['authors']
-    # Email not provided by this hook
-    self.owneremail = ""
-
-    save
-    self
-  end
-
-
 end
