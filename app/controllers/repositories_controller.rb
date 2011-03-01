@@ -4,7 +4,7 @@ class RepositoriesController < ApplicationController
 
   def index
     # TODO - sort by either newest repo or most downloaded or most watched
-    @repositories = Repository.search(params[:search]).paginate :page => params[:page], :order => 'watchers DESC'
+    @repositories = Repository.search(params[:search]).paginate :page => params[:page], :order => 'updated_at DESC'
     respond_with @repositories
   end
 
