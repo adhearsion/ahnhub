@@ -12,20 +12,26 @@
         %ul
           %li{:id => "repository-#{repository.id}"}
             %p
-              = link_to repository.name, repository.url
+              = link_to repository.name, repository.homepage_url || repository.url
+              = "v#{repository.rubygem_version}" if repository.rubygem_version
               from
               = link_to repository.ownername, "http://github.com/#{repository.ownername}"
+              @
+              = link_to "Github", repository.url
+              - if repository.rubygem_url
+                +
+                = link_to "Rubygems.org", repository.rubygem_url
             / Add download button with tracker
             %p= repository.description
             %p
               = link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), repository.homepage
-              - if repository.privateflag == true
+              - if repository.privateflag
                 = image_tag 'encrypted.png', :border =>"0", :width => "18", :title => "Repository is private"
               - else
                 = image_tag 'decrypted.png', :border =>"0", :width => "18", :title => "Repository is public"
-              = image_tag('watchers.png', :border =>"0", :width => "20", :title => "Watchers")
+              = image_tag 'watchers.png', :border =>"0", :width => "20", :title => "Watchers"
               = repository.watchers
-              = image_tag('forkstrans.png', :border =>"0", :height => "20", :title => "Forks")
+              = image_tag 'forkstrans.png', :border =>"0", :height => "20", :title => "Forks"
               = repository.forks
               - unless repository.commits.empty?
                 \- updated at

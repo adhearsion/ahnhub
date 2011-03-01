@@ -1,20 +1,20 @@
-class RepositoriesController < ApplicationController
+class RubygemsController < ApplicationController
 
   respond_to :html, :xml
 
   def index
     # TODO - sort by either newest repo or most downloaded or most watched
-    @repositories = Repository.search(params[:search]).paginate :page => params[:page], :order => 'watchers DESC'
+    @repositories = Rubygem.paginate :page => params[:page], :order => 'watchers DESC'
     respond_with @repositories
   end
 
   def show
-    @repository = Repository.find(params[:id])
+    @repository = Rubygem.find(params[:id])
     respond_with @repository
   end
 
   def do_post_hook
-    @repository = Repository.update_or_create_from_github_push JSON.parse(params[:payload])
+    @repository = Rubygem.update_or_create_from_gemcutter_push JSON.parse(params[:payload])
 
     if @repository
       head :ok

@@ -18,7 +18,7 @@ describe RepositoriesController do
       Repository.count.should == 1
 
       repo = Repository.first
-      repo.name.should == fake_push.repository_name
+      repo.name.should == fake_push.name
       repo.should have(fake_push.commits.size).commits
     end
 
