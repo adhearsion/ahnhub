@@ -43,9 +43,20 @@ h1#main-header span {
   font-size: 0.85em;
 }
 
-.highlightable td {
+ul#recent_components li {
+  list-style: none;
   border: lightGrey 1px solid;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+ul#recent_components li:hover {
+  background-color: #FFFFCC;
+}
+
+.component_title {
+  font-weight: bold;
 }
