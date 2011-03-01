@@ -23,7 +23,7 @@
                 = link_to "Rubygems.org", repository.rubygem_url
             / Add download button with tracker
             %p= repository.description
-            %p
+            %p{:class => "repository_info"}
               = link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), repository.homepage
               - if repository.privateflag
                 = image_tag 'encrypted.png', :border =>"0", :width => "18", :title => "Repository is private"
@@ -41,7 +41,7 @@
                 \-
                 = repository.commits.last.message
 
-            = link_to 'more...', "#repository-#{repository.id}", :class => "more"
+            = link_to 'recent commits...', "#repository-#{repository.id}", :class => "recent_commits"
             %div.more_data{:style => "display:none;"}
               %ul
                 - repository.commits.take(10).each do |commit|
@@ -49,7 +49,7 @@
                     Updated at
                     = link_to commit.created_at.to_s, commit.url
                     by
-                    = link_to commit.authorname, "http://github.com/#{commit.authorname}"
+                    = commit.authorname
                     \-
                     = commit.message
 %br/
