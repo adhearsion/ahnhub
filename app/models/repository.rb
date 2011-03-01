@@ -1,6 +1,6 @@
 class Repository < ActiveRecord::Base
 
-  has_many :commits, :dependent => :destroy
+  has_many :commits, :dependent => :destroy, :order => 'created_at DESC'
 
   alias_attribute :private, :privateflag
 
