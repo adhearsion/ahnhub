@@ -23,5 +23,14 @@ h1#main-header span {
 }
 
 #search-form {
-   margin-left: 30px;
+  margin-left: 30px;
+}
+
+.more_data {
+  background-color: lightGrey;
+  padding: 10px;
+}
+
+.more_data ul {
+  font-size: 0.8em;
 }

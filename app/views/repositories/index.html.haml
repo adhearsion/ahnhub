@@ -43,15 +43,14 @@
 
             = link_to 'more...', "#repository-#{repository.id}", :class => "more"
             %div.more_data{:style => "display:none;"}
-              %table.highlightable{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
-                - repository.commits.each do |commit|
-                  %tr
-                    %td
-                      Updated at
-                      = link_to commit.created_at.to_s, commit.url
-                      by
-                      = link_to commit.authorname, "http://github.com/#{commit.authorname}"
-                      \-
-                      = commit.message
+              %ul
+                - repository.commits.take(10).each do |commit|
+                  %li
+                    Updated at
+                    = link_to commit.created_at.to_s, commit.url
+                    by
+                    = link_to commit.authorname, "http://github.com/#{commit.authorname}"
+                    \-
+                    = commit.message
 %br/
 = will_paginate @repositories
