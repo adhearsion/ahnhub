@@ -6,9 +6,9 @@ class Repository < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where(['name LIKE ?', "%#{search}%"]).all
+      where(['name LIKE ?', "%#{search}%"])
     else
-      all
+      scoped
     end
   end
 
