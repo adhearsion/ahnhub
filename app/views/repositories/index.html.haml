@@ -37,7 +37,7 @@
                 \- updated at
                 = link_to repository.commits.last.created_at.to_s, repository.commits.last.url
                 by
-                = link_to repository.commits.last.authorname, "http://github.com/#{repository.commits.last.authorname}"
+                = repository.commits.last.authorname
                 \-
                 = repository.commits.last.message
 
