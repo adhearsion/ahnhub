@@ -1,5 +1,7 @@
 class Rubygem < ActiveRecord::Base
 
+  belongs_to :project
+
   def self.update_or_create_from_gemcutter_push(payload)
     repository_data = payload["source_code_uri"] || nil
     raise StandardError "Must provide a source URL or homepage URL" if repository_data.nil?

@@ -5,24 +5,13 @@ describe NotificationMailer do
   include EmailSpec::Matchers
   include Rails.application.routes.url_helpers
 
-  before(:all) { @repository = Factory.create :repository }
+  before(:all) { @project = Factory.create :project }
 
-  subject { NotificationMailer.new_repository(@repository) }
+  subject { NotificationMailer.new_project(@project) }
 
-  it "should be set to be delivered to the email passed in" do
-    should deliver_to('bklang@mojolingo.com')
-  end
-
-  it "should contain text indicating that a new repository has been added" do
-    should have_body_text(/new repository/)
-  end
-
-  it "should contain a link to the repository" do
-    should have_body_text(repository_path(@repository))
-  end
-
-  it "should have the correct subject" do
-    should have_subject('New repository added')
-  end
+  it { should deliver_to('bklang@mojolingo.com') }
+  it { should have_body_text(/new project/) }
+  it { should have_body_text(project_path(@project)) }
+  it { should have_subject('New project added') }
 
 end

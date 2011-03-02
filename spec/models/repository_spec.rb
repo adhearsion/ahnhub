@@ -99,30 +99,4 @@ describe Repository do
 
   end
 
-  describe "should know its associated gem" do
-
-    let(:url) { FakeRepository.new.url }
-
-    subject { Factory.create :repository, :url => url }
-
-    before(:all) { @rubygem = Factory.create :rubygem, :source_code_uri => url }
-
-    its(:rubygem) { should == @rubygem }
-    its(:rubygem?) { should be_true }
-    its(:rubygem_url) { should == @rubygem.project_uri }
-    its(:rubygem_version) { should == @rubygem.version }
-    its(:homepage_url) { should == @rubygem.homepage_uri }
-
-  end
-
-  describe "on creation" do
-    it "should deliver the admin notification email" do
-      repository = Repository.new
-      mail = mock('new_repository_mail')
-      mail.should_receive(:deliver)
-      NotificationMailer.should_receive(:new_repository).with(repository).and_return(mail)
-      repository.save
-    end
-  end
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227154056) do
+ActiveRecord::Schema.define(:version => 20110301212938) do
 
   create_table "commits", :force => true do |t|
     t.integer  "repository_id"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(:version => 20110227154056) do
     t.text     "removed"
     t.text     "modified"
     t.datetime "committime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer  "rubygem_id"
+    t.integer  "repository_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
