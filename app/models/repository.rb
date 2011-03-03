@@ -14,6 +14,11 @@ class Repository < ActiveRecord::Base
     repository = find_by_url(payload_url) || Repository.new
 
     repository.update_from_github_push payload
+
+    repository.project = Rubygem.find_by_source_code_uri(repository.url).andand.project || Project.new if repository.new_record?
+
+    repository.save
+    repository
   end
 
   def update_from_github_push(payload)
@@ -57,9 +62,6 @@ class Repository < ActiveRecord::Base
         end
       end
     end
-
-    save
-    self
   end
 
 end

@@ -8,8 +8,6 @@ describe Project do
 
       subject { Factory.create :project, :rubygem => rubygem }
 
-      it { puts rubygem.inspect }
-
       its(:rubygem) { should == rubygem }
       its(:name) { should == rubygem.name }
       its(:description) { should == rubygem.info }

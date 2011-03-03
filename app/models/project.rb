@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
-  belongs_to :rubygem
-  belongs_to :repository
+  has_one :rubygem
+  has_one :repository
 
   after_create :send_admin_creation_notification
 

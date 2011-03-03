@@ -9,6 +9,11 @@ class Rubygem < ActiveRecord::Base
     rubygem = find_by_project_uri(payload["project_uri"]) || self.new
 
     rubygem.update_from_rubygems_webhook payload
+
+    rubygem.project = Repository.find_by_url(rubygem.source_code_uri).andand.project || Project.create if rubygem.new_record?
+
+    rubygem.save
+    rubygem
   end
 
   def update_from_rubygems_webhook(payload)
@@ -21,9 +26,6 @@ class Rubygem < ActiveRecord::Base
     self.project_uri = payload['project_uri']
     self.homepage_uri = payload['homepage_uri']
     self.source_code_uri = payload['source_code_uri']
-
-    save
-    self
   end
 
 end
