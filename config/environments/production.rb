@@ -38,7 +38,7 @@ Ahnhub::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     :address => 'smtp.verendus.com',
-    :port    => 465,
+    :port    => 25,
     :domain  => 'ahnhub.com',
     :authentication => :login,
     :user_name => ENV['SMTP_USER'],
