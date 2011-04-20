@@ -38,9 +38,9 @@
             \- updated at
             = link_to component.repository.andand.commits.last.created_at.to_s, component.repository.andand.commits.last.url
             by
-            = component.commits.last.authorname
+            = repository.commits.last.authorname
             \-
-            = component.commits.last.message
+            = repository.commits.last.message
 
           = link_to 'recent commits...', "#component-#{component.id}", :class => "recent_commits"
           %div.more_data{:style => "display:none;"}
