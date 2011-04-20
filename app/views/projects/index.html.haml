@@ -8,7 +8,7 @@
 %ul{:id => "recent_components"}
   - @projects.each do |component|
     - repository = component.repository
-    - rubygem = omponent.rubygem
+    - rubygem = component.rubygem
     %li{:id => "component-#{component.id}"}
       %p
         = link_to component.name, rubygem.andand.homepage_url || repository.andand.url, :class => "component_title"
