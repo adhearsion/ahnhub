@@ -40,7 +40,7 @@ Ahnhub::Application.configure do
     :address => 'smtp.verendus.com',
     :port    => 465,
     :domain  => 'ahnhub.com',
-    :authentication => :login
+    :authentication => :login,
     :user_name => ENV['SMTP_USER'],
     :password  => ENV['SMTP_PASS'],
     :tls => true
