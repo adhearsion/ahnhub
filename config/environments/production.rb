@@ -36,6 +36,15 @@ Ahnhub::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.verendus.com',
+    :port    => 465,
+    :domain  => 'ahnhub.com',
+    :authentication => :login
+    :user_name => ENV['SMTP_USER'],
+    :password  => ENV['SMTP_PASS'],
+    :tls => true
+  }
 
   # Enable threaded mode
   # config.threadsafe!
