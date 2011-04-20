@@ -1,0 +1,57 @@
+%h2 Adhearsion Components
+
+= form_tag root_path, :method => 'get', :id => 'search-form' do
+  %p
+    = text_field_tag :search, params[:search], :placeholder => "Component Name"
+    = submit_tag "Search", :name => nil
+
+%ul{:id => "recent_components"}
+  - @projects.each do |component|
+    - repository = component.repository
+    - rubygem = omponent.rubygem
+    %li{:id => "component-#{component.id}"}
+      %p
+        = link_to component.name, rubygem.andand.homepage_url || repository.andand.url, :class => "component_title"
+        = "v#{component.rubygem.andand.version}" if rubygem.andand.version
+        from
+        = link_to repository.andand.ownername, "http://github.com/#{repository.andand.ownername}"
+        - if repository
+          @
+          = link_to "Github", repository.url
+        - if rubygem
+          +
+          = link_to "Rubygems.org", rubygem.project_uri
+      / Add download button with tracker
+      %p= component.description
+      %p{:class => "component_info"}
+        = link_to image_tag('web-icon-small.png', :border =>"0", :title => "Goto component's hompage"), rubygem.homepage_uri if rubygem
+        - if repository
+          - if repository.privateflag
+            = image_tag 'encrypted.png', :border => "0", :width => "18", :title => "Repository is private"
+          - else
+            = image_tag 'decrypted.png', :border => "0", :width => "18", :title => "Repository is public"
+          = image_tag 'watchers.png', :border => "0", :width => "20", :title => "Watchers"
+          = repository.watchers
+          = image_tag 'forkstrans.png', :border => "0", :height => "20", :title => "Forks"
+          = repository.forks
+          - unless repository.commits.empty?
+            \- updated at
+            = link_to component.repository.andand.commits.last.created_at.to_s, component.repository.andand.commits.last.url
+            by
+            = component.commits.last.authorname
+            \-
+            = component.commits.last.message
+
+          = link_to 'recent commits...', "#component-#{component.id}", :class => "recent_commits"
+          %div.more_data{:style => "display:none;"}
+            %ul
+              - component.repository.andand.commits.limit(10).each do |commit|
+                %li
+                  Updated at
+                  = link_to commit.created_at.to_s, commit.url
+                  by
+                  = commit.authorname
+                  \-
+                  = commit.message
+%br/
+= will_paginate @projects

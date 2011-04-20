@@ -49,7 +49,7 @@ describe Repository do
 
   let(:parsed_github_push) { JSON.parse example_github_push }
 
-  describe ".from_github_push" do
+  describe "#from_github_push" do
 
     subject { Repository.update_or_create_from_github_push parsed_github_push }
 
@@ -97,32 +97,20 @@ describe Repository do
       it { should have(3).commits }
     end
 
-  end
-
-  describe "should know its associated gem" do
-
-    let(:url) { FakeRepository.new.url }
-
-    subject { Factory.create :repository, :url => url }
-
-    before(:all) { @rubygem = Factory.create :rubygem, :source_code_uri => url }
-
-    its(:rubygem) { should == @rubygem }
-    its(:rubygem?) { should be_true }
-    its(:rubygem_url) { should == @rubygem.project_uri }
-    its(:rubygem_version) { should == @rubygem.version }
-    its(:homepage_url) { should == @rubygem.homepage_uri }
-
-  end
-
-  describe "on creation" do
-    it "should deliver the admin notification email" do
-      repository = Repository.new
-      mail = mock('new_repository_mail')
-      mail.should_receive(:deliver)
-      NotificationMailer.should_receive(:new_repository).with(repository).and_return(mail)
-      repository.save
+    it "should associate with existing project if we have a gem that links to this repo" do
+      [Repository, Rubygem, Project].each { |m| m.send :delete_all }
+      project = Factory.create :project
+      rubygem = Factory.create :rubygem, :source_code_uri => "http://github.com/defunkt/github", :project => project
+      subject.project.should be_instance_of(Project)
+      subject.project.should == rubygem.project
     end
+
+    it "should create a new project if we don't have a matching gem" do
+      [Repository, Rubygem, Project].each { |m| m.send :delete_all }
+      subject.project.should be_instance_of(Project)
+      subject.project.repository.should be_nil
+    end
+
   end
 
 end

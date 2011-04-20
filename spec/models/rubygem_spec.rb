@@ -17,7 +17,7 @@ describe Rubygem do
         "wiki_uri": "http://wiki.rubyonrails.org/",
         "documentation_uri": "http://api.rubyonrails.org/",
         "mailing_list_uri": "http://groups.google.com/group/rubyonrails-talk",
-        "source_code_uri": "http://gemcutter.com/rails/rails",
+        "source_code_uri": "http://github.com/rails/rails",
         "bug_tracker_uri": "http://rails.lighthouseapp.com/projects/8994-ruby-on-rails"
       }
     JSON
@@ -37,7 +37,7 @@ describe Rubygem do
     its(:downloads) { should == 134451 }
     its(:project_uri) { should == "http://rubygems.org/gems/rails" }
     its(:homepage_uri) { should == "http://www.rubyonrails.org/" }
-    its(:source_code_uri) { should == "http://gemcutter.com/rails/rails" }
+    its(:source_code_uri) { should == "http://github.com/rails/rails" }
 
     it "should update the Rubygem with the embedded metadata" do
       parsed_gemcutter_push.merge! "version" => "2.3.6"
@@ -47,6 +47,20 @@ describe Rubygem do
       subject.reload.should == rubygem_after
 
       rubygem_after.version.should == "2.3.6"
+    end
+
+    it "should associate with existing project if there's a link to a github repo we know about" do
+      [Repository, Rubygem, Project].each { |m| m.send :delete_all }
+      project = Factory.create :project
+      repository = Factory.create :repository, :url => "http://github.com/rails/rails", :project => project
+      subject.project.should be_instance_of(Project)
+      subject.project.should == repository.project
+    end
+
+    it "should create a new project if we don't have a matching github repo" do
+      [Repository, Rubygem, Project].each { |m| m.send :delete_all }
+      subject.project.should be_instance_of(Project)
+      subject.project.rubygem.should be_nil
     end
 
   end

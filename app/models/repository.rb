@@ -1,22 +1,10 @@
 class Repository < ActiveRecord::Base
 
+  belongs_to :project
+
   has_many :commits, :dependent => :destroy, :order => 'created_at DESC'
 
   alias_attribute :private, :privateflag
-
-  def self.search(search)
-    if search
-      where(['name LIKE ? OR description LIKE ? OR ownername LIKE ?', *["%#{search}%"] * 3])
-    else
-      scoped
-    end
-  end
-
-  after_create :send_admin_creation_notification
-
-  def send_admin_creation_notification
-    NotificationMailer.new_repository(self).deliver
-  end
 
   # Github support
   def self.update_or_create_from_github_push(payload)
@@ -26,6 +14,11 @@ class Repository < ActiveRecord::Base
     repository = find_by_url(payload_url) || Repository.new
 
     repository.update_from_github_push payload
+
+    repository.project = Rubygem.find_by_source_code_uri(repository.url).andand.project || Project.new if repository.new_record?
+
+    repository.save
+    repository
   end
 
   def update_from_github_push(payload)
@@ -69,29 +62,6 @@ class Repository < ActiveRecord::Base
         end
       end
     end
-
-    save
-    self
-  end
-
-  def rubygem?
-    !!rubygem
-  end
-
-  def rubygem
-    @rubygem ||= Rubygem.where(:source_code_uri => self.url).first
-  end
-
-  def rubygem_url
-    rubygem.andand.project_uri
-  end
-
-  def homepage_url
-    rubygem.andand.homepage_uri
-  end
-
-  def rubygem_version
-    rubygem.andand.version
   end
 
 end

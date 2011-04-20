@@ -5,9 +5,10 @@ Ahnhub::Application.routes.draw do
   resources :repositories, :only => [:index, :show] do
     resources :commits, :only => [:index, :show]
   end
+  resources :projects, :only => [:index, :show]
 
   match 'how' => 'pages#how'
   match 'about' => 'pages#about'
 
-  root :to => "repositories#index"
+  root :to => "projects#index"
 end
