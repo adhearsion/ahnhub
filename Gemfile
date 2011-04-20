@@ -13,6 +13,8 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.0.pre2'
 
+gem 'hoptoad_notifier'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '>= 2.0.0'
