@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 
 gem 'mysql2'
 
@@ -19,10 +19,5 @@ group :development, :test do
   gem 'email_spec'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'ZenTest'
-  gem 'infinity_test'
-  gem 'spork', '~> 0.9.0.rc'
-  gem 'cucumber-rails', :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
-  gem 'launchy'
-  gem 'capybara'
+  gem 'spork'
 end
