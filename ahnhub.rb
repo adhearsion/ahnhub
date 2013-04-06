@@ -26,6 +26,7 @@ class AhnHub < Sinatra::Base
                   :forks => "143",
                   :watchers => "143",
                   :last_updated => Time.now)
+    haml :index
   end
 
   get '/' do
