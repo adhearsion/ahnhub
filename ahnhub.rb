@@ -10,7 +10,12 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
-  get '/fakeplugins' do
+  get '/deletefakes' do
+    plugins = DB[:plugins]
+    plugins.all.delete
+    @plugins_view = []
+    haml :index
+  get '/addfakes' do
     plugins = DB[:plugins]
     plugins.insert(:name => "adhearsion-pluggy",
                   :owner => "adhearsion",
@@ -26,6 +31,7 @@ class AhnHub < Sinatra::Base
                   :forks => "143",
                   :watchers => "143",
                   :last_updated => Time.now)
+    @plugins_view = plugins.reverse_order(:last_updated).all
     haml :index
   end
 
@@ -51,7 +57,7 @@ class AhnHub < Sinatra::Base
                      :watchers => repo_info['watchers'],
                      :last_updated => Time.now )
     else
-      match = plugins.where(:owner => "adhearsion", :name => "adhearsion-pluggy")
+      match = plugins.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       match.update( :name => repo_info['name'], 
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
