@@ -10,7 +10,7 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
-  def fake_plugins
+  get '/fakeplugins' do
     plugins = DB[:plugins]
     plugins.insert(:name => "adhearsion-pluggy",
                   :owner => "adhearsion",
@@ -29,7 +29,6 @@ class AhnHub < Sinatra::Base
   end
 
   get '/' do
-    fake_plugins
     plugins = DB[:plugins]
     @plugins_view = plugins.reverse_order(:last_updated).all
     haml :index
