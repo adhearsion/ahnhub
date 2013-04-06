@@ -15,6 +15,8 @@ class AhnHub < Sinatra::Base
     plugins.all.delete
     @plugins_view = []
     haml :index
+  end
+
   get '/addfakes' do
     plugins = DB[:plugins]
     plugins.insert(:name => "adhearsion-pluggy",
