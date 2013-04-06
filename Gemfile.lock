@@ -4,6 +4,7 @@ GEM
     bacon (1.2.0)
     haml (4.0.1)
       tilt
+    pg (0.15.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
@@ -24,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  pg
   sequel
   sinatra
   sinatra-sequel

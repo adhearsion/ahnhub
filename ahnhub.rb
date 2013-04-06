@@ -2,11 +2,11 @@ require 'json'
 require 'haml'
 require 'sinatra'
 require 'sinatra/sequel'
-
 require File.dirname(__FILE__) + "/lib/database.rb"
+
+DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 require File.dirname(__FILE__) + "/lib/migrations.rb"
 Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
-DB = database
 
 class AhnHub < Sinatra::Base
 
