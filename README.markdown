@@ -7,12 +7,7 @@ When you create a new Adhearsion component and upload it to Github, notifying Ah
 
 Generating fake development data
 ----------
-
-To generate fake data for development purposes, run...
-
-    rake db:seed
-
-This will create a bunch of sample components (with silly, randomly-generated descriptions).
+TBD
 
 -------
 
