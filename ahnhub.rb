@@ -12,7 +12,7 @@ class AhnHub < Sinatra::Base
 
   get '/deletefakes' do
     plugins = DB[:plugins]
-    plugins.all.delete
+    plugins.delete
     @plugins_view = []
     haml :index
   end
