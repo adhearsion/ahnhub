@@ -44,7 +44,7 @@
         .clear
       .component_container
         %ul#recent_components
-          - @plugins_view ||= { :p1 => {:id => "0", :url => "http://nonsense.com", :name => 'adhearsion-ims', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with IP Multimedia Subsystems (IMS) using Rayo', :forks => '0', :watchers => '5'}, :p2 => {:id => "1", :url => "http://nonsequitor.com", :name => 'adhearsion-asterisk', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with Asterisk', :forks => '2', :watchers => '15'}}
+          - @plugins_view ||= [{:id => "0", :url => "http://nonsense.com", :name => 'adhearsion-ims', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with IP Multimedia Subsystems (IMS) using Rayo', :forks => '0', :watchers => '5'}, :p2 => {:id => "1", :url => "http://nonsequitor.com", :name => 'adhearsion-asterisk', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with Asterisk', :forks => '2', :watchers => '15'}]
           - @plugins_view.each do |plugin|
             %li{ :id => "component-#{plugin[:id]}"}
               %p
@@ -78,7 +78,7 @@
                 %a(href="/conference") Conference
               %li
                 %a(href="/get-help") Get Help
-]             %li
+              %li
                 %a(href="/foundation") Adhearsion Foundation
               %li
                 %a(href="/gsoc") Google Summer of Code
@@ -97,22 +97,23 @@
                   %span.tweet_time
                     %a(href="http://twitter.com/adhearsion/statuses/317647282038247424" title="view tweet on twitter") 10 days ago
                   %span(class="tweet_join") we said, 
-                  %span(class="tweet_text") Do we have any 
-                    %a(href="http://twitter.com/Googlers") @Googlers
-                    who are fans of
+                  %span(class="tweet_text")
+                    Do we have any 
+                    %a(href="http://twitter.com/Googlers") @Googlers who are fans of
                     %a(href="http://twitter.com/Adhearsion") @Adhearsion?
                     Any orgs who have successfully completed a Summer of Code? We need someone to vouch!
                 %li.tweet_even
                   %span.tweet_time
                     %a(href="http://twitter.com/adhearsion/statuses/314537817558618112" title="view tweet on twitter") 18 days ago
                   %span.tweet_join we said,
-                  %span.classtweet_text RT
+                  %span.classtweet_text
+                    RT
                     %a(href="http://twitter.com/saghul") @saghul: 
                     "Twilio currently supports G.711/ulaw." the 90s called, they want their codecs back.
                     %a(href="http://search.twitter.com/search?q=&amp;tag=HDvoice&amp;lang=all&amp;from=adhearsion") #HDvoice
           .one-fourth.footer-panel
             %h3
-              %cufon(class="cufon cufon-canvas" alt="Documentation" style="width: 110px; height: 19px;"'
+              %cufon(class="cufon cufon-canvas" alt="Documentation" style="width: 110px; height: 19px;")
                 %canvas(width="124" height="24" style="width: 124px; height: 24px; top: -3px; left: -1px;")
                 %cufontext Documentation
             %ul
@@ -132,7 +133,7 @@
                 %canvas(width="48" height="24" style="width: 48px; height: 24px; top: -3px; left: -1px;")
                 %cufontext Get
               %cufon(class="cufon cufon-canvas" alt="Social " style="width: 49px; height: 19px;")
-                %canvas(width="66" height="24" style="width: 66px; height: 24px; top: -3px; left: -1px;"></canvas>
+                %canvas(width="66" height="24" style="width: 66px; height: 24px; top: -3px; left: -1px;")
                 %cufontext Social
               %cufon(class="cufon cufon-canvas" alt="&amp; " style="width: 16px; height: 19px;")
                 %canvas(width="34" height="24" style="width: 34px; height: 24px; top: -3px; left: -1px;")
