@@ -1,48 +1,14 @@
-!!!
-%html
-  %head
-    %title AhnHub: Adhearsion Plugins!
-    %meta(content="text/html; charset=utf-8" http-equiv="content-type")
-    %meta(content="description" name="description")
-    %meta(content="keywords" name="keywords")
-    %meta(content="author" name="author")
-    %meta(content="&amp;copy; 2013 Mojo Lingo. All rights reserved." name="copyright")
-
-    %link(href="stylesheets/style.css" media="screen" rel="stylesheet" type="text/css")
-    %link(href="stylesheets/style-pink.css" media="screen" rel="stylesheet" type="text/css")
-    %link(href="favicon.ico" rel="shortcut icon")
-
-    %script src="javascripts/application.js" type="text/javascript">
-  %body
-    .top
-      .full-width.rel
-        .one-third
-          .logo
-            %img( src="images/ahnhub_logo.png" alt="AhnHub" )
-        .two-third
-          .mainmenu
-            %ul
-              %li#main-nav-home
-                %a( href="/" )
-                  %span Home
-              %li#main-nav-how.active
-                %a( href="/how" )
-                  %span How Does it Work?
-              %li#main-nav-about
-                %a( href="/about" )
-                  %span About
-        .clear
-    .middle
-      .search-wrapper
-        %form.form-wrapper.cf
-          %input(type="text" placeholder="Find Plugins" required)
-          %button(type="submit") Search
-        .clear
-      #component_container
-        .how-wrapper
-          %h2
-            Just add 
-            %i http://ahnhub.com
-            to your GitHub Post-Receive Hooks URL!
-          %img(alt="Githubscreenshot" src="/images/githubscreenshot.png?1358357410")
+.middle
+  .search-wrapper
+    %form.form-wrapper.cf
+      %input(type="text" placeholder="Find Plugins" required)
+      %button(type="submit") Search
+    .clear
+  #component_container
+    .how-wrapper
+      %h2
+        Just add 
+        %i http://ahnhub.com
+        to your GitHub Post-Receive Hooks URL!
+      %img(alt="Githubscreenshot" src="/images/githubscreenshot.png?1358357410")
 
