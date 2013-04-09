@@ -43,6 +43,18 @@ class AhnHub < Sinatra::Base
     haml :index
   end
 
+  post '/' do
+    plugins = ParseGithubHook JSON.parse(params[:payload])
+    @plugins_view = plugins.all
+    haml :index
+  end
+
+  post '/github' do
+    plugins = ParseGithubHook JSON.parse(params[:payload])
+    @plugins_view = plugins.all
+    haml :index
+  end
+
   post '/rubygems' do
     payload = {"params" => params}.to_json
     plugins = DB[:plugins]
@@ -55,8 +67,25 @@ class AhnHub < Sinatra::Base
                    :last_updated => Time.now)
   end
 
-  post '/' do
-    payload = JSON.parse(params[:payload])
+  post '/search' do
+    query = params['query']
+    plugins = DB[:plugins]
+    result = plugins.where(Sequel.like(:name, "%#{query}%"))
+    #result = plugins.where( Sequel.like(:name, "%#{query}%").sql_or, Sequel.like(:desc, "%#{query}%")) 
+    @search_string = query
+    @plugins_view = result.reverse_order(:last_updated).all
+    haml :index
+  end
+
+  get '/how' do
+    haml :how
+  end
+  
+  get '/about' do
+    haml :about
+  end
+
+  def ParseGithubHook(payload)
     repo_info = payload['repository']
     plugins = DB[:plugins]
 
@@ -80,27 +109,7 @@ class AhnHub < Sinatra::Base
                      :watchers => repo_info['watchers'],
                      :last_updated => Time.now )
     end
-
-    @plugins_view = plugins.all
-    haml :index
-  end
-
-  post '/search' do
-    query = params['query']
-    plugins = DB[:plugins]
-    result = plugins.where(Sequel.like(:name, "%#{query}%"))
-    #result = plugins.where( Sequel.like(:name, "%#{query}%").sql_or, Sequel.like(:desc, "%#{query}%")) 
-    @search_string = query
-    @plugins_view = result.reverse_order(:last_updated).all
-    haml :index
-  end
-
-  get '/how' do
-    haml :how
-  end
-  
-  get '/about' do
-    haml :about
+    return plugins
   end
 
 end
