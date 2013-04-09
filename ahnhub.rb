@@ -44,10 +44,10 @@ class AhnHub < Sinatra::Base
   end
 
   post '/rubygems' do
-    payload = params
+    payload = {"params" => params}.to_json
     plugins = DB[:plugins]
     plugins.insert(:name => 'rubygems-webhook',
-                   :desc => params.inspect,
+                   :desc => payload,
                    :owner => 'rubygems',
                    :url => 'http://url.tld',
                    :forks => '1',
