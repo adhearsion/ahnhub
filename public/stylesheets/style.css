@@ -1687,12 +1687,12 @@ ul#recent_components li:hover {
 #repo_stats {
   position: absolute; 
   right: 30px; 
-  top: 10px 
+  top: 10px;
 }
 #plugin_source {
   position: absolute; 
   right: 30px; 
-  top: 50px 
+  bottom: 10px;
 }
 .recent_commits {
   font-style: italic;
