@@ -17,6 +17,8 @@
         #repo_stats
           %img(alt="Watchers" border="0" src="images/watchers.png" title="Watchers" width="20")= plugin[:watchers]
           %img(alt="Forks" border="0" src="images/forkstrans.png" title="Forks" height="20")= plugin[:forks]
+        #plugin_source
+          %img(alt="Source" border="0" src="images/icons/#{plugins[:source]}_sourced.png" title="Source" height="48")
         %p.component_info
           %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent commits...
         %p

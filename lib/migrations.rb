@@ -8,5 +8,6 @@ migration "create the plugins table" do
     String       :forks, :default => 0
     String       :watchers, :default => 0
     timestamp    :last_updated, :null => false
+    String       :source
   end
 end

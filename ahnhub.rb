@@ -25,14 +25,16 @@ class AhnHub < Sinatra::Base
                   :url => "http://github.com/adhearsion/adhearsion-pluggy",
                   :forks => "7",
                   :watchers => "45",
-                  :last_updated => Time.now)
+                  :last_updated => Time.now,
+                  :source => 'github')
     plugins.insert(:name => "adhearsion-huggy",
                   :owner => "jowens",
                   :desc => "Adhearsion huggy is a non-existant plugin for showing you some love after a rough phone call",
                   :url => "http://github.com/adhearsion/adhearsion-huggy",
                   :forks => "143",
                   :watchers => "143",
-                  :last_updated => Time.now)
+                  :last_updated => Time.now,
+                  :source => 'github')
     @plugins_view = plugins.reverse_order(:last_updated).all
     haml :index
   end
@@ -64,7 +66,8 @@ class AhnHub < Sinatra::Base
                    :url => 'http://url.tld',
                    :forks => '1',
                    :watchers => '1',
-                   :last_updated => Time.now)
+                   :last_updated => Time.now,
+                   :source => 'rubygems')
   end
 
   post '/search' do
@@ -98,7 +101,8 @@ class AhnHub < Sinatra::Base
                      :url => repo_info['url'],
                      :forks => repo_info['forks'],
                      :watchers => repo_info['watchers'],
-                     :last_updated => Time.now )
+                     :last_updated => Time.now,
+                     :source => 'github')
     else
       match = plugins.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       match.update( :name => repo_info['name'], 
@@ -107,7 +111,8 @@ class AhnHub < Sinatra::Base
                      :url => repo_info['url'],
                      :forks => repo_info['forks'],
                      :watchers => repo_info['watchers'],
-                     :last_updated => Time.now )
+                     :last_updated => Time.now,
+                     :source => 'github')
     end
     return plugins
   end
