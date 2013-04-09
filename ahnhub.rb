@@ -34,7 +34,7 @@ class AhnHub < Sinatra::Base
                   :forks => "143",
                   :watchers => "143",
                   :last_updated => Time.now,
-                  :source => 'github')
+                  :source => 'rubygems')
     @plugins_view = plugins.reverse_order(:last_updated).all
     haml :index
   end
