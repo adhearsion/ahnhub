@@ -18,7 +18,11 @@
           %img(alt="Watchers" border="0" src="images/watchers.png" title="Watchers" width="20")= plugin[:watchers]
           %img(alt="Forks" border="0" src="images/forkstrans.png" title="Forks" height="20")= plugin[:forks]
         #plugin_source
-          %a(href="http://www.#{plugin[:source]}.com")
+          - if plugin[:source] == 'github'
+            - source_link = 'http://www.github.com'
+          - else if plugin[:source] == 'rubygems'
+            - source_link = 'http://www.rubygems.org'
+          %a(href="#{source_link}")
             %img(alt="Source Icon" border="0" src="images/icons/#{plugin[:source]}_sourced.png" title="Source" height="48")
         %p.component_info
           %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent commits...
