@@ -1841,7 +1841,7 @@ ul#recent_components li:hover {
 
 /* search box */
 .search-box {
-  background: #E8F1D4 url(../images/icons/search-icon.png) no-repeat;
+  background: #D1EEEE url(../images/icons/search-icon.png) no-repeat;
   background-position: 15px 50%;
   border: 1px solid #d7bd45;
   padding: 15px;
