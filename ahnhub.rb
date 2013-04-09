@@ -90,6 +90,7 @@ class AhnHub < Sinatra::Base
     plugins = DB[:plugins]
     result = plugins.where(Sequel.like(:name, "%#{query}%"))
     #result = plugins.where( Sequel.like(:name, "%#{query}%").sql_or, Sequel.like(:desc, "%#{query}%")) 
+    @search_string = query
     @plugins_view = result.reverse_order(:last_updated).all
     haml :index
   end

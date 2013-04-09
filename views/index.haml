@@ -6,7 +6,8 @@
 .component_container
   %ul#recent_components
     - @plugins_view ||= [{:id => "0", :url => "http://nonsense.com", :name => 'adhearsion-ims', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with IP Multimedia Subsystems (IMS) using Rayo', :forks => '0', :watchers => '5'}, :p2 => {:id => "1", :url => "http://nonsequitor.com", :name => 'adhearsion-asterisk', :owner => 'adhearsion', :desc => 'Adhearsion plugin for integration with Asterisk', :forks => '2', :watchers => '15'}]
-    .notification Adhearsion Plugins matching FOO
+    - if defined? @search_string
+      .search-box Adhearsion Plugins matching #{@search_string}
     - @plugins_view.each do |plugin|
       %li{ :id => "component-#{plugin[:id]}"}
         %p

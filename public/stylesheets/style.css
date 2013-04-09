@@ -1839,3 +1839,25 @@ ul#recent_components li:hover {
   padding-bottom: 10px;
 }
 
+/* search box */
+.search-box {
+  background: #E8F1D4 url(../images/icons/search-icon.png) no-repeat;
+  background-position: 15px 50%;
+  border: 1px solid #d7bd45;
+  padding: 15px;
+  color: #b4381b;
+  padding-left: 80px;
+  margin-bottom: 10px;
+  margin-top:5px;
+  font-family: Arial;
+  font-style: oblique;
+  font-size: 14px;
+}
+.search-box a {
+  text-decoration: underline;
+  color: #b4381b;
+}
+.search-box a:hover {
+  text-decoration: underline;
+  color: #b4381b;
+}
