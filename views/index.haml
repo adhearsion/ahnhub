@@ -22,7 +22,7 @@
             - source_link = 'http://www.github.com'
           - else if plugin[:source] == 'rubygems'
             - source_link = 'http://www.rubygems.org'
-          %a(href="#{source_link}")
+          %a(href="#{source_link}" target="_blank")
             %img(alt="Source Icon" border="0" src="images/icons/#{plugin[:source]}_sourced.png" title="Source" height="48")
         %p.component_info
           %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent commits...
