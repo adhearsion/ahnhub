@@ -20,7 +20,7 @@
         #plugin_source
           - if plugin[:source] == 'github'
             - source_link = 'http://www.github.com'
-          - else if plugin[:source] == 'rubygems'
+          - elsif plugin[:source] == 'rubygems'
             - source_link = 'http://www.rubygems.org'
           %a(href="#{source_link}" target="_blank")
             %img(alt="Source Icon" border="0" src="images/icons/#{plugin[:source]}_sourced.png" title="Source" height="48")
