@@ -1692,7 +1692,7 @@ ul#recent_components li:hover {
 #plugin_source {
   position: absolute; 
   right: 30px; 
-  top: 40px 
+  top: 50px 
 }
 .recent_commits {
   font-style: italic;
