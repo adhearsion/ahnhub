@@ -43,6 +43,18 @@ class AhnHub < Sinatra::Base
     haml :index
   end
 
+  post '/rubygems' do
+    payload = params
+    plugins = DB[:plugins]
+    plugins.insert(:name => 'rubygems-webhook',
+                   :desc => params.inspect
+                   :owner => 'rubygems',
+                   :url => 'http://url.tld',
+                   :forks => '1',
+                   :watchers => '1',
+                   :last_updated => Time.now )
+  end
+
   post '/' do
     payload = JSON.parse(params[:payload])
     repo_info = payload['repository']
