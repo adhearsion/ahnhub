@@ -85,18 +85,3 @@ $(window).bind('load', function() {
 }
 });
 
-
-jQuery(document).ready(function() {
-  Cufon.now();
-  CollapsibleLists.apply();
-  var activeDocNavElements = $("a[rel^='docs-nav-active']");
-  for(var i = 0; i < activeDocNavElements.size(); i++) {
-    CollapsibleLists.expand(document.getElementById(activeDocNavElements[i].text));
-  }
-
-  var activeMainNavElements = $("a#main-nav-active");
-  for(var i = 0; i < activeMainNavElements.size(); i++) {
-    $(activeMainNavElements[i].text).addClass('active');
-  }
-});
-
