@@ -10,6 +10,10 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
+  get '/models' do
+    @plugins_view = Plugins.all
+    haml :sequelmodel
+  end
   get '/deletefakes' do
     plugins = DB[:plugins]
     plugins.delete
