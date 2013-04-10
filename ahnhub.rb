@@ -94,12 +94,10 @@ class AhnHub < Sinatra::Base
 
   def ParseGithubHook(payload)
     repo_info = payload['repository']
-    plugins = DB[:plugins]
-
-    new_plugin = plugins.where(:owner => repo_info['owner']['name'],
-                               :name => repo_info['name']).empty?
+    new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
+                              :name => repo_info['name']).empty?
     if new_plugin
-      plugins.insert(:name => repo_info['name'],
+      Plugin.create(:name => repo_info['name'],
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
                      :url => repo_info['url'],
@@ -108,7 +106,7 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
     else
-      match = plugins.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
+      match = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       match.update( :name => repo_info['name'], 
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
@@ -118,6 +116,8 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
     end
+
+    plugins = DB[:plugins]
     return plugins
   end
 
