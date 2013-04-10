@@ -1,3 +1,3 @@
-class Commits < Sequel::Model
+class Commit < Sequel::Model
   many_to_one :plugins
 end
