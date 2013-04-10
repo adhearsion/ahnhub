@@ -14,6 +14,7 @@ class AhnHub < Sinatra::Base
     @plugins_view = Plugin.all
     haml :sequelmodel
   end
+
   get '/deletefakes' do
     plugins = DB[:plugins]
     plugins.delete
@@ -50,14 +51,14 @@ class AhnHub < Sinatra::Base
   end
 
   post '/' do
-    plugins = ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = plugins.all
+    ParseGithubHook JSON.parse(params[:payload])
+    @plugins_view = Plugin.all
     haml :index
   end
 
   post '/github' do
-    plugins = ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = plugins.all
+    ParseGithubHook JSON.parse(params[:payload])
+    @plugins_view = Plugin.all
     haml :index
   end
 
@@ -76,8 +77,7 @@ class AhnHub < Sinatra::Base
 
   post '/search' do
     query = params['query']
-    plugins = DB[:plugins]
-    result = plugins.where(Sequel.like(:name, "%#{query}%"))
+    result = Plugin.where(Sequel.like(:name, "%#{query}%"))
     #result = plugins.where( Sequel.like(:name, "%#{query}%").sql_or, Sequel.like(:desc, "%#{query}%")) 
     @search_string = query
     @plugins_view = result.reverse_order(:last_updated).all
@@ -116,9 +116,6 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
     end
-
-    plugins = DB[:plugins]
-    return plugins
   end
 
 end
