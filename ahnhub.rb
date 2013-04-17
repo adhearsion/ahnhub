@@ -102,8 +102,7 @@ class AhnHub < Sinatra::Base
     match = nil
     repo_info = payload['repository']
     commits = payload['commits']
-    puts "Repo Info: -- #{repo_info.inspect}"
-    puts "Commit Info: -- #{commits.inspect}"
+    #puts "Repo Info: -- #{repo_info.inspect}"
 
     new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
                               :name => repo_info['name']).empty?
@@ -130,6 +129,7 @@ class AhnHub < Sinatra::Base
     end
 
     if plugin and commits
+      puts "Commit Info: -- #{commits.inspect}"
       commits.each do |commit_info|
         commit = Commit.create(:url => commit_info[:url],
                                :author => commit_info[:author][:name],
