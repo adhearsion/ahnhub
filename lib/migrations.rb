@@ -36,7 +36,7 @@ Github commits data match the structure below
 migration "create the commits table" do
   DB.create_table :commits do
     primary_key   :id, primary_key: true
-    String        :plugins_id
+    String        :plugin_id
     String        :url, :null => false
     String        :author, :null => false
     String        :message, :null => false
