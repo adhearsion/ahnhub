@@ -127,27 +127,4 @@ class AhnHub < Sinatra::Base
 
 end
 
-=begin
-  It would be awesome if this worked.
-  
-  It doesn't.
-
-  #require File.dirname(__FILE__) + "/lib/migrations.rb"
-  #Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
-
-    NAME = 'RepoName'
-    DESC = 'Description of Repository!'
-    OWNER = 'bakemono'
-    URL = 'github.com/bakemono/RepoName'
-    FORKS = '5'
-    WATCHERS = '20'
-    Plugin.create(:name => NAME,
-                  :desc => DESC,
-                  :owner => OWNER,
-                  :url => URL,
-                  :forks => FORKS,
-                  :watchers => WATCHERS,
-                 )
-=end
-
 AhnHub.run! if __FILE__ == $0
