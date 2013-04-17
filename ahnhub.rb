@@ -16,9 +16,7 @@ class AhnHub < Sinatra::Base
                            :author => 'notBenLangfeld',
                            :owner => 'PandaPower',
                            :updated_at => '2013-04-13')
-    else
-      match = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
-
+    plugin.add_commit(commit)
     @plugins_view = Plugin.all
     haml :sequelmodel
   end
