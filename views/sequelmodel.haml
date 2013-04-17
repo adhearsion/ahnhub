@@ -29,7 +29,9 @@
               .more_data(style="display:none;")
                 %ul
                   %li
-                    Updated at #{commit[:updated_at]} by #{commit[:author]} - #{commit[:message]}
+                    Updated at
+                    %a{ :href => "#{commit[:url]}" }= commit[:updated_at]
+                    by #{commit[:author]} - #{commit[:message]}
             %p &nbsp;
           %p
 
