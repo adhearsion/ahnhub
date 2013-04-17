@@ -51,8 +51,7 @@ class AhnHub < Sinatra::Base
   end
 
   get '/' do
-    plugins = DB[:plugins]
-    @plugins_view = plugins.reverse_order(:last_updated).all
+    @plugins_view = Plugin.reverse_order(:last_updated).all
     haml :index
   end
 
