@@ -130,6 +130,7 @@ class AhnHub < Sinatra::Base
 
     if plugin and commits
       puts "Commit Info: -- #{commits.inspect}"
+      puts "Plugin Methods: -- #{plugin.methods}"
       commits.each do |commit_info|
         commit = Commit.create(:url => commit_info['url'],
                                :author => commit_info['author']['name'],
