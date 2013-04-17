@@ -29,7 +29,8 @@
               .more_data(style="display:none;")
                 %ul
                   %li
-                    commit
+                    Updated at #{commit[:updated_at]} by #{commit[:author]} - #{commit[:message]}
+                %p
           %p
 
 %a#main-nav-active{:href => "#", :style => "display:none;"} #main-nav-home
