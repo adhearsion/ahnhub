@@ -10,7 +10,7 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
-  get '/models' do
+  get '/modeltest' do
     plugin = Plugin.first 
     commit = Commit.create(:url => 'http://github.com/fakelink/',
                            :author => 'notBenLangfeld',
@@ -100,11 +100,15 @@ class AhnHub < Sinatra::Base
   end
 
   def ParseGithubHook(payload)
+    match = nil
     repo_info = payload['repository']
+    commits = payload['commits']
+
     new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
                               :name => repo_info['name']).empty?
+
     if new_plugin
-      Plugin.create(:name => repo_info['name'],
+      plugin = Plugin.create(:name => repo_info['name'],
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
                      :url => repo_info['url'],
@@ -113,8 +117,8 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
     else
-      match = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
-      match.update( :name => repo_info['name'], 
+      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
+      plugin.update( :name => repo_info['name'], 
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
                      :url => repo_info['url'],
@@ -123,6 +127,17 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
     end
+
+    if plugin and commits
+      commits.each do |commit_info|
+        commit = Commit.create(:url => commit_info[:url],
+                               :author => commit_info[:author][:name],
+                               :message => commit_info[:message],
+                               :updated_at => commit_info[:timestamp])
+        plugin.add_commit(commit)
+      end
+    end
+
   end
 
 end
