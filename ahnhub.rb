@@ -103,19 +103,20 @@ class AhnHub < Sinatra::Base
     repo_info = payload['repository']
     commits = payload['commits']
     #puts "Repo Info: -- #{repo_info.inspect}"
+    #puts "Commit Info: -- #{commits.inspect}"
 
     new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
                               :name => repo_info['name']).empty?
 
     if new_plugin
-      plugin = Plugin.create(:name => repo_info['name'],
-                     :desc => repo_info['description'],
-                     :owner =>  repo_info['owner']['name'],
-                     :url => repo_info['url'],
-                     :forks => repo_info['forks'],
-                     :watchers => repo_info['watchers'],
-                     :last_updated => Time.now,
-                     :source => 'github')
+      Plugin.create(:name => repo_info['name'],
+                    :desc => repo_info['description'],
+                    :owner =>  repo_info['owner']['name'],
+                    :url => repo_info['url'],
+                    :forks => repo_info['forks'],
+                    :watchers => repo_info['watchers'],
+                    :last_updated => Time.now,
+                    :source => 'github')
     else
       plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       plugin.update( :name => repo_info['name'], 
@@ -128,9 +129,8 @@ class AhnHub < Sinatra::Base
                      :source => 'github')
     end
 
-    if plugin and commits
-      puts "Commit Info: -- #{commits.inspect}"
-      puts "Plugin Methods: -- #{plugin.methods}"
+    if commits
+      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       commits.each do |commit_info|
         commit = Commit.create(:url => commit_info['url'],
                                :author => commit_info['author']['name'],
