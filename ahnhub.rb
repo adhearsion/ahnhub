@@ -14,7 +14,7 @@ class AhnHub < Sinatra::Base
     plugin = Plugin.first 
     commit = Commit.create(:url => 'http://github.com/fakelink/',
                            :author => 'notBenLangfeld',
-                           :owner => 'PandaPower',
+                           :message => 'PandaPower',
                            :updated_at => '2013-04-13')
     plugin.add_commit(commit)
     @plugins_view = Plugin.all
