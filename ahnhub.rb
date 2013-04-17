@@ -77,8 +77,7 @@ class AhnHub < Sinatra::Base
 
   post '/search' do
     query = params['query']
-    result = Plugin.where(Sequel.like(:name, "%#{query}%"))
-    #result = plugins.where( Sequel.like(:name, "%#{query}%").sql_or, Sequel.like(:desc, "%#{query}%")) 
+    result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(Sequel.like(:desc, "%#{query}%").or(Sequel.like(:owner, "%#{query}%")) 
     @search_string = query
     @plugins_view = result.reverse_order(:last_updated).all
     haml :index
