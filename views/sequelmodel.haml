@@ -25,6 +25,11 @@
               %img(alt="Source Icon" border="0" src="images/icons/#{plugin[:source]}_sourced.png" title="Source" height="36")
           %p.component_info
             %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent commits...
+            - plugin.commits.each do |commit|
+              .more_data(style="display:none;")
+                %ul
+                  %li
+                    commit
           %p
 
 %a#main-nav-active{:href => "#", :style => "display:none;"} #main-nav-home

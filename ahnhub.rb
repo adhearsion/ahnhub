@@ -11,6 +11,14 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 class AhnHub < Sinatra::Base
 
   get '/models' do
+    plugin = Plugin.first 
+    commit = Commit.create(:url => 'http://github.com/fakelink/',
+                           :author => 'notBenLangfeld',
+                           :owner => 'PandaPower',
+                           :updated_at => '2013-04-13')
+    else
+      match = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
+
     @plugins_view = Plugin.all
     haml :sequelmodel
   end
@@ -77,7 +85,9 @@ class AhnHub < Sinatra::Base
 
   post '/search' do
     query = params['query']
-    result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(Sequel.like(:desc, "%#{query}%")).or(Sequel.like(:owner, "%#{query}%")) 
+    result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(
+                          Sequel.like(:desc, "%#{query}%")).or(
+                          Sequel.like(:owner, "%#{query}%")) 
     @search_string = query
     @plugins_view = result.reverse_order(:last_updated).all
     haml :index
