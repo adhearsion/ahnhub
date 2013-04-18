@@ -120,7 +120,7 @@ class AhnHub < Sinatra::Base
                     :watchers => repo_info['watchers'],
                     :last_updated => Time.now,
                     :source => 'github')
-      Twitter.update("A new plugin has been added to AhnHub called #{repo_info['name']}. Go check it out!")
+      Twitter.update("A new plugin has been added to AhnHub called '#{repo_info['name']}'. Go check it out www.ahnhub.com!")
     else
       plugin.update( :name => repo_info['name'], 
                      :owner =>  repo_info['owner']['name'],
@@ -131,7 +131,7 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
       plugin = plugin.first # have to pull the actual plugin object from the dataset returned for associations
-      Twitter.update("The #{repo_info['name']} has been updated. Check out the new changes!")
+      Twitter.update("The '#{repo_info['name']}' plugin has been updated. Check out the new changes!")
     end
     plugin
   end
