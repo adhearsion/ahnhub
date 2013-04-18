@@ -88,6 +88,7 @@ class AhnHub < Sinatra::Base
   end
 
   post '/search' do
+    Twitter.update("I'm searching jhub!")
     query = params['query']
     result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(
                           Sequel.like(:desc, "%#{query}%")).or(

@@ -4,6 +4,8 @@ gem 'sinatra'
 gem 'haml'
 gem 'sequel'
 gem 'sinatra-sequel'
+gem 'twitter'
+
 group :production do
   gem 'pg'
 end
