@@ -55,6 +55,14 @@ class AhnHub < Sinatra::Base
     haml :index
   end
 
+  get '/how' do
+    haml :how
+  end
+  
+  get '/about' do
+    haml :about
+  end
+
   post '/' do
     ParseGithubHook JSON.parse(params[:payload])
     @plugins_view = Plugin.reverse_order(:last_updated).all
@@ -90,14 +98,6 @@ class AhnHub < Sinatra::Base
     haml :index
   end
 
-  get '/how' do
-    haml :how
-  end
-  
-  get '/about' do
-    haml :about
-  end
-
   def ParseGithubHook(payload)
     repo_info = payload['repository']
     commits = payload['commits']
@@ -108,10 +108,10 @@ class AhnHub < Sinatra::Base
   end
 
   def AddGithubPlugin(repo_info)
-    new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
-                              :name => repo_info['name']).empty?
+    plugin = Plugin.where(:owner => repo_info['owner']['name'],
+                          :name => repo_info['name'])
 
-    if new_plugin
+    if plugin.empty?
       plugin = Plugin.create(:name => repo_info['name'],
                     :desc => repo_info['description'],
                     :owner =>  repo_info['owner']['name'],
@@ -121,7 +121,6 @@ class AhnHub < Sinatra::Base
                     :last_updated => Time.now,
                     :source => 'github')
     else
-      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
       plugin.update( :name => repo_info['name'], 
                      :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
@@ -130,7 +129,7 @@ class AhnHub < Sinatra::Base
                      :watchers => repo_info['watchers'],
                      :last_updated => Time.now,
                      :source => 'github')
-      plugin = plugin.first
+      plugin = plugin.first # have to pull the actual plugin object from the dataset returned for associations
     end
     plugin
   end
