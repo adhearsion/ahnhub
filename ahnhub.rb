@@ -130,7 +130,10 @@ class AhnHub < Sinatra::Base
     end
 
     if commits
-      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name'])
+      dset = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name']).first
+      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name']).first
+      puts "Plugin Methods -- #{plugin.methods}"
+      puts "DSET Methods -- #{dset.methods}"
       commits.each do |commit_info|
         commit = Commit.create(:url => commit_info['url'],
                                :author => commit_info['author']['name'],
