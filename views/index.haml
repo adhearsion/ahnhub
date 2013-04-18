@@ -29,7 +29,7 @@
             %img(alt="Source Icon" border="0" src="images/icons/#{plugin[:source]}_sourced.png" title="Source" height="36")
         %p.component_info
           %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent commits...
-          - plugin.commits.each do |commit|
+          - plugin.commits.reverse_order(:id).each do |commit|
             .more_data(style="display:none;")
               %ul
                 %li
