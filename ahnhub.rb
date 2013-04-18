@@ -89,7 +89,6 @@ class AhnHub < Sinatra::Base
   end
 
   post '/search' do
-    Twitter.update("I'm searching jhub!")
     query = params['query']
     result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(
                           Sequel.like(:desc, "%#{query}%")).or(
@@ -121,6 +120,7 @@ class AhnHub < Sinatra::Base
                     :watchers => repo_info['watchers'],
                     :last_updated => Time.now,
                     :source => 'github')
+      Twitter.update("A new plugin has been added to AhnHub called #{repo_info['name']}. Go check it out!")
     else
       plugin.update( :name => repo_info['name'], 
                      :owner =>  repo_info['owner']['name'],
@@ -131,6 +131,7 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
       plugin = plugin.first # have to pull the actual plugin object from the dataset returned for associations
+      Twitter.update("The #{repo_info['name']} has been updated. Check out the new changes!")
     end
     plugin
   end
