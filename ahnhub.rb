@@ -10,7 +10,7 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
-  get '/modeltest' do
+  get '/commitfakes' do
     plugin = Plugin.first 
     commit = Commit.create(:url => 'http://github.com/fakelink/',
                            :author => 'notBenLangfeld',
@@ -57,13 +57,13 @@ class AhnHub < Sinatra::Base
 
   post '/' do
     ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = Plugin.all
+    @plugins_view = Plugin.reverse_order(:last_updated).all
     haml :index
   end
 
   post '/github' do
     ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = Plugin.all
+    @plugins_view = Plugin.reverse_order(:last_updated).all
     haml :index
   end
 
@@ -99,17 +99,20 @@ class AhnHub < Sinatra::Base
   end
 
   def ParseGithubHook(payload)
-    match = nil
     repo_info = payload['repository']
     commits = payload['commits']
-    #puts "Repo Info: -- #{repo_info.inspect}"
-    #puts "Commit Info: -- #{commits.inspect}"
+    puts "Repo Added: -- #{repo_info.inspect}"
+    puts "Commits Added for #{repo_info['name']}: -- #{commits.inspect}"
+    plugin = AddGithubPlugin repo_info
+    AddGithubCommits plugin, commits, repo_info
+  end
 
+  def AddGithubPlugin(repo_info)
     new_plugin = Plugin.where(:owner => repo_info['owner']['name'],
                               :name => repo_info['name']).empty?
 
     if new_plugin
-      Plugin.create(:name => repo_info['name'],
+      plugin = Plugin.create(:name => repo_info['name'],
                     :desc => repo_info['description'],
                     :owner =>  repo_info['owner']['name'],
                     :url => repo_info['url'],
@@ -127,13 +130,13 @@ class AhnHub < Sinatra::Base
                      :watchers => repo_info['watchers'],
                      :last_updated => Time.now,
                      :source => 'github')
+      plugin = plugin.first
     end
+    plugin
+  end
 
-    if commits
-      dset = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name']).first
-      plugin = Plugin.where(:owner => repo_info['owner']['name'], :name => repo_info['name']).first
-      puts "Plugin Methods -- #{plugin.methods}"
-      puts "DSET Methods -- #{dset.methods}"
+  def AddGithubCommits(plugin, commits = nil, repo_info)
+    if commits and plugin
       commits.each do |commit_info|
         commit = Commit.create(:url => commit_info['url'],
                                :author => commit_info['author']['name'],
@@ -142,9 +145,7 @@ class AhnHub < Sinatra::Base
         plugin.add_commit(commit)
       end
     end
-
   end
-
 end
 
 AhnHub.run! if __FILE__ == $0
