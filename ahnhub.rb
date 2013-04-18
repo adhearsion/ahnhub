@@ -29,8 +29,7 @@ class AhnHub < Sinatra::Base
   end
 
   get '/addfakes' do
-    plugins = DB[:plugins]
-    plugins.insert(:name => "adhearsion-pluggy",
+    Plugin.create(:name => "adhearsion-pluggy",
                   :owner => "adhearsion",
                   :desc => "Adhearsion pluggy is a non-existant plugin for filling database space",
                   :url => "http://github.com/adhearsion/adhearsion-pluggy",
@@ -38,7 +37,7 @@ class AhnHub < Sinatra::Base
                   :watchers => "45",
                   :last_updated => Time.now,
                   :source => 'github')
-    plugins.insert(:name => "adhearsion-huggy",
+    Plugin.create(:name => "adhearsion-huggy",
                   :owner => "jowens",
                   :desc => "Adhearsion huggy is a non-existant plugin for showing you some love after a rough phone call",
                   :url => "http://github.com/adhearsion/adhearsion-huggy",
@@ -46,7 +45,7 @@ class AhnHub < Sinatra::Base
                   :watchers => "143",
                   :last_updated => Time.now,
                   :source => 'rubygems')
-    @plugins_view = plugins.reverse_order(:last_updated).all
+    @plugins_view = Plugin.reverse_order(:last_updated).all
     haml :index
   end
 
@@ -113,8 +112,8 @@ class AhnHub < Sinatra::Base
 
     if plugin.empty?
       plugin = Plugin.create(:name => repo_info['name'],
-                    :desc => repo_info['description'],
                     :owner =>  repo_info['owner']['name'],
+                    :desc => repo_info['description'],
                     :url => repo_info['url'],
                     :forks => repo_info['forks'],
                     :watchers => repo_info['watchers'],
@@ -122,8 +121,8 @@ class AhnHub < Sinatra::Base
                     :source => 'github')
     else
       plugin.update( :name => repo_info['name'], 
-                     :desc => repo_info['description'],
                      :owner =>  repo_info['owner']['name'],
+                     :desc => repo_info['description'],
                      :url => repo_info['url'],
                      :forks => repo_info['forks'],
                      :watchers => repo_info['watchers'],
