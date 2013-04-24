@@ -11,7 +11,7 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
 
-  notify = Notifications.new
+  @notify = Notifications.new
 
   get '/commitfakes' do
     plugin = Plugin.first 
@@ -122,7 +122,7 @@ class AhnHub < Sinatra::Base
                     :watchers => repo_info['watchers'],
                     :last_updated => Time.now,
                     :source => 'github')
-      notify.tweet "A new plugin has been added to AhnHub called '#{repo_info['name']}'. Go check it out www.ahnhub.com!"
+      @notify.tweet "A new plugin has been added to AhnHub called '#{repo_info['name']}'. Go check it out www.ahnhub.com!"
     else
       plugin.update( :name => repo_info['name'], 
                      :owner =>  repo_info['owner']['name'],
@@ -133,7 +133,7 @@ class AhnHub < Sinatra::Base
                      :last_updated => Time.now,
                      :source => 'github')
       plugin = plugin.first # have to pull the actual plugin object from the dataset returned for associations
-      notify.tweet "The '#{repo_info['name']}' plugin has been updated. Check out the new changes!"
+      @notify.tweet "The '#{repo_info['name']}' plugin has been updated. Check out the new changes!"
     end
     plugin
   end
