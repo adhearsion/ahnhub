@@ -1,5 +1,5 @@
 .search-wrapper
-  %form.form-wrapper.cf
-    %input(type="text" placeholder="Find Plugins" required)
+  %form.form-wrapper.cf(action="/search" method="post")
+    %input(type="text" name="query" placeholder="Find Plugins" required)
     %button(type="submit") Search
   .clear
