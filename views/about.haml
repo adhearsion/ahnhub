@@ -1,23 +1,17 @@
-.middle
-  .search-wrapper
-    %form.form-wrapper.cf
-      %input(type="text" placeholder="Find Plugins" required)
-      %button(type="submit") Search
-    .clear
-  #component_container
-    .about-wrapper
-      %h2 Welcome to AhnHub.com!
-      %p During Adhearsion Conf 2010, @Jicksta suggested that we create a directory for Adhearsion components. 15 minutes later we had the domain registered and a starter site online. Let @ChrisMatthieu know if you would like to join in on the hacking fun as a contributer on GitHub :)
-      %p Follow us on Twitter at @Ahnhub
-      %p
-        Contributors:
-      %p
-        @ChrisMatthieu
-        %br
-        @Jicksta
-        %br
-        @BKlang
-        %br
-        \...more in the Github commits, join us!
+.about-wrapper
+  %h2 Welcome to AhnHub.com!
+  %p During Adhearsion Conf 2010, @Jicksta suggested that we create a directory for Adhearsion components. 15 minutes later we had the domain registered and a starter site online. Let @ChrisMatthieu know if you would like to join in on the hacking fun as a contributer on GitHub :)
+  %p Follow us on Twitter at @Ahnhub
+  %p
+    Contributors:
+  %p
+    @ChrisMatthieu
+    %br
+    @Jicksta
+    %br
+    @BKlang
+    %br
+    \...more in the Github commits, join us!
 
-%a#main-nav-active{:href => "#", :style => "display:none;"} #main-nav-about
+- content_for :page_name do
+  about

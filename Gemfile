@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'haml'
 gem 'sequel'
 gem 'sinatra-sequel'
+gem 'sinatra-contrib'
 gem 'twitter'
 
 group :production do

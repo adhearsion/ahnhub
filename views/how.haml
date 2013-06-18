@@ -1,15 +1,9 @@
-.middle
-  .search-wrapper
-    %form.form-wrapper.cf
-      %input(type="text" placeholder="Find Plugins" required)
-      %button(type="submit") Search
-    .clear
-  #component_container
-    .how-wrapper
-      %h2
-        Just add 
-        %i http://ahnhub.com/github
-        to your GitHub Post-Receive Hooks URL!
-      %img(alt="Githubscreenshot" src="/images/githubscreenshot.png?1358357410")
+.how-wrapper
+  %h2
+    Just add
+    %i http://ahnhub.com/github
+    to your GitHub Post-Receive Hooks URL!
+  %img(alt="Githubscreenshot" src="/images/githubscreenshot.png?1358357410")
 
-%a#main-nav-active{:href => "#", :style => "display:none;"} #main-nav-how
+- content_for :page_name do
+  how
