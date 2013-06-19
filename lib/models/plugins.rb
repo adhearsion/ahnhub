@@ -1,4 +1,4 @@
 class Plugin < Sequel::Model
-  one_to_many :commits
-  one_to_many :rubygem_updates
+  one_to_one :github_repo
+  one_to_one :ruby_gem
 end
