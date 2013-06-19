@@ -1,5 +1,16 @@
 .how-wrapper
-  %h2
+  %h2 Rubygems:
+  %h3
+    :plain
+      curl -H 'Authorization:000000000000000000' \
+    %br
+    :plain
+      -F 'gem_name=GEM_NAME' -F 'url=http://www.ahnhub.com/rubygem_hook' \
+    %br
+    :plain
+      https://rubygems.org/api/v1/web_hooks/fire
+  %h2 Github:
+  %h3
     Just add
     %i http://ahnhub.com/github
     to your GitHub Post-Receive Hooks URL!
