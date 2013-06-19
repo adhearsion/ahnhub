@@ -1,1 +1,1 @@
-set :environment, :development
+set :environment, ENV['RACK_ENV'].to_sym
