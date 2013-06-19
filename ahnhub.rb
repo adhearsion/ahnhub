@@ -18,85 +18,6 @@ class AhnHub < Sinatra::Base
 
   @notify = Notifications.new
 
-  get '/commitfakes' do
-    plugin = Plugin.first
-    commit = Commit.create(:url => 'http://github.com/fakelink/',
-                           :author => 'notBenLangfeld',
-                           :message => 'PandaPower',
-                           :updated_at => '2013-04-13')
-    plugin.add_commit(commit)
-    @plugins_view = Plugin.all
-    haml :sequelmodel
-  end
-
-  get '/deletefakes' do
-    plugins = DB[:plugins]
-    plugins.delete
-    @plugins_view = []
-    haml :index
-  end
-
-  post '/rubygem_hook' do
-    payload = JSON.parse(request.body.read)
-    RubyGemUpdate.handle_hook(payload)
-  end
-
-  get '/addfakes' do
-    Plugin.create(:name => "adhearsion-pluggy",
-                  :owner => "adhearsion",
-                  :desc => "Adhearsion pluggy is a non-existant plugin for filling database space",
-                  :url => "http://github.com/adhearsion/adhearsion-pluggy",
-                  :forks => "7",
-                  :watchers => "45",
-                  :last_updated => Time.now,
-                  :source => 'github')
-    Plugin.create(:name => "adhearsion-huggy",
-                  :owner => "jowens",
-                  :desc => "Adhearsion huggy is a non-existant plugin for showing you some love after a rough phone call",
-                  :url => "http://github.com/adhearsion/adhearsion-huggy",
-                  :forks => "143",
-                  :watchers => "143",
-                  :last_updated => Time.now,
-                  :source => 'rubygems')
-    @plugins_view = Plugin.reverse_order(:last_updated).all
-    haml :index
-  end
-
-  get '/' do
-    @plugins_view = Plugin.reverse_order(:last_updated).all
-    haml :index
-  end
-
-  get '/how' do
-    haml :how
-  end
-
-  get '/about' do
-    haml :about
-  end
-
-  post '/' do
-    ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = Plugin.reverse_order(:last_updated).all
-    haml :index
-  end
-
-  post '/github' do
-    ParseGithubHook JSON.parse(params[:payload])
-    @plugins_view = Plugin.reverse_order(:last_updated).all
-    haml :index
-  end
-
-  post '/search' do
-    query = params['query']
-    result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(
-                          Sequel.like(:desc, "%#{query}%")).or(
-                          Sequel.like(:owner, "%#{query}%")) 
-    @search_string = query
-    @plugins_view = result.reverse_order(:last_updated).all
-    haml :index
-  end
-
   def ParseGithubHook(payload)
     repo_info = payload['repository']
     commits = payload['commits']
@@ -146,6 +67,9 @@ class AhnHub < Sinatra::Base
       end
     end
   end
+
+  require_relative 'routes/faker_routes'
+  require_relative 'routes/routes'
 end
 
 AhnHub.run! if __FILE__ == $0
