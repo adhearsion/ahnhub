@@ -6,7 +6,7 @@ class AhnHub < Sinatra::Base
 
   post '/rubygem_hook' do
     payload = JSON.parse(request.body.read)
-    RubyGemUpdate.handle_hook(payload)
+    RubygemUpdate.handle_hook(payload)
   end
 
   get '/how' do

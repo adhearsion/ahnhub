@@ -2,6 +2,8 @@ require 'sinatra'
 require 'rack/test'
 
 # setup test environment
+`rm #{File.dirname(__FILE__)}/../test.db`
+
 ENV['DATABASE_URL'] = 'sqlite://test.db'
 ENV['RACK_ENV'] = 'test'
 set :environment, :test

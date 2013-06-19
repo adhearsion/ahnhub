@@ -1,4 +1,4 @@
-class RubyGemUpdate < Sequel::Model
+class RubygemUpdate < Sequel::Model
   many_to_one :rubygem
 
   class << self
