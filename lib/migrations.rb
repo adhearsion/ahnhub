@@ -44,3 +44,22 @@ migration "create the commits table" do
   end
 end
 
+# EXAMPLE RESPONSE FROM RUBYGEMS:
+# {
+#   "name"              => "testfoo123",
+#   "downloads"         => 7,
+#   "version"           => "0.0.2",
+#   "version_downloads" => 0,
+#   "platform"          => "ruby",
+#   "authors"           => "Justin Aiken",
+#   "info"              => "A test gem",
+#   "project_uri"       => "http://rubygems.org/gems/testfoo123",
+#   "gem_uri"           => "http://rubygems.org/gems/testfoo123-0.0.2.gem",
+#   "homepage_uri"      => nil,
+#   "wiki_uri"          => nil,
+#   "documentation_uri" => nil,
+#   "mailing_list_uri"  => nil,
+#   "source_code_uri"   => nil,
+#   "bug_tracker_uri"   => nil,
+#   "dependencies"      => { "development" => [], "runtime" => []}
+#  }
