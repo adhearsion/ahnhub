@@ -8,10 +8,6 @@ require "sinatra/reloader"
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
-DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-require File.dirname(__FILE__) + "/lib/migrations.rb"
-Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
-
 class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
 
@@ -40,8 +36,9 @@ class AhnHub < Sinatra::Base
     haml :index
   end
 
-  post '/gem' do
-    puts JSON.parse params.to_json
+  post '/rubygem_hook' do
+    payload = JSON.parse(request.body.read)
+    RubyGemUpdate.handle_hook(payload)
   end
 
   get '/addfakes' do
@@ -88,19 +85,6 @@ class AhnHub < Sinatra::Base
     ParseGithubHook JSON.parse(params[:payload])
     @plugins_view = Plugin.reverse_order(:last_updated).all
     haml :index
-  end
-
-  post '/rubygems' do
-    payload = {"params" => params}.to_json
-    plugins = DB[:plugins]
-    plugins.insert(:name => 'rubygems-webhook',
-                   :desc => payload,
-                   :owner => 'rubygems',
-                   :url => 'http://url.tld',
-                   :forks => '1',
-                   :watchers => '1',
-                   :last_updated => Time.now,
-                   :source => 'rubygems')
   end
 
   post '/search' do
