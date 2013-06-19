@@ -26,4 +26,31 @@ class Plugin < Sequel::Model
   def has_rubygem?
     self.rubygem != nil
   end
+
+  def timeline
+    gem_events = []
+    git_events = []
+
+    if self.rubygem
+      self.rubygems.rubygem_updates.each do |event|
+        gem_events << {
+          event: "New version #{event.version} released at #{event.last_updated}",
+          at: event.last_updated
+        }
+      end
+    end
+
+    if self.github_repo
+      self.github_repo.commits.each do |event|
+        git_events << {
+          event: "Updated at #{event.last_updated} by #{event.author} - foo",
+          at: event.last_updated
+        }
+      end
+    end
+
+    events = gem_events.merge git_events
+
+    events.sort_by { |event| event.at }
+  end
 end
