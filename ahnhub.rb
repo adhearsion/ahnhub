@@ -2,6 +2,8 @@ require 'json'
 require 'haml'
 require 'sinatra'
 require 'sinatra/sequel'
+require "sinatra/content_for"
+
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
@@ -10,6 +12,7 @@ require File.dirname(__FILE__) + "/lib/migrations.rb"
 Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
+  helpers Sinatra::ContentFor
 
   @notify = Notifications.new
 
