@@ -30,10 +30,25 @@ class Rubygem < Sequel::Model
   end
 
   def after_create
-    #TODO: Create a plugin if needed, or hook into the plugin already used by git otherwise...
+    #First, look for a plugin with the ruby gem name already stored...
+    unless self.plugin
+      #Next, look for a Plugin that has a github repo with the same rubygem name...
+      unless Plugin.find(github_name: self.name)
+        #Bah, it doens't exist.  Let's create it...
+
+        plugin = Plugin.create(
+          name: self.name,
+          description: self.info,
+          authors: self.authors,
+          rubygem_name: self.name,
+          last_updated: Time.now
+        )
+        plugin.rubygem = self
+      end
+    end
   end
 
   def after_save
-    # self.plugin.last_updated = self.last_updated
+    self.plugin.last_updated = self.last_updated if self.plugin
   end
 end

@@ -1,8 +1,17 @@
 migration "create the plugins table" do
   DB.create_table :plugins do
     primary_key  :id, primary_key: true
-    String       :name
     timestamp    :last_updated, null: false
+
+    String       :name
+    String       :description
+    String       :authors
+
+    Integer      :rubygem_id
+    Integer      :github_repo_id
+
+    String       :rubygem_name
+    String       :github_name
   end
 end
 
