@@ -53,7 +53,11 @@
         .clear
 
     .middle
-      ~ yield
+      = haml :_search_wrapper
+      #component_container
+        ~ yield
+        %a#main-nav-active{:href => "#", :style => "display:none;"}
+          = "#main-nav-#{yield_content :page_name}"
     .footer
       .footer-big
         .full-width
@@ -92,21 +96,21 @@
           .clear
       .footer-small
         .full-width
-          .one-half.left &copy; 2012 Adhearsion Foundation Inc. All rights reserved.
+          .one-half.left &copy; 2013 Adhearsion Foundation Inc. All rights reserved.
           .one-half.right Page rendered at #{Time.now}
           .clear
 
-    :javascript
-      jQuery(document).ready(function() {
-        Cufon.now();
-        CollapsibleLists.apply();
-        var activeDocNavElements = $("a[rel^='docs-nav-active']");
-        for(var i = 0; i < activeDocNavElements.size(); i++) {
-          CollapsibleLists.expand(document.getElementById(activeDocNavElements[i].text));
-        }
+:javascript
+  jQuery(document).ready(function() {
+    Cufon.now();
+    CollapsibleLists.apply();
+    var activeDocNavElements = $("a[rel^='docs-nav-active']");
+    for(var i = 0; i < activeDocNavElements.size(); i++) {
+      CollapsibleLists.expand(document.getElementById(activeDocNavElements[i].text));
+    }
 
-        var activeMainNavElements = $("a#main-nav-active");
-        for(var i = 0; i < activeMainNavElements.size(); i++) {
-          $(activeMainNavElements[i].text).addClass('active');
-        }
-      });
+    var activeMainNavElements = $("a#main-nav-active");
+    for(var i = 0; i < activeMainNavElements.size(); i++) {
+      $(activeMainNavElements[i].text).addClass('active');
+    }
+  });
