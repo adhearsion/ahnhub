@@ -11,33 +11,25 @@ describe Plugin do
 
     describe "#has_rubygem?" do
       context "with no rubygem" do
-        it "returns false" do
-          subject.has_rubygem?.should be_false
-        end
+        it { subject.has_rubygem?.should be_false }
       end
 
       context "when it has a rubygem" do
         before { subject.rubygem = Rubygem.new(name: "foo") }
 
-        it "is true" do
-          subject.has_rubygem?.should be_true
-        end
+        it { subject.has_rubygem?.should be_true }
       end
     end
 
     describe "#has_github?" do
       context "with no github" do
-        it "returns false" do
-          subject.has_github?.should be_false
-        end
+        it { subject.has_github?.should be_false }
       end
 
       context "when it has a github" do
         before { subject.github_repo = GithubRepo.new(name: "foo") }
 
-        it "is true" do
-          subject.has_github?.should be_true
-        end
+        it { subject.has_github?.should be_true }
       end
     end
   end
