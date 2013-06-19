@@ -3,6 +3,7 @@ require 'haml'
 require 'sinatra'
 require 'sinatra/sequel'
 require "sinatra/content_for"
+require "sinatra/reloader"
 
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
@@ -13,6 +14,10 @@ Dir[File.dirname(__FILE__) + "/lib/models/*.rb"].each {|f| require f}
 
 class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
+
+  configure :development do
+    register Sinatra::Reloader
+  end
 
   @notify = Notifications.new
 
@@ -32,6 +37,10 @@ class AhnHub < Sinatra::Base
     plugins.delete
     @plugins_view = []
     haml :index
+  end
+
+  post '/gem' do
+    puts JSON.parse params.to_json
   end
 
   get '/addfakes' do
