@@ -17,12 +17,13 @@ class AhnHub < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
+    set :bind, '0.0.0.0'
   end
 
   @notify = Notifications.new
 
   get '/commitfakes' do
-    plugin = Plugin.first 
+    plugin = Plugin.first
     commit = Commit.create(:url => 'http://github.com/fakelink/',
                            :author => 'notBenLangfeld',
                            :message => 'PandaPower',
@@ -72,7 +73,7 @@ class AhnHub < Sinatra::Base
   get '/how' do
     haml :how
   end
-  
+
   get '/about' do
     haml :about
   end
