@@ -10,7 +10,7 @@ set :raise_errors, true
 set :logging, false
 
 def app
-  Sinatra::Application
+  AhnHub
 end
 
 RSpec.configure do |config|
