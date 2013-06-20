@@ -18,7 +18,7 @@
 migration "create the commits table" do
   DB.create_table :commits do
     primary_key   :id, primary_key: true
-    Integer       :github_id
+    Integer       :github_repo_id
     String        :url, null: false
     String        :author, null: false
     String        :message, null: false

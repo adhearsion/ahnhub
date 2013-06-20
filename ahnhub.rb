@@ -24,7 +24,7 @@ class AhnHub < Sinatra::Base
     puts "Commits Added for #{repo_info['name']}: -- #{commits.inspect}"
 
     repo = GithubRepo.process_repo repo_info
-    Commit.add_new_commits plugin, commits
+    Commit.add_new_commits repo, commits
   end
 
   require_relative 'routes/faker_routes'
