@@ -30,7 +30,7 @@ class GithubRepo < Sequel::Model
         watchers:     repo_info['watchers'],
         last_updated: Time.now
       )
-      @notify.tweet "A new plugin has been added to AhnHub called '#{repo_info['name']}'. Go check it out www.ahnhub.com!"
+      Notifications.tweet "A new plugin has been added to AhnHub called '#{repo_info['name']}'. Go check it out www.ahnhub.com!"
     else
       github_repo = github_repo.first # have to pull the actual github_repo object from the dataset returned for associations
 
@@ -44,7 +44,7 @@ class GithubRepo < Sequel::Model
         last_updated: Time.now
       )
 
-      @notify.tweet "The '#{repo_info['name']}' plugin has been updated. Check out the new changes!"
+      Notifications.tweet "The '#{repo_info['name']}' plugin has been updated. Check out the new changes!"
     end
 
     github_repo

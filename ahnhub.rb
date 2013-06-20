@@ -16,8 +16,6 @@ class AhnHub < Sinatra::Base
     set :bind, '0.0.0.0'
   end
 
-  @notify = Notifications.new
-
   def ParseGithubHook(payload)
     repo_info = payload['repository']
     commits   = payload['commits']
