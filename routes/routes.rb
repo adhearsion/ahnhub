@@ -31,5 +31,6 @@ class AhnHub < Sinatra::Base
   post '/rubygem_hook' do
     payload = JSON.parse(request.body.read)
     RubygemUpdate.handle_hook(payload)
+    "ok"
   end
 end
