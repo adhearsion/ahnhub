@@ -25,7 +25,7 @@ end
 class RubygemUpdate < Sequel::Model
   many_to_one :rubygem
 
-  def after_save
+  def after_create
     unless rubygem = Rubygem.find(name: self.name)
       rubygem = Rubygem.create(
         name:              self.name,
@@ -40,17 +40,19 @@ class RubygemUpdate < Sequel::Model
         documentation_uri: self.documentation_uri,
         mailing_list_uri:  self.mailing_list_uri,
         source_code_uri:   self.source_code_uri,
-        bug_tracker_uri:   self.bug_tracker_uri
+        bug_tracker_uri:   self.bug_tracker_uri,
+        last_updated:      Time.now
       )
     end
 
     rubygem.update_info(self)
     rubygem.add_rubygem_update(self)
+    super
   end
 
   class << self
     def handle_hook(payload)
-      update = self.create(
+      rg_update = RubygemUpdate.create(
         name:              payload['name'],
         downloads:         payload['downloads'],
         version:           payload['version'],
@@ -65,7 +67,8 @@ class RubygemUpdate < Sequel::Model
         documentation_uri: payload['documentation_uri'],
         mailing_list_uri:  payload['mailing_list_uri'],
         source_code_uri:   payload['source_code_uri'],
-        bug_tracker_uri:   payload['bug_tracker_uri']
+        bug_tracker_uri:   payload['bug_tracker_uri'],
+        last_updated:      Time.now
       )
     end
   end

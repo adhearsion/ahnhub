@@ -27,13 +27,12 @@ class Rubygem < Sequel::Model
   def update_info(rubygem_update)
     self.last_updated = rubygem_update.last_updated
     self.downloads    = rubygem_update.downloads
+    self.save
   end
 
   def after_create
-    #First, look for a plugin with the ruby gem name already stored...
     unless self.plugin
-      #Next, look for a Plugin that has a github repo with the same rubygem name...
-      unless Plugin.find(github_name: self.name)
+      unless plugin = Plugin.find(github_name: self.name)
         #Bah, it doens't exist.  Let's create it...
 
         plugin = Plugin.create(
@@ -41,14 +40,19 @@ class Rubygem < Sequel::Model
           description: self.info,
           authors: self.authors,
           rubygem_name: self.name,
-          last_updated: Time.now
+          last_updated: self.last_updated
         )
-        plugin.rubygem = self
       end
+
+      plugin.rubygem = self
+      self.plugin = plugin
     end
   end
 
-  def after_save
-    self.plugin.last_updated = self.last_updated if self.plugin
+  def before_save
+    if self.plugin
+      self.plugin.last_updated = self.last_updated
+      self.plugin.save
+    end
   end
 end

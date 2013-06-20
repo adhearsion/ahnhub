@@ -17,6 +17,17 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
+
+  config.after :each do
+    Plugin.all.each { |p| p.delete}
+    Rubygem.all.each { |p| p.delete}
+    RubygemUpdate.all.each { |p| p.delete}
+    GithubRepo.all.each { |p| p.delete}
+    Commit.all.each { |p| p.delete}
+  end
 end
 
 require File.dirname(__FILE__) + "/../ahnhub.rb"

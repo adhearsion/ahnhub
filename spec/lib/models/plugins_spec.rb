@@ -15,7 +15,7 @@ describe Plugin do
       end
 
       context "when it has a rubygem" do
-        before { subject.rubygem = Rubygem.new(name: "foo") }
+        before { subject.rubygem = Rubygem.new(name: "foo", last_updated: Time.now) }
 
         it { subject.has_rubygem?.should be_true }
       end
