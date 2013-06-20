@@ -56,9 +56,6 @@ class GithubRepo < Sequel::Model
         #Bah, it doens't exist.  Let's create it...
 
         plugin = Plugin.create(
-          name: self.name,
-          description: self.desc,
-          authors: self.owner,
           github_name: self.name,
           last_updated: self.last_updated
         )

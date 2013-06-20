@@ -9,6 +9,6 @@ module Notifications
   end
 
   def self.tweet(message)
-    Twitter.update message
+    # Twitter.update message
   end
 end

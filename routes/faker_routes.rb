@@ -37,4 +37,44 @@ class AhnHub < Sinatra::Base
     @plugins_view = []
     haml :index
   end
+
+  get '/justin' do
+    payload = {
+      'repository' =>
+      {
+        'description' => "A gem for testing gem gems.",
+        'name' => "JustinsGem",
+        'forks' => "7",
+        'watchers' => "69",
+        'url' => "http://www.github.com/JustinAiken/foo",
+        'owner' => {'name' => "JustinAiken", 'email' => "foo@bar.com"}
+      },
+      'commits' => [
+      {
+        'url' => "a@github.com",
+        'timestamp' => "2013-05-05",
+        'message' => "Commit Message",
+        'author' => {'name' => "JustinAiken"}
+      }
+      ]
+    }
+    ParseGithubHook payload
+    "ok"
+  end
+
+  get '/justingem' do
+    payload = {
+      "name"              => "JustinsGem",
+      "downloads"         => 7,
+      "version"           => "0.0.2",
+      "version_downloads" => 0,
+      "platform"          => "ruby",
+      "authors"           => "Justin Aiken",
+      "info"              => "A gem for testing gem gems.",
+      "project_uri"       => "http://rubygems.org/gems/testfoo123",
+      "gem_uri"           => "http://rubygems.org/gems/testfoo123-0.0.2.gem",
+    }
+    RubygemUpdate.handle_hook(payload)
+    "ok"
+  end
 end

@@ -22,7 +22,7 @@ migration "create the commits table" do
     String        :url, null: false
     String        :author, null: false
     String        :message, null: false
-    String        :updated_at, null: false
+    String        :last_updated, null: false
   end
 end
 
@@ -34,10 +34,10 @@ class Commit < Sequel::Model
 
     commit_jsons.each do |commit_info|
       commit = Commit.create(
-        url:        commit_info['url'],
-        author:     commit_info['author']['name'],
-        message:    commit_info['message'],
-        updated_at: commit_info['timestamp']
+        url:          commit_info['url'],
+        author:       commit_info['author']['name'],
+        message:      commit_info['message'],
+        last_updated: commit_info['timestamp']
       )
       github_repo.add_commit(commit)
     end

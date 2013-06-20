@@ -1,0 +1,6 @@
+.more_data(style="display:none;")
+  %ul
+    %li
+      Updated at
+      %a{ :href => "#{event[:url]}" }= event[:updated_at]
+      by #{event[:author]} - #{event[:message]}

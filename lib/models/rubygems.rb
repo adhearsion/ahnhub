@@ -36,9 +36,6 @@ class Rubygem < Sequel::Model
         #Bah, it doens't exist.  Let's create it...
 
         plugin = Plugin.create(
-          name: self.name,
-          description: self.info,
-          authors: self.authors,
           rubygem_name: self.name,
           last_updated: self.last_updated
         )
