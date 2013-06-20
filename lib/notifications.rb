@@ -8,7 +8,7 @@ module Notifications
     config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
   end
 
-  def tweet(message)
+  def self.tweet(message)
     Twitter.update message
   end
 end
