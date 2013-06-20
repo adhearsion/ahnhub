@@ -34,7 +34,6 @@ describe AhnHub do
 
         before do
           @plugin = Plugin.create(
-            name: "testfoo123",
             github_name: "testfoo123",
             last_updated: Time.now - 300
           )
@@ -79,7 +78,6 @@ describe AhnHub do
       context "with the plugin exisiting" do
         before do
           Plugin.create(
-            name: "testfoo123",
             github_name: "testfoo123",
             last_updated: Time.now - 300
           )

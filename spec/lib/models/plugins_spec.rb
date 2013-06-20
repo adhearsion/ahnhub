@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Plugin do
   it "requires a timestampe" do
-    p = Plugin.new(name: "foo")
+    p = Plugin.new()
     expect {p.save}.to raise_error StandardError
   end
 
   describe "associations" do
-    subject { Plugin.create(name: "foo", last_updated: Time.now) }
+    subject { Plugin.create(last_updated: Time.now) }
 
     describe "#has_rubygem?" do
       context "with no rubygem" do
