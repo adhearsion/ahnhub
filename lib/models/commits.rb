@@ -28,4 +28,18 @@ end
 
 class Commit < Sequel::Model
   many_to_one :github_repo
+
+  def self.add_new_commits(github_repo, commit_jsons)
+    return unless commit_jsons && github_repo
+
+    commit_jsons.each do |commit_info|
+      commit = Commit.create(
+        url:        commit_info['url'],
+        author:     commit_info['author']['name'],
+        message:    commit_info['message'],
+        updated_at: commit_info['timestamp']
+      )
+      github_repo.add_commit(commit)
+    end
+  end
 end

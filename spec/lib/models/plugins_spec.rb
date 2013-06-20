@@ -27,7 +27,7 @@ describe Plugin do
       end
 
       context "when it has a github" do
-        before { subject.github_repo = GithubRepo.new(name: "foo") }
+        before { subject.github_repo = GithubRepo.new(name: "foo", last_updated: Time.now) }
 
         it { subject.has_github?.should be_true }
       end
