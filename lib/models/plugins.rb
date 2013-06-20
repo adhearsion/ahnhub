@@ -62,7 +62,9 @@ class Plugin < Sequel::Model
     if self.rubygem
       self.rubygem.rubygem_updates.each do |event|
         gem_events << {
-          event: "New version #{event.version} released at #{event.last_updated}",
+          type:         "gem_update",
+          version:      event.version,
+          url:          event.project_uri,
           last_updated: event.last_updated
         }
       end
@@ -71,14 +73,17 @@ class Plugin < Sequel::Model
     if self.github_repo
       self.github_repo.commits.each do |event|
         git_events << {
-          event: "Updated at #{event.last_updated} by #{event.author} - foo",
+          type:         "commit",
+          author:       event.author,
+          email:        event.email,
+          message:      event.message,
+          url:          event.url,
           last_updated: event.last_updated
         }
       end
     end
 
     events = gem_events.concat git_events
-
     events.sort_by { |event| event['last_updated'] }.reverse
   end
 end

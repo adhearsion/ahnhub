@@ -1,6 +1,18 @@
 .more_data(style="display:none;")
   %ul
     %li
-      Updated at
-      %a{ :href => "#{event[:url]}" }= event[:updated_at]
-      by #{event[:author]} - #{event[:message]}
+      - if event[:type] == 'commit'
+        = event[:last_updated].strftime("%Y %d %d - ")
+        %a{ :href => "mailto:#{event[:email]}"}
+          = event[:author]
+        = " made some"
+        %a{ :href => event[:url] } changes:
+        = " #{event[:message]}"
+      - else
+        %b
+          = event[:last_updated].strftime("%Y %d %d")
+          = " - New version!"
+          = "#{event[:version]} is released!"
+          Get it
+          %a{href: event[:url]}
+            here.

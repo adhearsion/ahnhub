@@ -21,8 +21,9 @@ migration "create the commits table" do
     Integer       :github_repo_id
     String        :url, null: false
     String        :author, null: false
+    String        :email
     String        :message, null: false
-    String        :last_updated, null: false
+    timestamp     :last_updated, null: false
   end
 end
 
@@ -37,6 +38,7 @@ class Commit < Sequel::Model
         url:          commit_info['url'],
         author:       commit_info['author']['name'],
         message:      commit_info['message'],
+        email:        commit_info['author']['email'],
         last_updated: commit_info['timestamp']
       )
       github_repo.add_commit(commit)

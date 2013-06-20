@@ -51,10 +51,10 @@ class AhnHub < Sinatra::Base
       },
       'commits' => [
       {
-        'url' => "a@github.com",
-        'timestamp' => "2013-05-05",
-        'message' => "Commit Message",
-        'author' => {'name' => "JustinAiken"}
+        'url' => "http://www.github.com/JustinAiken/foo",
+        'timestamp' => Time.now,
+        'message' => "Added something to gitignore",
+        'author' => {'name' => "JustinAiken", 'email' => "60tonangel@gmail.com"}
       }
       ]
     }
