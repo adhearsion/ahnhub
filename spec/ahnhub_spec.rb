@@ -50,18 +50,19 @@ describe AhnHub do
 
     context "when the rubygem already exists" do
       before do
-        @plugin = Plugin.create(
+        @rubygem = Rubygem.create(
           name: "testfoo123",
-          github_name: "testfoo123",
-          last_updated: Time.now - 300
+          last_updated: Time.now
         )
-
+        @plugin = @rubygem.plugin
         post '/rubygem_hook', RUBY_SAMPLE_RESPONSE.to_json, {'Content-Type' => 'application/json'}
       end
 
       it "just creates the update, and attaches it" do
-        # @plugin.reload
-        # @rubygem.reload
+        recent_update = RubygemUpdate.last
+
+        @plugin.reload.last_updated.should  == recent_update.last_updated
+        @rubygem.reload.last_updated.should == recent_update.last_updated
       end
     end
   end
