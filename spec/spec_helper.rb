@@ -50,3 +50,7 @@ RUBY_SAMPLE_RESPONSE = {
   "bug_tracker_uri"   => nil,
   "dependencies"      => { "development" => [], "runtime" => []}
 }
+
+GITHUB_SAMPLE_RESPONSE = {payload: {
+  "name" => "testfoo123"
+}}

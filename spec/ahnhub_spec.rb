@@ -66,4 +66,35 @@ describe AhnHub do
       end
     end
   end
+
+  describe "POST '/github' hook" do
+    context "with no github repo exisiting" do
+      context "with no plugin exisiting" do
+        it "creates the plugin+repo+commits" do
+          post '/github', GITHUB_SAMPLE_RESPONSE.to_json, {'Content-Type' => 'application/json'}
+
+        end
+      end
+
+      context "with the plugin exisiting" do
+        before do
+          Plugin.create(
+            name: "testfoo123",
+            github_name: "testfoo123",
+            last_updated: Time.now - 300
+          )
+        end
+
+        it "creates the repo+commits" do
+
+        end
+      end
+    end
+
+    context "with the github repo exisiting" do
+      it "adds the commits and updates the plugin/repo" do
+
+      end
+    end
+  end
 end
