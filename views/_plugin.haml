@@ -1,22 +1,27 @@
-%li{ :id => "component-#{plugin[:id]}"}
+%li{ id: "component-#{plugin[:id]}"}
   %p
-    %a{ :href => plugin.url, :class => "component_title" }= plugin.name
+    %a{ href: plugin.url, :class => "component_title" }= plugin.name
     from
-    %a{ :href => "https://github.com/#{plugin[:owner]}" }= plugin.owner
+    - if plugin.has_github?
+      %a{ href: "https://github.com/#{plugin.owner}" }= plugin.owner
+    - else
+      = plugin.owner
   %p= plugin.description
   #repo_stats
     - if plugin.has_github?
       %img(alt="Watchers" border="0" src="images/watchers.png" title="Watchers" width="20")= plugin.github_repo[:watchers]
       %img(alt="Forks" border="0" src="images/forkstrans.png" title="Forks" height="20")= plugin.github_repo[:forks]
+    - if plugin.has_rubygem?
+      %img(alt="Downloads" border="0" src="images/gemdownload.png" title="Downloads" height="20")= plugin.rubygem[:downloads]
   #plugin_source
     - if plugin.has_github?
       %a(href="http://www.github.com" target="_blank")
         %img(alt="Source Icon" border="0" src="images/icons/github_sourced.png" title="Github" height="36")
     - if plugin.has_rubygem?
       %a(href="http://www.rubygems.com" target="_blank")
-        %img(alt="Source Icon" border="0" src="images/icons/rubygems_sourced.png" title="Github" height="36")
+        %img(alt="Source Icon" border="0" src="images/icons/rubygems_sourced.png" title="Rubygems" height="36")
   %p.component_info
-    %a{ :href => "#component-#{plugin[:id]}", :class => "recent_commits" } recent changes...
+    %a{ href: "#component-#{plugin[:id]}", class: "recent_commits" } recent updates...
     - plugin.timeline.each do |event|
       = haml :_events, locals: {event: event}
     %p &nbsp;

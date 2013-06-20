@@ -40,10 +40,10 @@ class Plugin < Sequel::Model
   end
 
   def owner
-    if has_rubygem?
-      self.rubygem.authors
-    else
+    if has_github?
       self.github_repo.owner
+    else
+      self.rubygem.authors
     end
   end
 
