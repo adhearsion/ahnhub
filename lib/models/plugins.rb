@@ -84,6 +84,6 @@ class Plugin < Sequel::Model
     end
 
     events = gem_events.concat git_events
-    events.sort_by { |event| event['last_updated'] }.reverse
+    events.sort_by { |event| event[:last_updated] }.reverse.take(5)
   end
 end
