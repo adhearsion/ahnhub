@@ -1734,14 +1734,14 @@ ul#recent_components li:hover {
     box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
     float: left;
 }
- 
+
 /* Form text input */
- 
+
 .form-wrapper input {
     width: 330px;
     height: 20px;
     padding: 10px 5px;
-    float: left;    
+    float: left;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
@@ -1759,19 +1759,19 @@ ul#recent_components li:hover {
    font-weight: normal;
    font-style: italic;
 }
- 
+
 .form-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
- 
+
 .form-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
- 
+
 /* Form submit button */
 .form-wrapper button {
     overflow: visible;
@@ -1780,7 +1780,9 @@ ul#recent_components li:hover {
     border: 0;
     padding: 0;
     cursor: pointer;
-    height: 20px;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-top:5px;
     width: 110px;
     font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
     color: #fff;
@@ -1789,7 +1791,7 @@ ul#recent_components li:hover {
     border-radius: 0 3px 3px 0;      
     text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
 }
-   
+
 .form-wrapper button:hover{     
     background: #e54040;
 }
@@ -1806,7 +1808,7 @@ ul#recent_components li:hover {
     border-width: 8px 8px 8px 0;
     border-style: solid solid solid none;
     border-color: transparent #d83c3c transparent;
-    top: 2px;
+    top: 7px;
     left: -6px;
 }
 

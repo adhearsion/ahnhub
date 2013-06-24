@@ -1,5 +1,20 @@
 .how-wrapper
-  %h2
+  %h2 Rubygems:
+  %h3
+    To use rubygem hooks, create an account at rubygems, generate an authorization key, and use that key to set up a hook for the desired gem (you can even set it up for gems you don't own - just in case you spot a nice adhearsion plugin gem the author missed putting on ahnhub)
+    %br
+    %br
+
+    CURL EXAMPLE:
+    %br
+    %code
+      curl -H 'Authorization:000000000000000000' \
+      %br
+      \-F 'gem_name=GEM_NAME' -F 'url=http://www.ahnhub.com/gem' \
+      %br
+      https://rubygems.org/api/v1/web_hooks/fire
+  %h2 Github:
+  %h3
     Just add
     %i http://ahnhub.com/github
     to your GitHub Post-Receive Hooks URL!
