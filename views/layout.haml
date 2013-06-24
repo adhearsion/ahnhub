@@ -1,0 +1,119 @@
+!!! 5
+%html
+  %head
+    %title AhnHub: Adhearsion Plugins!
+    %meta(content="text/html; charset=utf-8" http-equiv="content-type")
+    %meta(content="description" name="description")
+    %meta(content="keywords" name="keywords")
+    %meta(content="author" name="author")
+    %meta(content="&amp;copy; 2013 Mojo Lingo. All rights reserved." name="copyright")
+
+    %link(href="stylesheets/style.css" media="screen" rel="stylesheet" type="text/css")
+    %link(href="stylesheets/style-pink.css" media="screen" rel="stylesheet" type="text/css")
+    %link(href="javascripts/fonts/Inconsolata.ttf" rel="stylesheet")
+    %link(href="favicon.ico" rel="shortcut icon")
+
+    %script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript")
+    %script(src="javascripts/jquery.prettyPhoto.js" type="text/javascript")
+    %script(src="javascripts/jquery.timeago.js" type="text/javascript")
+    %script(src="javascripts/jquery.captify.js" type="text/javascript")
+    %script(src="javascripts/jquery.tools.js" type="text/javascript")
+    %script(src="javascripts/jquery.tweet.js" type="text/javascript")
+
+    %script(src="javascripts/CollapsibleLists.compressed.js")
+    %script(src="javascripts/cufon.js" type="text/javascript")
+    %script(src="javascripts/browserdetect.js" type="text/javascript")
+    %script(src="javascripts/roundies.js" type="text/javascript")
+
+    %script(src="javascripts/application.js" type="text/javascript")
+    %script(src="javascripts/custom.js" type="text/javascript")
+
+    %script(src="javascripts/fonts/arials.font.js" type="text/javascript")
+    %script(src="javascripts/fonts/ptsans.font.js" type="text/javascript")
+    %script(src="javascripts/fonts/gnuolane.font.js" type="text/javascript")
+    %script(src="javascripts/fonts/yanone.font.js" type="text/javascript")
+  %body
+    .top
+      .full-width.rel
+        .one-third
+          .logo
+            %img( src="images/ahnhub_logo.png" alt="AhnHub" )
+        .two-third
+          .mainmenu
+            %ul
+              %li#main-nav-home
+                %a( href="/" )
+                  %span Home
+              %li#main-nav-how
+                %a( href="/how" )
+                  %span How Does it Work?
+              %li#main-nav-about
+                %a( href="/about" )
+                  %span About
+        .clear
+
+    .middle
+      = haml :_search_wrapper
+      #component_container
+        ~ yield
+        %a#main-nav-active{:href => "#", :style => "display:none;"}
+          = "#main-nav-#{yield_content :page_name}"
+    .footer
+      .footer-big
+        .full-width
+          .one-fourth.footer-panel
+            %h3 AhnHub
+            %ul
+              %li
+                %a(href="http://www.adhearsion.com/") Home
+              %li
+                %a(href="http://www.adhearsion.com/how") How Does it Work?
+              %li
+                %a(href="http://www.adhearsion.com/about") About
+              %li
+                %a(href="http://www.adhearsion.com/") Adhearsion Website
+          .two-fourth.footer-panel
+            %h3
+              Latest Tweets
+            from
+            %a(href="https://www.twitter.com/adhearsion") @adhearsion
+            #tweet
+          .one-fourth.footer-panel
+            %h3 Get Social &amp; Such
+            %ul.social
+              %li
+                %a(class="github" href="https://github.com/adhearsion/adhearsion") Github
+              %li.last
+                %a(class="vimeo" href="http://vimeo.com/adhearsion") Vimeo
+              %li
+                %a(class="twitter" href="http://twitter.com/adhearsion") Twitter
+              %li.last
+                %a(class="slideshare" href="http://www.slideshare.net/tag/adhearsion") Slideshare
+              %li
+                %a(class="google-groups" href="https://groups.google.com/group/adhearsion") Mailing List
+              %li.last
+                %a(class="rss" href="http://www.adhearsion.com/rss") RSS
+            .clear
+            .rel.mt10
+            .clear
+          .clear
+      .footer-small
+        .full-width
+          .one-half.left &copy; 2013 Adhearsion Foundation Inc. All rights reserved.
+          .one-half.right Page rendered at #{Time.now}
+          .clear
+
+:javascript
+  jQuery(document).ready(function() {
+    Cufon.now();
+    CollapsibleLists.apply();
+    var activeDocNavElements = $("a[rel^='docs-nav-active']");
+    for(var i = 0; i < activeDocNavElements.size(); i++) {
+      CollapsibleLists.expand(document.getElementById(activeDocNavElements[i].text));
+    }
+
+    var activeMainNavElements = $("a#main-nav-active");
+    for(var i = 0; i < activeMainNavElements.size(); i++) {
+      $(activeMainNavElements[i].text).addClass('active');
+    }
+  });

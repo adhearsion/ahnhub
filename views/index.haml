@@ -1,0 +1,11 @@
+%ul#recent_components
+  - if defined? @search_string
+    - if @plugins_view.empty?
+      .search-box Sorry, no Adhearsion plugins found matching #{@search_string}
+    - else
+      .search-box Found #{@plugins_view.length} Adhearsion plugins matching #{@search_string}
+  - @plugins_view.each do |plugin|
+    = haml :_plugin, locals: {plugin: plugin}
+
+- content_for :page_name do
+  home

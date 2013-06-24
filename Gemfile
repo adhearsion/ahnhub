@@ -1,26 +1,20 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'rails', '3.0.19'
-gem 'action_mailer_tls'
-
-gem 'mysql2'
-
-gem 'rest-client', '>= 1.6.0'
-gem 'json', '~>1.4.6'
-gem 'andand'
-
+gem 'sinatra'
 gem 'haml'
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'will_paginate', '~> 3.0.pre2'
+gem 'sequel'
+gem 'sinatra-sequel'
+gem 'sinatra-contrib'
+gem 'twitter'
 
-gem 'hoptoad_notifier'
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
-  gem 'faker'
-  gem 'rspec-rails', '>= 2.0.0'
-  gem 'email_spec'
-  gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'spork'
+  gem 'sqlite3'
+end
+
+group :test do
+  gem 'rspec'
 end
