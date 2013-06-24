@@ -1,44 +1,56 @@
-require 'rubygems'
-require 'spork'
+require 'sinatra'
+require 'rack/test'
 
-Spork.prefork do
-  # Loading more in this block will cause your tests to run faster. However,
-  # if you change any configuration or code from libraries loaded here, you'll
-  # need to restart spork for it take effect.
+# setup test environment
+`rm #{File.dirname(__FILE__)}/../test.db`
 
-  # This file is copied to spec/ when you run 'rails generate rspec:install'
-  ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
-  require 'rspec/rails'
+ENV['DATABASE_URL'] = 'sqlite://test.db'
+ENV['RACK_ENV'] = 'test'
+set :environment, :test
+set :run, false
+set :raise_errors, true
+set :logging, false
 
-  # Requires supporting ruby files with custom matchers and macros, etc,
-  # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+def app
+  AhnHub
+end
 
-  RSpec.configure do |config|
-    # == Mock Framework
-    #
-    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-    #
-    # config.mock_with :mocha
-    # config.mock_with :flexmock
-    # config.mock_with :rr
-    config.mock_with :rspec
+RSpec.configure do |config|
+  config.include Rack::Test::Methods
 
-    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-    config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
 
-    # If you're not using ActiveRecord, or you'd prefer not to run each of your
-    # examples within a transaction, remove the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = true
+  config.after :each do
+    Plugin.all.each { |p| p.delete}
+    Rubygem.all.each { |p| p.delete}
+    RubygemUpdate.all.each { |p| p.delete}
+    GithubRepo.all.each { |p| p.delete}
+    Commit.all.each { |p| p.delete}
   end
-
-  DatabaseCleaner.strategy = :truncation
-
 end
 
-Spork.each_run do
-  # This code will be run each time you run your specs.
+require File.dirname(__FILE__) + "/../ahnhub.rb"
 
-end
+RUBY_SAMPLE_RESPONSE = {
+  "name"              => "testfoo123",
+  "downloads"         => 7,
+  "version"           => "0.0.2",
+  "version_downloads" => 0,
+  "platform"          => "ruby",
+  "authors"           => "Justin Aiken",
+  "info"              => "A test gem",
+  "project_uri"       => "http://rubygems.org/gems/testfoo123",
+  "gem_uri"           => "http://rubygems.org/gems/testfoo123-0.0.2.gem",
+  "homepage_uri"      => nil,
+  "wiki_uri"          => nil,
+  "documentation_uri" => nil,
+  "mailing_list_uri"  => nil,
+  "source_code_uri"   => nil,
+  "bug_tracker_uri"   => nil,
+  "dependencies"      => { "development" => [], "runtime" => []}
+}
+
+GITHUB_SAMPLE_RESPONSE = {payload: {
+  "name" => "testfoo123"
+}}
