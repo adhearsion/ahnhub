@@ -14,18 +14,18 @@ jQuery(document).ready(function() {
           // PrettyPhoto trigger rel
           $("a[rel^='prettyPhoto']").prettyPhoto();
           // Twitter Js
-          $(".tweet").tweet({
-            join_text: "auto",
-            username: "adhearsion",
-            avatar_size: 0,
-            count: 2,
-            auto_join_text_default: "we said,",
-            auto_join_text_ed: "we",
-            auto_join_text_ing: "we were",
-            auto_join_text_reply: "we replied",
-            auto_join_text_url: "we were checking out",
-            loading_text: "Loading tweets..."
-          });
+          // $(".tweet").tweet({
+          //   join_text: "auto",
+          //   username: "adhearsion",
+          //   avatar_size: 0,
+          //   count: 2,
+          //   auto_join_text_default: "we said,",
+          //   auto_join_text_ed: "we",
+          //   auto_join_text_ing: "we were",
+          //   auto_join_text_reply: "we replied",
+          //   auto_join_text_url: "we were checking out",
+          //   loading_text: "Loading tweets..."
+          // });
           // Pricing Movements
           /* $(function() {
           $("ul.pricing-col").mouseover(function(){

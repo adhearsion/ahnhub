@@ -1,181 +1,53 @@
-(function($) {
- 
-  $.fn.tweet = function(o){
-    var s = {
-      username: ["seaofclouds"],                // [string]   required, unless you want to display our tweets. :) it can be an array, just do ["username1","username2","etc"]
-      list: null,                               // [string]   optional name of list belonging to username
-      avatar_size: null,                        // [integer]  height and width of avatar if displayed (48px max)
-      count: 3,                                 // [integer]  how many tweets to display?
-      intro_text: null,                         // [string]   do you want text BEFORE your your tweets?
-      outro_text: null,                         // [string]   do you want text AFTER your tweets?
-      join_text:  null,                         // [string]   optional text in between date and tweet, try setting to "auto"
-      auto_join_text_default: "i said,",        // [string]   auto text for non verb: "i said" bullocks
-      auto_join_text_ed: "i",                   // [string]   auto text for past tense: "i" surfed
-      auto_join_text_ing: "i am",               // [string]   auto tense for present tense: "i was" surfing
-      auto_join_text_reply: "i replied to",     // [string]   auto tense for replies: "i replied to" @someone "with"
-      auto_join_text_url: "i was looking at",   // [string]   auto tense for urls: "i was looking at" http:...
-      loading_text: null,                       // [string]   optional loading text, displayed while tweets load
-      query: null,                              // [string]   optional search query
-      refresh_interval: null ,                  // [integer]  optional number of seconds after which to reload tweets
-      twitter_url: "twitter.com",               // [string]   custom twitter url, if any (apigee, etc.)
-      twitter_api_url: "api.twitter.com",       // [string]   custom twitter api url, if any (apigee, etc.)
-      twitter_search_url: "search.twitter.com"  // [string]   custom twitter search url, if any (apigee, etc.)
-    };
-    
-    if(o) $.extend(s, o);
-    
-    $.fn.extend({
-      linkUrl: function() {
-        var returning = [];
-        // See http://daringfireball.net/2010/07/improved_regex_for_matching_urls
-        var regexp = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
-        this.each(function() {
-          returning.push(this.replace(regexp,
-                                      function(match) {
-                                        var url = (/^[a-z]+:/i).test(match) ? match : "http://"+match;
-                                        return "<a href=\""+url+"\">"+match+"</a>";
-                                      }));
-        });
-        return $(returning);
-      },
-      linkUser: function() {
-        var returning = [];
-        var regexp = /[\@]+([A-Za-z0-9-_]+)/gi;
-        this.each(function() {
-          returning.push(this.replace(regexp,"<a href=\"http://"+s.twitter_url+"/$1\">@$1</a>"));        });
-        return $(returning);
-      },
-      linkHash: function() {
-        var returning = [];
-        var regexp = /(?:^| )[\#]+([A-Za-z0-9-_]+)/gi;
-        this.each(function() {
-          returning.push(this.replace(regexp, ' <a href="http://'+s.twitter_search_url+'/search?q=&tag=$1&lang=all&from='+s.username.join("%2BOR%2B")+'">#$1</a>'));
-        });
-        return $(returning);
-      },
-      capAwesome: function() {
-        var returning = [];
-        this.each(function() {
-          returning.push(this.replace(/\b(awesome)\b/gi, '<span class="awesome">$1</span>'));
-        });
-        return $(returning);
-      },
-      capEpic: function() {
-        var returning = [];
-        this.each(function() {
-          returning.push(this.replace(/\b(epic)\b/gi, '<span class="epic">$1</span>'));
-        });
-        return $(returning);
-      },
-      makeHeart: function() {
-        var returning = [];
-        this.each(function() {
-          returning.push(this.replace(/(&lt;)+[3]/gi, "<tt class='heart'>&#x2665;</tt>"));
-        });
-        return $(returning);
-      }
-    });
+/*********************************************************************
+*  #### Twitter Post Fetcher v7.0 ####
+*  Coded by Jason Mayes 2013. A present to all the developers out there.
+*  www.jasonmayes.com
+*  Please keep this disclaimer with my code if you use it. Thanks. :-)
+*  Got feedback or questions, ask here:
+*  http://www.jasonmayes.com/projects/twitterApi/
+*  Updates will be posted to this site.
+*********************************************************************/
+var twitterFetcher=function(){function t(d){return d.replace(/<b[^>]*>(.*?)<\/b>/gi,function(c,d){return d}).replace(/class=".*?"|data-query-source=".*?"|dir=".*?"|rel=".*?"/gi,"")}function m(d,c){for(var f=[],e=RegExp("(^| )"+c+"( |$)"),g=d.getElementsByTagName("*"),b=0,a=g.length;b<a;b++)e.test(g[b].className)&&f.push(g[b]);return f}var u="",j=20,n=!0,h=[],p=!1,k=!0,l=!0,q=null,r=!0;return{fetch:function(d,c,f,e,g,b,a){void 0===f&&(f=20);void 0===e&&(n=!0);void 0===g&&(g=!0);void 0===b&&(b=!0);
+void 0===a&&(a="default");p?h.push({id:d,domId:c,maxTweets:f,enableLinks:e,showUser:g,showTime:b,dateFunction:a}):(p=!0,u=c,j=f,n=e,l=g,k=b,q=a,c=document.createElement("script"),c.type="text/javascript",c.src="//cdn.syndication.twimg.com/widgets/timelines/"+d+"?&lang=en&callback=twitterFetcher.callback&suppress_response_codes=true&rnd="+Math.random(),document.getElementsByTagName("head")[0].appendChild(c))},callback:function(d){var c=document.createElement("div");c.innerHTML=d.body;"undefined"===
+typeof c.getElementsByClassName&&(r=!1);var f=d=null,e=null;r?(d=c.getElementsByClassName("e-entry-title"),f=c.getElementsByClassName("p-author"),e=c.getElementsByClassName("dt-updated")):(d=m(c,"e-entry-title"),f=m(c,"p-author"),e=m(c,"dt-updated"));for(var c=[],g=d.length,b=0;b<g;){if("string"!==typeof q){var a=new Date(e[b].getAttribute("datetime").replace(/-/g,"/").replace("T"," ").split("+")[0]),a=q(a);e[b].setAttribute("aria-label",a);if(d[b].innerText)if(r)e[b].innerText=a;else{var s=document.createElement("p"),
+v=document.createTextNode(a);s.appendChild(v);s.setAttribute("aria-label",a);e[b]=s}else e[b].textContent=a}n?(a="",l&&(a+='<div class="user">'+t(f[b].innerHTML)+"</div>"),a+='<p class="tweet">'+t(d[b].innerHTML)+"</p>",k&&(a+='<p class="timePosted">'+e[b].getAttribute("aria-label")+"</p>")):d[b].innerText?(a="",l&&(a+='<p class="user">'+f[b].innerText+"</p>"),a+='<p class="tweet">'+d[b].innerText+"</p>",k&&(a+='<p class="timePosted">'+e[b].innerText+"</p>")):(a="",l&&(a+='<p class="user">'+f[b].textContent+
+"</p>"),a+='<p class="tweet">'+d[b].textContent+"</p>",k&&(a+='<p class="timePosted">'+e[b].textContent+"</p>"));c.push(a);b++}c.length>j&&c.splice(j,c.length-j);d=c.length;f=0;e=document.getElementById(u);for(g="<ul>";f<d;)g+="<li>"+c[f]+"</li>",f++;e.innerHTML=g+"</ul>";p=!1;0<h.length&&(twitterFetcher.fetch(h[0].id,h[0].domId,h[0].maxTweets,h[0].enableLinks,h[0].showUser,h[0].showTime,h[0].dateFunction),h.splice(0,1))}}}();
+/*
+* ### HOW TO CREATE A VALID ID TO USE: ###
+* Go to www.twitter.com and sign in as normal, go to your settings page.
+* Go to "Widgets" on the left hand side.
+* Create a new widget for what you need eg "user timeline" or "search" etc.
+* Feel free to check "exclude replies" if you dont want replies in results.
+* Now go back to settings page, and then go back to widgets page, you should
+* see the widget you just created. Click edit.
+* Now look at the URL in your web browser, you will see a long number like this:
+* 345735908357048478
+* Use this as your ID below instead!
+*/
+/**
+ * How to use fetch function:
+ * @param {string} Your Twitter widget ID.
+ * @param {string} The ID of the DOM element you want to write results to.
+ * @param {int} Optional - the maximum number of tweets you want returned. Must
+ *     be a number between 1 and 20.
+ * @param {boolean} Optional - set true if you want urls and hash
+       tags to be hyperlinked!
+ * @param {boolean} Optional - Set false if you dont want user photo /
+ *     name for tweet to show.
+ * @param {boolean} Optional - Set false if you dont want time of tweet
+ *     to show.
+ * @param {function/string} Optional - A function you can specify to format
+ *     tweet date/time however you like. This function takes a JavaScript date
+ *     as a parameter and returns a String representation of that date.
+ *     Alternatively you may specify the string 'default' to leave it with
+ *     Twitter's default renderings.
+ */
+// ##### Simple example 1 #####
+// A simple example to get my latest tweet and write to a HTML element with
+// id "tweets". Also automatically hyperlinks URLS and user mentions and
+// hashtags.
 
-    function parse_date(date_str) {
-      // The non-search twitter APIs return inconsistently-formatted dates, which Date.parse
-      // cannot handle in IE. We therefore perform the following transformation:
-      // "Wed Apr 29 08:53:31 +0000 2009" => "Wed, Apr 29 2009 08:53:31 +0000"
-      return Date.parse(date_str.replace(/^([a-z]{3})( [a-z]{3} \d\d?)(.*)( \d{4})$/i, '$1,$2$4$3'));
-    }
-
-    function relative_time(time_value) {
-      var parsed_date = parse_date(time_value);
-      var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
-      var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
-      var r = '';
-      if (delta < 60) {
-	r = delta + ' seconds ago';
-      } else if(delta < 120) {
-	r = 'a minute ago';
-      } else if(delta < (45*60)) {
-	r = (parseInt(delta / 60, 10)).toString() + ' minutes ago';
-      } else if(delta < (2*60*60)) {
-	r = 'an hour ago';
-      } else if(delta < (24*60*60)) {
-	r = '' + (parseInt(delta / 3600, 10)).toString() + ' hours ago';
-      } else if(delta < (48*60*60)) {
-	r = 'a day ago';
-      } else {
-	r = (parseInt(delta / 86400, 10)).toString() + ' days ago';
-      }
-      return r;
-    }
-
-    function build_url() {
-      var proto = ('https:' == document.location.protocol ? 'https:' : 'http:');
-      if (s.list) {
-        return proto+"//"+s.twitter_api_url+"/1/"+s.username[0]+"/lists/"+s.list+"/statuses.json?per_page="+s.count+"&callback=?";
-      } else if (s.query == null && s.username.length == 1) {
-        return proto+'//'+s.twitter_api_url+'/1/statuses/user_timeline.json?screen_name='+s.username[0]+'&count='+s.count+'&include_rts=1&callback=?';
-      } else {
-        var query = (s.query || 'from:'+s.username.join(' OR from:'));
-        return proto+'//'+s.twitter_search_url+'/search.json?&q='+encodeURIComponent(query)+'&rpp='+s.count+'&callback=?';
-      }
-    }
-
-    return this.each(function(i, widget){
-      var list = $('<ul class="tweet_list">').appendTo(widget);
-      var intro = '<p class="tweet_intro">'+s.intro_text+'</p>';
-      var outro = '<p class="tweet_outro">'+s.outro_text+'</p>';
-      var loading = $('<p class="loading">'+s.loading_text+'</p>');
-
-      if(typeof(s.username) == "string"){
-        s.username = [s.username];
-      }
-
-      if (s.loading_text) $(widget).append(loading);
-      $(widget).bind("load", function(){
-        $.getJSON(build_url(), function(data){
-          if (s.loading_text) loading.remove();
-          if (s.intro_text) list.before(intro);
-          list.empty();
-          var tweets = (data.results || data);
-          $.each(tweets, function(i,item){
-            // auto join text based on verb tense and content
-            if (s.join_text == "auto") {
-              if (item.text.match(/^(@([A-Za-z0-9-_]+)) .*/i)) {
-                var join_text = s.auto_join_text_reply;
-              } else if (item.text.match(/(^\w+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+) .*/i)) {
-                var join_text = s.auto_join_text_url;
-              } else if (item.text.match(/^((\w+ed)|just) .*/im)) {
-                var join_text = s.auto_join_text_ed;
-              } else if (item.text.match(/^(\w*ing) .*/i)) {
-                var join_text = s.auto_join_text_ing;
-              } else {
-                var join_text = s.auto_join_text_default;
-              }
-            } else {
-              var join_text = s.join_text;
-            };
-   
-            var from_user = item.from_user || item.user.screen_name;
-            var profile_image_url = item.profile_image_url || item.user.profile_image_url;
-            var join_template = '<span class="tweet_join"> '+join_text+' </span>';
-            var join = ((s.join_text) ? join_template : ' ');
-            var avatar_template = '<a class="tweet_avatar" href="http://'+s.twitter_url+'/'+from_user+'"><img src="'+profile_image_url+'" height="'+s.avatar_size+'" width="'+s.avatar_size+'" alt="'+from_user+'\'s avatar" title="'+from_user+'\'s avatar" border="0"/></a>';
-            var avatar = (s.avatar_size ? avatar_template : '');
-            var date = '<span class="tweet_time"><a href="http://'+s.twitter_url+'/'+from_user+'/statuses/'+item.id_str+'" title="view tweet on twitter">'+relative_time(item.created_at)+'</a></span>';
-            var text = '<span class="tweet_text">' +$([item.text]).linkUrl().linkUser().linkHash().makeHeart().capAwesome().capEpic()[0]+ '</span>';
-   
-            // until we create a template option, arrange the items below to alter a tweet's display.
-            list.append('<li>' + avatar + date + join + text + '</li>');
-   
-            list.children('li:first').addClass('tweet_first');
-            list.children('li:odd').addClass('tweet_even');
-            list.children('li:even').addClass('tweet_odd');
-          });
-          if (s.outro_text) list.after(outro);
-          $(widget).trigger("loaded").trigger((tweets.length == 0 ? "empty" : "full"));
-          if (s.refresh_interval) {
-            window.setTimeout(function() { $(widget).trigger("load"); }, 1000 * s.refresh_interval);
-          };
-        });
-      }).trigger("load");
-    });
-  };
-})(jQuery);
+twitterFetcher.fetch('348097004288765953', 'tweet', 5, true, false, false);
+function dateFormatter(date) {
+  return date.toTimeString();
+}
