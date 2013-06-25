@@ -1694,6 +1694,11 @@ ul#recent_components li:hover {
   right: 30px; 
   bottom: 10px;
 }
+#ahn_versions_supported {
+  position: absolute;
+  right: 120px;
+  bottom: 10px;
+}
 .recent_commits {
   font-style: italic;
   position: absolute;

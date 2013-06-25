@@ -8,6 +8,8 @@ migration "create the plugins table" do
 
     String       :rubygem_name
     String       :github_name
+
+    String       :ahn_versions, default: "2"
   end
 end
 
@@ -53,6 +55,14 @@ class Plugin < Sequel::Model
     else
       "https://rubygems.org/gems/#{self.rubygem.name}"
     end
+  end
+
+  def ahn1?
+    self.ahn_versions =~ /1/
+  end
+
+  def ahn2?
+    self.ahn_versions =~ /2/
   end
 
   def timeline

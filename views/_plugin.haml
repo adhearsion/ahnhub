@@ -20,6 +20,13 @@
     - if plugin.has_rubygem?
       %a(href="http://www.rubygems.com" target="_blank")
         %img(alt="Source Icon" border="0" src="images/icons/rubygems_sourced.png" title="Rubygems" height="36")
+  #ahn_versions_supported
+    - if plugin.ahn1?
+      %a(href="https://github.com/adhearsion/adhearsion/tree/support/1.x.x" target="_blank")
+        %img(alt="Source Icon" border="0" src="images/icons/ahn1.png" title="Ahn1" height="36")
+    - if plugin.ahn2?
+      %a(href="http://www.github.com/adhearsion/adhearsion" target="_blank")
+        %img(alt="Source Icon" border="0" src="images/icons/ahn2.png" title="Ahn2" height="36")
   %p.component_info
     %a{ href: "#component-#{plugin[:id]}", class: "recent_commits" } recent updates...
     - plugin.timeline.each do |event|
