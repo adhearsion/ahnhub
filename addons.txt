@@ -1,0 +1,3 @@
+pgbackups:plus
+zerigo_dns:basic
+
