@@ -1689,6 +1689,11 @@ ul#recent_components li:hover {
   right: 30px; 
   top: 10px;
 }
+#gem_version {
+  position: absolute; 
+  left:400px;
+  bottom:10px;
+}
 #plugin_source {
   position: absolute; 
   right: 30px; 
