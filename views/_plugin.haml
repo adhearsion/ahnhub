@@ -7,6 +7,11 @@
     - else
       = plugin.owner
   %p= plugin.description
+  #gem_version
+    - if plugin.has_rubygem?
+      Latest version:
+      %b
+        = plugin.rubygem.version
   #repo_stats
     - if plugin.has_github?
       %img(alt="Watchers" border="0" src="images/watchers.png" title="Watchers" width="20")= plugin.github_repo[:watchers]

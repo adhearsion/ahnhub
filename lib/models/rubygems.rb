@@ -46,6 +46,10 @@ class Rubygem < Sequel::Model
     end
   end
 
+  def version
+    self.rubygem_updates.max_by(&:last_updated).version rescue "??"
+  end
+
   def before_save
     if self.plugin
       self.plugin.last_updated = self.last_updated
