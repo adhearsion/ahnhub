@@ -13,12 +13,23 @@ class AhnHub < Sinatra::Base
   end
 
   post '/search' do
-    query = params['query']
-    result = Plugin.where(Sequel.like(:name, "%#{query}%")).or(
-                          Sequel.like(:desc, "%#{query}%")).or(
-                          Sequel.like(:owner, "%#{query}%"))
+    query  = params['query']
     @search_string = query
-    @plugins_view = result.reverse_order(:last_updated).all
+
+    result = GithubRepo.where(Sequel.like(:name, "%#{query}%")).or(
+                              Sequel.like(:desc, "%#{query}%")).or(
+                              Sequel.like(:owner, "%#{query}%"))
+    if result.all == nil
+      result = Rubygem.where(Sequel.like(:name, "%#{query}%")).or(
+                             Sequel.like(:info, "%#{query}%")).or(
+                             Sequel.like(:homepage_uri, "%#{query}%"))
+    end
+
+
+    @plugins_view = result.reverse_order(:last_updated).all.map do |r|
+      Plugin.find(id: r.plugin_id) rescue nil
+    end.delete_if {|r| r == nil}
+
     haml :index
   end
 
