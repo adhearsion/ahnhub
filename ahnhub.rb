@@ -18,7 +18,9 @@ class AhnHub < Sinatra::Base
 
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
+      puts "API_KEY: #{config.api_key}"
       config.host       = ENV['ERRBIT_API_HOST']
+      puts "API_HOST: #{config.host}"
       config.port       = 80
       config.secure     = config.port == 443
     end
