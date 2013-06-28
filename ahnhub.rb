@@ -11,7 +11,7 @@ require File.dirname(__FILE__) + "/lib/database.rb"
 
 class AhnHub < Sinatra::Base
   helpers do
-    Sinatra::ContentFor
+    include Sinatra::ContentFor
     include Rack::Utils
   end
 
