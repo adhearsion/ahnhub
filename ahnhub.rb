@@ -1,6 +1,7 @@
 require 'json'
 require 'haml'
 require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/sequel'
 require "sinatra/content_for"
 require "sinatra/reloader"
@@ -16,6 +17,7 @@ Airbrake.configure do |config|
   config.port       = 80
   config.secure     = config.port == 443
   config.logger     = Logger.new STDOUT
+  config.development_environments = []
 end
 
 class AhnHub < Sinatra::Base
