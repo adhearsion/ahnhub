@@ -4,6 +4,7 @@ require 'sinatra'
 require 'sinatra/sequel'
 require "sinatra/content_for"
 require "sinatra/reloader"
+require 'airbrake'
 
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
@@ -12,7 +13,6 @@ class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
 
   configure do
-    set :logging, Logger::DEBUG
 
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
