@@ -13,9 +13,12 @@ class AhnHub < Sinatra::Base
   helpers do
     include Sinatra::ContentFor
     include Rack::Utils
+    alias_method :h, :escape_html
   end
 
   configure :production do
+    set :logging, Logger::DEBUG
+
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
       puts "API_KEY: #{config.api_key}"
