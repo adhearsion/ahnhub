@@ -9,13 +9,7 @@ require 'airbrake'
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
-class AhnHub < Sinatra::Base
-  helpers Sinatra::ContentFor
-
-  configure do
-    register Sinatra::Reloader
-    set :bind, '0.0.0.0'
-
+configure :production do
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
       puts "API_KEY: #{config.api_key}"
@@ -27,6 +21,14 @@ class AhnHub < Sinatra::Base
 
     use Airbrake::Rack
     enable :raise_errors
+end
+
+class AhnHub < Sinatra::Base
+  helpers Sinatra::ContentFor
+
+  configure :development do
+    register Sinatra::Reloader
+    set :bind, '0.0.0.0'
   end
 
   def ParseGithubHook(payload)
