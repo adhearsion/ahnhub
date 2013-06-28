@@ -8,11 +8,6 @@ require "sinatra/reloader"
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
-errbit_key = ENV['ERRBIT_API_KEY']
-errbit_host = ENV['ERRBIT_API_HOST']
-
-set :airbrake, :api_key => errbit_key, :filters => /password/, :notify_host => errbit_host
-
 class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
 
