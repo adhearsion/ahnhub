@@ -9,7 +9,13 @@ require 'airbrake'
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
-configure :production do
+class AhnHub < Sinatra::Base
+  helpers do
+    Sinatra::ContentFor
+    include Rack::Utils
+  end
+
+  configure :production do
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
       puts "API_KEY: #{config.api_key}"
@@ -21,10 +27,7 @@ configure :production do
 
     use Airbrake::Rack
     enable :raise_errors
-end
-
-class AhnHub < Sinatra::Base
-  helpers Sinatra::ContentFor
+  end
 
   configure :development do
     register Sinatra::Reloader
