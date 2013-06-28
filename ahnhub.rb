@@ -11,6 +11,20 @@ require File.dirname(__FILE__) + "/lib/database.rb"
 class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
 
+  configure do
+    set :logging, Logger::DEBUG
+
+    Airbrake.configure do |config|
+      config.api_key    = ENV['ERRBIT_API_KEY']
+      config.host       = ENV['ERRBIT_API_HOST']
+      config.port       = 80
+      config.secure     = config.port == 443
+    end
+
+    use Airbrake::Rack
+    enable :raise_errors
+  end
+
   configure :development do
     register Sinatra::Reloader
     set :bind, '0.0.0.0'
