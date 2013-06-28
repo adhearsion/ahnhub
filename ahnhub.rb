@@ -13,6 +13,8 @@ class AhnHub < Sinatra::Base
   helpers Sinatra::ContentFor
 
   configure do
+    register Sinatra::Reloader
+    set :bind, '0.0.0.0'
 
     Airbrake.configure do |config|
       config.api_key    = ENV['ERRBIT_API_KEY']
@@ -23,11 +25,6 @@ class AhnHub < Sinatra::Base
 
     use Airbrake::Rack
     enable :raise_errors
-  end
-
-  configure :development do
-    register Sinatra::Reloader
-    set :bind, '0.0.0.0'
   end
 
   def ParseGithubHook(payload)
