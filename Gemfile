@@ -6,6 +6,7 @@ gem 'haml'
 gem 'sequel'
 gem 'sinatra-sequel'
 gem 'sinatra-contrib'
+gem 'toadhopper-sinatra'
 gem 'twitter'
 
 group :production do

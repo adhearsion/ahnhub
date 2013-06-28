@@ -77,4 +77,8 @@ class AhnHub < Sinatra::Base
     RubygemUpdate.handle_hook(payload)
     "ok"
   end
+
+  get '/forcederror' do
+    raise "Kablamo!~"
+  end
 end
