@@ -11,6 +11,7 @@ require 'logger'
 require File.dirname(__FILE__) + "/lib/notifications.rb"
 require File.dirname(__FILE__) + "/lib/database.rb"
 
+
 Airbrake.configure do |config|
   config.api_key    = ENV['ERRBIT_API_KEY']
   config.host       = ENV['ERRBIT_API_HOST']
@@ -18,6 +19,7 @@ Airbrake.configure do |config|
   config.secure     = config.port == 443
   config.logger     = Logger.new STDOUT
   config.development_environments = []
+  config.notifier_version '2.2'
 end
 
 class AhnHub < Sinatra::Base
