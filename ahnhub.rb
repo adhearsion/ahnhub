@@ -19,7 +19,7 @@ Airbrake.configure do |config|
   config.secure     = config.port == 443
   config.logger     = Logger.new STDOUT
   config.development_environments = []
-  config.notifier_version '2.2'
+  config.notifier_version = '2.2'
 end
 
 class AhnHub < Sinatra::Base
