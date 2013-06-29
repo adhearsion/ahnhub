@@ -7,7 +7,7 @@ gem 'sequel'
 gem 'sinatra-sequel'
 gem 'sinatra-contrib'
 gem 'twitter'
-gem 'airbrake', "3.1.7"
+gem 'airbrake', "3.1.2"
 
 group :production do
   gem 'pg'
